@@ -1,0 +1,35 @@
+extends @/pug/layouts/app_layout
+
+append link
+prepend script
+  script(defer type="module" src="/src/js/catalog.js")
+block title
+  - var text='Catalog page'
+
+block page-content
+  main.page__main-content.accent-color
+    .main-content#wrapper
+      .main-content__content#content
+        block main-content 
+          section.main-content__section
+            nav.bread-crumbs._container
+              .bread-crumbs__body
+                ul.bread-crumbs__list
+                  li.link-underline-center
+                    a.bread-crumbs__link(href=getWebRoot(filename) + "index.html" title="/ Главная") Главная 
+                  li / 
+                  li
+                    span.bread-crumbs__current-item Каталог товаров 
+          section.main-content__section
+            include @/pug/sections/catalog/section-categories
+          section.main-content__section
+            include @/pug/sections/catalog/section-products
+          section.main-content__section
+            include @/pug/chunks/collection
+          section.main-content__section
+            include @/pug/sections/catalog/section-info
+          section.main-content__section
+            include @/pug/sections/index/section-product-prices
+          footer.page__footer
+            block footer 
+              include @/pug/layouts/footer  

@@ -1,0 +1,268 @@
+@use '../core/mixins' as *;
+
+.categories-filter {
+  position: sticky;
+  top: 110px;
+
+  @include screen-1289 {
+    top: 148px;
+  }
+
+  // .categories-filter__title
+  &__title {
+    padding: 10px 0;
+    font-size: 16px;
+    line-height: 118.75%; /* 19px/16 */
+    color: rgb(73 74 75 / 100%);
+
+    @include screen-768 {
+      padding: 10px 0 10px 5px;
+      border: 2px solid rgb(133 133 133);
+      border-radius: 5px;
+    }
+
+    @include screen-490 {
+      font-size: 14px;
+    }
+  }
+
+  // .categories-filter__body
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  // .categories-filter__form
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    height: 100%;
+  }
+
+  // .categories-filter__price
+  &__price {
+    display: flex;
+    margin-bottom: 12px;
+  }
+
+  // .categories-filter__no-ui
+  &__no-ui {
+    display: block; //!
+  }
+
+  // .categories-filter__text
+  &__text {
+    font-size: 14px;
+
+    @include screen-490 {
+      font-size: 12px;
+    }
+  }
+
+  // .categories-filter__image
+  &__image {
+    display: block;
+    margin-bottom: 13px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.values-price {
+  // .values-price__current-price
+  &__current-price {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 122px));
+    // display: flex;
+    gap: 1rem;
+    justify-content: space-around;
+
+    width: 100%;
+  }
+
+  // .values-price__item
+  &__item {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 1rem 0.6rem;
+    border: 1px solid rgb(87 96 105 / 100%);
+    border-radius: 5px;
+
+    @include min-490 {
+      max-width: 122px;
+    }
+  }
+
+  // .values-price__label
+  &__label {
+    font-size: 14px;
+
+    @include screen-490 {
+      font-size: 12px;
+    }
+  }
+
+  // .values-price__input
+  &__input {
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+
+    input {
+      display: inline;
+      max-width: 100%;
+      font-size: 14px;
+
+      @include screen-490 {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+.form-categories {
+  // .values-price__no-ui
+  .values-price__no-ui {
+    padding: 0 7px;
+  }
+  // .form-categories__filter
+  &__filter {
+    // .form-categories__type
+    .form-categories__type {
+      padding: 12px 10px 12px 0;
+    }
+  }
+
+  // .form-categories__item
+  &__item {
+    padding: 0 6px;
+    border-radius: 5px;
+    background: #fff;
+
+    .form-categories__type {
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+
+      @include screen-490 {
+        font-size: 14px;
+      }
+
+      .icon {
+        transform: rotate(90deg);
+        font-size: 12px;
+        transition: transform 0.4s ease-in-out;
+      }
+    }
+
+    &._open {
+      > .icon {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  // .form-categories__type
+  &__type {
+    font-size: 16px;
+
+    @include screen-490 {
+      font-size: 14px;
+    }
+  }
+
+  // .form-categories__wrapper
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 2px;
+  }
+
+  // .form-categories__section
+  &__section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  // .form-categories__label
+  &__label {
+    input {
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  }
+
+  // .form-categories__show-more
+  &__show-more {
+    cursor: pointer;
+
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+
+    width: auto;
+    padding: 9px 9px 9px 0;
+
+    .icon {
+      pointer-events: none;
+      transform: rotate(90deg);
+      transition: transform 0.4s ease-in-out;
+    }
+
+    &._rotate-button {
+      .icon {
+        transform: rotate(-90deg);
+      }
+    }
+  }
+
+  // .form-categories__button
+  &__button {
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+    background: linear-gradient(
+      180deg,
+      rgb(123.226 123.226 123.822 / 100%),
+      rgb(21 23 25 / 100%) 100%
+    );
+
+    transition:
+      scale 0.2s,
+      box-shadow 0.2s ease-in-out;
+
+    span {
+      color: #fff;
+    }
+
+    &:hover {
+      scale: 0.98;
+      box-shadow: 0 -1px 10px 1px rgb(0 1 2 / 89.7%) inset;
+      span {
+        scale: 1 !important;
+      }
+    }
+
+    @include screen-490 {
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  }
+}

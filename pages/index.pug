@@ -1,0 +1,26 @@
+extends @/pug/layouts/app_layout.pug
+
+append link 
+prepend script 
+	script(defer type="module" src="/src/js/index.js")
+block title
+	- var text = 'Home page'
+
+block main-content 
+	section.main-content__section
+		include @/pug/sections/section-perform
+	//- section.main-content__section
+		include @/pug/sections/index/section-label
+	//- section.main-content__section
+		include @/pug/sections/index/section-product-prices
+	//- section.main-content__section
+		include @/pug/sections/index/section-new-products
+	//- section.main-content__section
+		include @/pug/sections/index/section-collections
+	//- section.main-content__section
+		include @/pug/sections/index/section-partners
+	//- section.main-content__section
+		include @/pug/sections/index/section-about
+//- block section-news 
+	section.main-content__section-news
+		include @/pug/sections/index/section-news

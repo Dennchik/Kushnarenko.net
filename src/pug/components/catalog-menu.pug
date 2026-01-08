@@ -1,0 +1,28 @@
+.catalog-menu 
+	.catalog-menu__content
+		.catalog-menu__body.parent 
+			each menu in catalog
+				.catalog-menu__catalog._slideToggle 
+					.catalog-menu__link._trigger
+						span= menu.categories
+						.catalog-menu__icons
+							+iconfont('pointer-right', 'icon')
+					.sub-menu.catalog-menu__menu._collapse
+						.sub-menu__menu.parent
+							each item in menu.links
+								- const title = Object.keys(item)[0]
+								- const products = item[title] 
+								.sub-menu__list._slideToggle 
+									.sub-menu__link._trigger
+										span= title
+										span.sub-menu__icons
+											+iconfont('pointer-right', 'icon') 
+									.sub-menu__items._collapse
+										if products.length
+											each prod in products
+												.sub-menu__item
+													a(href=linkTo('electric-tools/card-drill', filename))= prod
+										else
+											// Выводим 5 строк "Нет товаров" для визуального баланса
+											each _ in Array(5)
+												.sub-menu__item Нет товаров 

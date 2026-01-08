@@ -1,0 +1,81 @@
+@use '../core/mixins' as *;
+
+.widget {
+  // .widget__body
+  &__body {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+  }
+
+  // .widget__content
+  &__content {
+    display: grid;
+    grid-template-columns: max-content;
+    gap: 10px;
+    justify-items: end;
+  }
+
+  // .widget__items
+  &__items {
+    pointer-events: all;
+
+    position: relative;
+
+    display: inline-flex;
+    flex-direction: column;
+
+    padding: 30px 20px;
+    border-radius: 10px;
+
+    background: #fff;
+    box-shadow: 0 0 25px 1px #00000063;
+
+    @include screen-490 {
+      border-radius: 5px;
+    }
+  }
+
+  // .widget__icon
+  &__icon {
+    cursor: pointer;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+
+    .icon {
+      transform: rotate(-45deg);
+      font-size: 24px;
+    }
+  }
+
+  // .widget__item
+  &__item {
+    display: inline-flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: flex-start;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    .icon-telegram {
+      font-size: 60px;
+      color: #35a8de;
+    }
+
+    .icon-whatsapp,
+    .icon-phone-call {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+
+      font-size: 40px;
+      color: #fff;
+
+      background-color: #10c02d;
+    }
+  }
+}

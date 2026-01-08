@@ -1,0 +1,50 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
+.collection {
+  // .collection__body
+  &__body {
+    padding-block: 5rem;
+  }
+  // .collection__content
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  // .collection__title
+  &__title {
+    margin-bottom: 4rem;
+
+    h2 {
+      text-align: center;
+    }
+  }
+
+  // .collection__button
+  &__button {
+    cursor: pointer;
+
+    padding: 0.9rem 2rem;
+    border: 1px solid rgb(45 47 48 / 100%);
+    border-radius: 10px;
+
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      border: 1px solid green;
+      color: $color-green;
+    }
+    span {
+      pointer-events: none;
+      font-size: 1.4rem;
+      line-height: 100%;
+      white-space: nowrap;
+    }
+
+    @include screen-490 {
+      padding: 0.9rem 1rem;
+    }
+  }
+}

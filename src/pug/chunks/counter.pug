@@ -1,0 +1,23 @@
+.card-counter(data-quantity-container) 
+	.card-counter__prices
+		.card-counter__price.price-product
+			span 3 299
+			+iconfont('rub', 'icon')
+		.card-counter__old-price
+			span 3 999
+			+iconfont('rub', 'icon')
+		.card-counter__sum.product-sum
+			+iconfont('sum', 'icon')
+			| :&nbsp; 
+			span
+	.card-counter__buttons
+		.card-counter__counter
+			.quantity.product-card__quantity
+				.quantity__button.quantity-remove
+					+iconfont('minus', 'icon')
+				.quantity__input
+					input.input(type="text" name="form[]" value="0" placeholder="<+>" autocomplete="off")
+				.quantity__button.quantity-add
+					+iconfont('plus', 'icon')
+		.card-counter__button
+			span.button В корзину

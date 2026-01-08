@@ -1,0 +1,72 @@
+@use '../../core/mixins' as *;
+.info {
+  // .info__body
+  &__body {
+    padding-block: 3rem;
+  }
+
+  // .info__content
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // .info-text__wrapper
+  &__wrapper {
+    padding-bottom: 1rem;
+  }
+
+  // .info__text
+  &__text {
+    &:not(:last-child) {
+      padding-bottom: 3rem;
+    }
+  }
+
+  // .info__section
+  &__section {
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: 1fr;
+
+    padding-bottom: 5px;
+
+    transition: grid-template-rows 0.2s ease-in-out;
+
+    &.hidden {
+      grid-template-rows: 0fr;
+      padding-bottom: 0;
+    }
+
+    p {
+      overflow: hidden;
+      min-height: 0;
+      font-size: 12px;
+    }
+  }
+
+  // .info__button
+  &__button {
+    cursor: pointer;
+    font-size: 12px;
+  }
+
+  // .info__list
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-left: 10px;
+
+    li {
+      font-size: 12px;
+      list-style: disc;
+      list-style-position: inside;
+
+      &::before {
+        content: '';
+        margin-right: -5px;
+      }
+    }
+  }
+}

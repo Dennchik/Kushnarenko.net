@@ -1,0 +1,70 @@
+.header
+	.header__content
+		.header__top-menu
+			.top-menu__wrapper._container 
+				.header__icon-logo
+					.header__icon-text 
+						span К
+					.header__link 
+						a(href="") kushnarenko.net
+				.top-menu(data-da="sidebar-menu__body" data-da-position="0" data-da-resolution="690")   
+					ul.top-menu__list 
+						li.top-menu__item
+							a(href=linkTo('404', filename)).top-menu__link.link-underline-center Мероприятия
+						li.top-menu__item
+							a(href="#").top-menu__link.link-underline-center Видео
+						li.top-menu__item
+							a(href=linkTo("about", filename)).top-menu__link.link-underline-center О нас
+						li.top-menu__item
+							a(href=linkTo("news", filename)).top-menu__link.link-underline-center Услуги
+						li.top-menu__item
+							a(href=linkTo("news", filename)).top-menu__link.link-underline-center Новости
+						li.top-menu__item
+							a(href="#").top-menu__link.link-underline-center Контакты
+		//- .main-menu.header__main-menu._container 
+			.main-menu__column
+				.main-menu__logo-wrapper 
+					a(href=getWebRoot(filename) + "index.html" aria-label="home").main-menu__logo.anchor-link 
+						+imgSvg('img/logo.svg', 'image') 
+				.main-menu__button(data-da="col-2" data-da-position="1" data-da-resolution="960")
+					button(type="button").main-menu__link.button._trigger
+						+iconfont('paragraph-right', 'icon')
+						span Каталог
+			.main-menu__column(data-da="col-1" data-da-position="0" data-da-resolution="1260")
+				form(action="/search/" aria-label="Поиск в интернете" ).search-form#quick-search
+					label(for="site-search")
+					.search-form__input 
+						input(type="text" name="search" placeholder="Поиск по каталогу..." id="site-search" autocomplete="off")
+						button.search-form__button-search(type="submit" aria-label="Поиск") 
+							+iconfont('search', 'icon')
+			.main-menu__column
+				.menu-header
+					ul.menu-header__list(data-da="menu-float__body" data-da-position="1" data-da-resolution="768") 
+						li.menu-header__item.link-underline-center
+							a(href="#").menu-header__link
+								span.favourites 
+									+iconfont('heart', 'icon') 
+									+iconfont('heart-like', 'icon')
+									|&nbsp;(<span class="total-num">0</span>)</a>
+								span.menu-header__text Избранное
+						li.menu-header__item.link-underline-center
+							button(type="button").menu-header__link.login-button 
+								+iconfont('person', 'icon')
+								span.menu-header__text Войти
+						li.menu-header__item.link-underline-center
+							a(href="#").menu-header__link 
+								+iconfont('cart', 'icon')
+								span.menu-header__text Корзина
+						li.menu-header__item.link-underline-center
+							a(href="#").menu-header__link 
+								+iconfont('bar-chart', 'icon')
+								span.menu-header__text Сравнение
+					.menu-header__button.accent-button(data-da="col-2" data-da-position="2" data-da-resolution="690")
+						a(href="tel:+7 961 120 50-00").menu-header__btn-link.button
+							+iconfont('phone-outbound', 'icon')
+							span 8&nbsp;961&nbsp;120&nbsp;50-00
+			.main-menu__column.side-button
+				include ../assets/burger-button
+		.menu-screen._container 
+			.menu-screen__column.col-1
+			.menu-screen__column.col-2

@@ -1,0 +1,48 @@
+.product._container
+	.product__body
+		.product__title
+			h2.t-h2 рекомендуемые товары
+		.product__content(data-quantity-container) 
+			.product-slide.swiper
+				each product in newProducts
+					.product-slide__slide
+						.product-card
+							.product-card__header
+								.product-card__label
+									span= product.label
+								.product-card__icons
+									a(href="#" title="Добавить в сравнение").product-card__compare
+										+iconfont('bar-chart', 'icon')
+									.product-card__favourites
+										+iconfont('heart', 'icon')
+										+iconfont('heart-like', 'icon')
+							.product-card__content
+								a(href=linkTo("electric-tools/card-drill", filename)).product-card__image
+									+picture('/img/products/' + product.image, 'image')
+								.product-card__info
+									p= product.title 
+								.product-card__price.price-product
+									span= product.price 
+								.product-card__sum.product-sum
+									+iconfont('sum', 'icon')
+									| :&nbsp; 
+									span
+								.product-card__article= product.article 
+								.product-card__footer
+									.product-card__counter
+										.quantity.product-card__quantity
+											.quantity__button.quantity-remove
+												+iconfont('minus', 'icon')
+											.quantity__input
+												input.input(type="text" name="form[]" value="0" placeholder="<+>" autocomplete="off")
+											.quantity__button.quantity-add
+												+iconfont('plus', 'icon')
+									.product-card__button
+										span В корзину
+			.navigation
+				.navigation__prev
+					.navigation__icon
+						+iconfont('arrow-left', 'icon')
+				.navigation__next
+					.navigation__icon
+						+iconfont('arrow-right', 'icon')

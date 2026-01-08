@@ -1,0 +1,19 @@
+form(action="#" method="#" id="form").order-call._order-form
+	.order-call__body 
+		.order-call__title
+			.t-h2 Заказать звонок
+		.order-call__content
+			.order-call__form-group
+				input.name(id="name" type="text" name="name" placeholder=" " autocomplete="off" autofocus=true)
+				label(for="name") Имя
+			.order-call__form-group
+				input.phone(id="phone" type="phone" name="phone" autocomplete="off" placeholder=" ")
+				label(for="phone") Телефон 
+		.order-call__footer
+			.order-call__line
+				include @/pug/chunks/check-box
+			.order-call__button.button-container
+				button.button.send-button(type="submit" disabled)
+					span Войти
+		.btn-close
+			+iconfont('plus', 'icon') 

@@ -1,0 +1,70 @@
+.dropdown-menu._container._collapse
+  .dropdown-menu__body
+    .dropdown-menu__content
+      include @/pug/components/catalog-menu 
+      .dropdown-menu__menu
+        .dropdown-menu__buttons
+          each menu in catalogMenu 
+            .dropdown-menu__button
+              span.t-text-16-14=menu.button 
+        .dropdown-menu__tabs.parent
+          each menu in catalogMenu 
+            .dropdown-menu__tab
+              .dropdown-menu__title
+                span=menu.button 
+              .dropdown-menu__tab-content
+                .dropdown-menu__column 
+                  ul.dropdown-menu__menu-list
+                    each item in menu.links
+                      - const title = Object.keys(item)[0]
+                      - const products = item[title] 
+                      li.dropdown-menu__link._slideToggle
+                        span.dropdown-menu__link-button._trigger
+                          span= title
+                          +iconfont('pointer-right', 'icon')
+                        .dropdown-menu__sub-menu.parent._collapse 
+                          ul.dropdown-menu__sub-items
+                            if products.length
+                              each prod in products
+                                li.dropdown-menu__sub-item
+                                  a(href=linkTo('electric-tools/card-drill', filename))= prod
+                            else
+                              // Выводим 5 строк "Нет товаров" для визуального баланса
+                              each _ in Array(5)
+                                li.dropdown-menu__sub-item Нет товаров 
+                .dropdown-menu__column 
+                  ul.dropdown-menu__menu-list
+                    each item in menu.links
+                      - const title = Object.keys(item)[0]
+                      - const products = item[title] 
+                      li.dropdown-menu__link._slideToggle
+                        span.dropdown-menu__link-button._trigger
+                          span= title
+                          +iconfont('pointer-right', 'icon')
+                        .dropdown-menu__sub-menu.parent._collapse 
+                          ul.dropdown-menu__sub-items
+                            if products.length
+                              each prod in products
+                                li.dropdown-menu__sub-item= prod
+                            else
+                              // Выводим 5 строк "Нет товаров" для визуального баланса
+                              each _ in Array(5)
+                                li.dropdown-menu__sub-item Нет товаров 
+                .dropdown-menu__column 
+                  ul.dropdown-menu__menu-list
+                    each item in menu.links
+                      - const title = Object.keys(item)[0]
+                      - const products = item[title] 
+                      li.dropdown-menu__link._slideToggle
+                        span.dropdown-menu__link-button._trigger
+                          span= title
+                          +iconfont('pointer-right', 'icon')
+                        .dropdown-menu__sub-menu.parent._collapse 
+                          ul.dropdown-menu__sub-items
+                            if products.length
+                              each prod in products
+                                li.dropdown-menu__sub-item= prod
+                            else
+                              // Выводим 5 строк "Нет товаров" для визуального баланса
+                              each _ in Array(5)
+                                li.dropdown-menu__sub-item Нет товаров 

@@ -1,0 +1,225 @@
+@import 'variables';
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?ibqy1c');
+  src:
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?ibqy1c#iefix')
+      format('embedded-opentype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?ibqy1c')
+      format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?ibqy1c')
+      format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?ibqy1c##{$icomoon-font-family}')
+      format('svg');
+}
+
+[class^='icon-'],
+[class*=' icon-'] {
+  speak: never;
+
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  font-feature-settings: 'liga' 1;
+  font-feature-settings: 'liga';
+  font-weight: normal;
+  font-style: normal;
+  font-variant: normal;
+  font-variant-ligatures: discretionary-ligatures;
+  font-variant-ligatures: discretionary-ligatures;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+  text-transform: none;
+
+  /* Enable Ligatures ================ */
+  letter-spacing: 0;
+}
+
+.icon-whatsapp {
+  &::before {
+    content: $icon-whatsapp;
+  }
+}
+.icon-phone-call {
+  &::before {
+    content: $icon-phone-call;
+  }
+}
+.icon-telegram {
+  &::before {
+    content: $icon-telegram;
+  }
+}
+.icon-yandex {
+  &::before {
+    content: $icon-yandex;
+  }
+}
+.icon-angle-down {
+  &::before {
+    content: $icon-angle-down;
+  }
+}
+.icon-sum {
+  &::before {
+    content: $icon-sum;
+  }
+}
+.icon-rub {
+  &::before {
+    content: $icon-rub;
+  }
+}
+.icon-vk {
+  &::before {
+    content: $icon-vk;
+  }
+}
+.icon-pointer-right {
+  &::before {
+    content: $icon-pointer-right;
+  }
+}
+.icon-pointer-left {
+  &::before {
+    content: $icon-pointer-left;
+  }
+}
+.icon-pointer {
+  &::before {
+    content: $icon-pointer;
+  }
+}
+.icon-phone-outbound {
+  &::before {
+    content: $icon-phone-outbound;
+  }
+}
+.icon-paragraph-right {
+  &::before {
+    content: $icon-paragraph-right;
+  }
+}
+.icon-local {
+  &::before {
+    content: $icon-local;
+  }
+}
+.icon-house-hall {
+  &::before {
+    content: $icon-house-hall;
+  }
+}
+.icon-persons {
+  &::before {
+    content: $icon-persons;
+  }
+}
+.icon-clock {
+  &::before {
+    content: $icon-clock;
+  }
+}
+.icon-union {
+  &::before {
+    content: $icon-union;
+  }
+}
+.icon-car {
+  &::before {
+    content: $icon-car;
+  }
+}
+.icon-patch-plus {
+  &::before {
+    content: $icon-patch-plus;
+  }
+}
+.icon-heart-like {
+  &::before {
+    content: $icon-heart-like;
+  }
+}
+.icon-house {
+  &::before {
+    content: $icon-house;
+  }
+}
+.icon-tools {
+  &::before {
+    content: $icon-tools;
+  }
+}
+.icon-person {
+  &::before {
+    content: $icon-person;
+  }
+}
+.icon-search {
+  &::before {
+    content: $icon-search;
+  }
+}
+.icon-cart {
+  &::before {
+    content: $icon-cart;
+  }
+}
+.icon-telephone {
+  &::before {
+    content: $icon-telephone;
+  }
+}
+.icon-bar-chart {
+  &::before {
+    content: $icon-bar-chart;
+  }
+}
+.icon-minus {
+  &::before {
+    content: $icon-minus;
+  }
+}
+.icon-plus {
+  &::before {
+    content: $icon-plus;
+  }
+}
+.icon-heart {
+  &::before {
+    content: $icon-heart;
+  }
+}
+.icon-recycle {
+  &::before {
+    content: $icon-recycle;
+  }
+}
+.icon-arrow-down {
+  &::before {
+    content: $icon-arrow-down;
+  }
+}
+.icon-arrow-up {
+  &::before {
+    content: $icon-arrow-up;
+  }
+}
+.icon-arrow-left {
+  &::before {
+    content: $icon-arrow-left;
+  }
+}
+.icon-arrow-right {
+  &::before {
+    content: $icon-arrow-right;
+  }
+}

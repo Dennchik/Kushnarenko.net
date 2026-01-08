@@ -1,0 +1,52 @@
+//* - [Variables] -
+
+$maxWidthContainer: 1440px;
+
+//! - [Font Variables] -
+$font-path: '../fonts';
+$font-family-default: 'Roboto', sans-serif;
+$font-weight-default: 400;
+$font-size: 1.6rem;
+//* - [Font color] -
+$font-color-secondary: rgb(255 255 255);
+//* - [Color]
+$neon-carrot: rgb(255 163 67);
+//* - [Background Color] -
+$background: rgb(17 18 20);
+$background-secondary: rgb(239 239 241);
+$background-ui: rgb(87 96 105 / 100%);
+
+$color: rgb(0 0 0 / 100%);
+$color-green: rgb(16 71 28);
+$color-secondary: #fff;
+$border-color: hsl(251deg 37% 48%);
+
+//* - [Shadow] -
+$boxShadow: 0 0 17px 1px rgb(0 0 0 / 15%);
+$filter: drop-shadow(1px 0px 3px rgb(32 25 71)) invert(5%);
+//* -
+$text-selection: rgb(16 71 28 / 42.5%);
+$text-color-selection: rgb(16 71 28);
+//* -
+
+:root {
+  --alarm-color: rgb(255 74 74 / 60%);
+  --width: calc(0px + (260 - 0) * ((100vw - 320px) / (1024 - 320)));
+  //* - [Background] -
+  --background-transparent: rgb(14 14 19 / 85.5%);
+  //* - [Scrollbar] -
+  --thumb-color: rgb(16 71 28 / 37.7%);
+  --background-hover: rgb(94 77 168 / 24%);
+  --scrollbar-thumb-color: rgb(133 133 133 / 32.2%);
+  //* ----------- --------------------------------------------------------------
+  --pos: center center;
+  --size: 0;
+  --inset-top: 0;
+  --inset-right: 100%;
+  --inset-bottom: 100%;
+  --inset-left: 0;
+  //* --------------------------------------------------------------------------
+}
+
+$snap: cubic-bezier(1, 0.005, 0.24, 1);
+$bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);

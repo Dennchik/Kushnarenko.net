@@ -1,0 +1,9 @@
+.check-box
+	label.check-box__label
+		input(type="checkbox" name="policy" id="agreement").check-box__input
+		span.check-box__icon
+			+iconfont('angle-down', '_icon') 
+	.check-box__text Пользуясь сайтом или&nbsp;отправляя любые формы запросов, Вы соглашаетесь с&nbsp;условиями «
+		a(target="_blank" rel="noopener noreferrer").policy
+			strong Политики&nbsp;конфиденциальности
+		| »

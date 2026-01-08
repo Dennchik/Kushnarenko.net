@@ -1,0 +1,42 @@
+@use '../../core/mixins' as *;
+
+.categories {
+  // .categories__body
+  &__body {
+    padding-block: 0 5rem !important;
+  }
+  // .categories__title
+  &__title {
+    margin-bottom: 4rem;
+    text-align-last: left;
+  }
+}
+
+.categories-card {
+  flex: 0 1 20%;
+  border-radius: 10px;
+  background: rgb(255 255 255 / 100%);
+
+  @include screen-490 {
+    border-radius: 5px;
+  }
+  // .categories-card__body
+  &__body {
+    pointer-events: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    padding: 2.2rem;
+  }
+
+  // .categories-card__image
+  &__image {
+  }
+
+  // .categories-card__info
+  &__info {
+    flex: 1 1 auto;
+  }
+}

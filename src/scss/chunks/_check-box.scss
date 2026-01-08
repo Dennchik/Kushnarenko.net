@@ -1,0 +1,97 @@
+//* - [ Checkbox ] -
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
+.check-box {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
+  justify-content: center;
+
+  &._error {
+    .checkbox__label::before {
+      box-shadow: 0 0 14px 3px #f16666;
+    }
+  }
+
+  // .checkbox__input
+  &__input {
+    display: none;
+
+    &:checked + .check-box__icon .icon-angle-down {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+
+  // .checkbox__label
+  &__label {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    border: 1px solid $color-green;
+    border-radius: 4px;
+
+    line-height: 120%;
+
+    background: #0000;
+
+    &::before {
+      cursor: pointer;
+      content: '';
+
+      position: relative;
+      z-index: 9;
+
+      flex: 0 0 18px;
+      align-self: center;
+
+      width: 18px;
+      height: 18px;
+    }
+
+    ._icon {
+      position: relative;
+      top: 0;
+      left: 0;
+
+      width: 19px;
+      height: 18px;
+
+      &::before {
+        font-size: 30px;
+        filter: contrast(150%);
+      }
+    }
+  }
+
+  // .checkbox__icon
+  &__icon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    .icon-angle-down {
+      scale: 0;
+      transition: scale 0.3s ease-in-out;
+    }
+  }
+
+  // .check-box__text
+  &__text {
+    // font-size: 12px;
+
+    // @include screen-425 {
+    //   font-size: 10px;
+    // }
+
+    a {
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

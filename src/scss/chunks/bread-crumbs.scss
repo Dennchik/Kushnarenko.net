@@ -1,0 +1,42 @@
+@use '../core/mixins' as *;
+@use '../core/variables' as *;
+
+.bread-crumbs {
+  // .bread-crumbs__body
+  &__body {
+    padding: 1.6rem 1rem 1.6rem 0;
+  }
+
+  // .bread-crumbs__list
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 5px;
+    align-items: center;
+
+    li:not(:last-child) {
+      margin-right: 0.5rem;
+      white-space: nowrap;
+    }
+
+    @include screen-490 {
+      font-size: 12px;
+    }
+  }
+
+  // .bread-crumbs__link
+  &__link {
+    color: rgb(88 88 86 / 100%);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $color-green;
+    }
+  }
+
+  // .bread-crumbs__current-item
+  &__current-item {
+    pointer-events: none;
+    user-select: none;
+  }
+}

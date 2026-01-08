@@ -1,0 +1,8 @@
+.not-found
+	.not-found__image._ibg
+		+picture('/img/not-found.png', 'image')
+	.not-found__body 
+		.not-found__text-img._container 404
+		.not-found__text Страница не найдена
+		a(href=getWebRoot(filename) + "index.html" aria-label="home").not-found__button.button
+			span Главная

@@ -1,0 +1,28 @@
+extends @/pug/layouts/app_layout.pug
+
+append link 
+prepend script 
+	script(defer type="module" src="/src/js/news.js")
+block title
+	- var text = 'CurrentNews company page'
+
+block main-content 
+	section.main-content__section
+		nav.bread-crumbs._container
+			.bread-crumbs__body
+				ul.bread-crumbs__list
+					li.link-underline-center
+						a.bread-crumbs__link(href=getWebRoot(filename) + "index.html" title="/ Главная") Главная 
+					li / 
+					li.link-underline-center
+						a.bread-crumbs__link(href=linkTo("news", filename) title="/ Новости") Новости 
+					li / 
+					li
+						span.bread-crumbs__current-item Как выбрать перфоратор: 5 ключевых критериев для правильного выбора
+	section.main-content__section 
+		include @/pug/sections/news-company/section-perform
+	section.main-content__section 
+		include @/pug/sections/news-company/section-new-products
+block section-news 
+	section.main-content__section-news 
+		include @/pug/sections/news-company/section-news

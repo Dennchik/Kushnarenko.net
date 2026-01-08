@@ -1,0 +1,135 @@
+@use '../../core/variables' as *;
+@use '../../core/mixins' as *;
+
+.main-news {
+  // .main-news__body
+  &__body {
+    padding-block: 2rem 5rem;
+  }
+
+  // .main-news__title
+  &__title {
+    margin-bottom: 4rem;
+    text-align-last: left;
+
+    @include screen-490 {
+      margin-bottom: 20px;
+    }
+  }
+
+  // .main-news__content
+  &__content {
+    display: flex;
+    gap: 3.1rem;
+
+    @include screen-960 {
+      gap: 20px;
+    }
+
+    @include screen-490 {
+      gap: 10px;
+    }
+  }
+
+  // .main-news__column
+  &__column {
+    &:nth-child(1) {
+      @include screen-490 {
+        display: none;
+      }
+
+      @include minmax-490-1920 {
+        min-width: calc(170px + (366 - 170) * ((100vw - 490px) / (1920 - 490)));
+      }
+    }
+
+    &:nth-child(2) {
+      overflow: hidden;
+      flex: 0 1 auto;
+    }
+  }
+
+  // .main-news__info
+  &__info {
+    position: sticky;
+    top: 110px;
+    flex: 0 1;
+
+    @include screen-1289 {
+      top: 148px;
+    }
+  }
+
+  // .main-news__head
+  &__head {
+    margin-bottom: 25px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 118.75%; /* 19px/16 */
+  }
+
+  // .main-news__text
+  &__text {
+    font-size: 16px;
+    p {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+    }
+
+    @include screen-490 {
+      font-size: 14px;
+    }
+  }
+
+  // .main-news__slide
+  &__slide {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  // .main-news__pagination
+  &__pagination {
+  }
+}
+
+.slider-news {
+  &__body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+
+    @include screen-960 {
+      gap: 20px;
+    }
+
+    @include screen-768 {
+      grid-template-columns: 1fr;
+    }
+
+    @include screen-490 {
+      gap: 10px;
+    }
+  }
+}
+
+.slide-news {
+  // .slide-news__slide
+  &__slide {
+  }
+  // .slide-news__image
+  &__image {
+  }
+  // .slide-news__info
+  &__info {
+  }
+  // .slide-news__text
+  &__text {
+  }
+  // .slide-news__date
+  &__date {
+  }
+}
+
+.slide-pagination {
+}

@@ -1,0 +1,45 @@
+@use '../core/mixins' as *;
+
+.partners {
+  // .partners__body
+
+  &__body {
+    padding-block: 5rem;
+  }
+
+  // .partners__title
+  &__title {
+    margin-bottom: 4rem;
+  }
+
+  // .partners__content
+
+  &__content {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    flex-wrap: wrap;
+    gap: 35px;
+
+    @include screen-960 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include screen-490 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  // .partners__column
+
+  &__column {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  // .partners__image
+  &__image {
+    pointer-events: none;
+    width: fit-content;
+  }
+}

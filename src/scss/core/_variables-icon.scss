@@ -1,0 +1,41 @@
+/* stylelint-disable annotation-no-unknown */
+@use 'sass:string'; // Импортируем модуль string
+$icomoon-font-family: 'icon-set' !default;
+$icomoon-font-path: '/fonts' !default;
+
+$icon-whatsapp: string.unquote('"\\f232"');
+$icon-phone-call: string.unquote('"\\e919"');
+$icon-telegram: string.unquote('"\\f2c6"');
+$icon-angle-down: string.unquote('"\\f107"');
+$icon-yandex: string.unquote('"\\e918"');
+$icon-sum: string.unquote('"\\e914"');
+$icon-rub: string.unquote('"\\f159"');
+$icon-vk: string.unquote('"\\ea98"');
+$icon-pointer-right: string.unquote('"\\e915"');
+$icon-pointer-left: string.unquote('"\\e916"');
+$icon-pointer: string.unquote('"\\e917"');
+$icon-phone-outbound: string.unquote('"\\e910"');
+$icon-paragraph-right: string.unquote('"\\e90f"');
+$icon-local: string.unquote('"\\e90e"');
+$icon-house-hall: string.unquote('"\\e900"');
+$icon-persons: string.unquote('"\\e901"');
+$icon-clock: string.unquote('"\\e902"');
+$icon-union: string.unquote('"\\e904"');
+$icon-car: string.unquote('"\\e905"');
+$icon-patch-plus: string.unquote('"\\e906"');
+$icon-heart-like: string.unquote('"\\e9da"');
+$icon-house: string.unquote('"\\e907"');
+$icon-tools: string.unquote('"\\e908"');
+$icon-person: string.unquote('"\\e909"');
+$icon-search: string.unquote('"\\e90a"');
+$icon-cart: string.unquote('"\\e90b"');
+$icon-telephone: string.unquote('"\\e90c"');
+$icon-bar-chart: string.unquote('"\\e90d"');
+$icon-minus: string.unquote('"\\e912"');
+$icon-plus: string.unquote('"\\e913"');
+$icon-heart: string.unquote('"\\e903"');
+$icon-recycle: string.unquote('"\\e911"');
+$icon-arrow-down: string.unquote('"\\e92c"');
+$icon-arrow-up: string.unquote('"\\e95c"');
+$icon-arrow-left: string.unquote('"\\e92d"');
+$icon-arrow-right: string.unquote('"\\e950"');

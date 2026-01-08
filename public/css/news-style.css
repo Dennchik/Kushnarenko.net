@@ -1,0 +1,121 @@
+:root {
+  --alarm-color: rgb(255 74 74 / 60%);
+  --width: calc(0px + (260 - 0) * ((100vw - 320px) / (1024 - 320)));
+  --background-transparent: rgb(14 14 19 / 85.5%);
+  --thumb-color: rgb(16 71 28 / 37.7%);
+  --background-hover: rgb(94 77 168 / 24%);
+  --scrollbar-thumb-color: rgb(133 133 133 / 32.2%);
+  --pos: center center;
+  --size: 0;
+  --inset-top: 0;
+  --inset-right: 100%;
+  --inset-bottom: 100%;
+  --inset-left: 0;
+}
+
+/* stylelint-disable at-rule-descriptor-value-no-unknown */
+/* stylelint-disable annotation-no-unknown */
+:root {
+  --mq-header-size: normal;
+}
+
+.news__body {
+  padding-block: 5rem;
+}
+@media screen and (width <= 690px) {
+  .news__body {
+    padding-block: 2rem 5rem;
+  }
+}
+@media screen and (width < 768px) {
+  .news__content :root {
+    --mq-header-size: big;
+  }
+  .news__content {
+    gap: 16px;
+  }
+}
+@media screen and (width <= 490px) {
+  .news__content {
+    gap: 10px;
+  }
+}
+.news__row:not(:last-child) {
+  margin-bottom: 4rem;
+}
+.news__post p:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.news__line:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.news__title h1,
+.news__title h2 {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.news__data {
+  margin-bottom: 3.6rem;
+  font-size: 12px;
+}
+.news__text {
+  margin-bottom: 2.6rem;
+  font-size: 12px;
+}
+.news__info p {
+  font-size: 12px;
+}
+.news__num {
+  padding-bottom: 5px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.news__list {
+  padding-left: 10px;
+}
+.news__list-item {
+  list-style: disc;
+  list-style-position: inside;
+}
+.news__list-item::before {
+  content: "";
+  margin-right: -7px;
+}
+.news__image {
+  float: right;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  max-width: 541px;
+}
+@media (width > 490px) {
+  .news__image {
+    padding: 0 0 10px 10px;
+  }
+}
+@media screen and (width <= 960px) {
+  .news__image :root {
+    --mq-header-size: big;
+  }
+  .news__image {
+    gap: 16px;
+  }
+}
+@media (width > 490px) and (width <= 960px) {
+  .news__image {
+    max-width: calc(240px + 255 * (100vw - 490px) / 470);
+  }
+}
+@media screen and (width <= 490px) {
+  .news__image {
+    margin-bottom: 3rem;
+  }
+}
+.news__image img {
+  border-radius: 10px;
+}
+@media screen and (width <= 490px) {
+  .news__image img {
+    border-radius: 5px;
+  }
+}

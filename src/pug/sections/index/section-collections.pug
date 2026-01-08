@@ -1,0 +1,12 @@
+.categories._container
+	.categories__body
+		.categories__content
+			each category in collections
+				a(href=linkTo("catalog-products", filename)).card.categories__card
+					.card__body
+						.card__header
+							.card__title= category.title
+							.card__button
+								+iconfont('arrow-up', 'icon')
+						.card__content
+							+picture('/img/categories/' + category.image, 'image')

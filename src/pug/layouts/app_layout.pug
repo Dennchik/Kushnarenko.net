@@ -1,0 +1,55 @@
+
+include @/pug/includes/mixins
+
+doctype html
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge") 
+		meta(name="viewport" content="width=device-width, initial-scale=1.0")
+		meta(name="description" content="Краткое описание документа")
+		meta(name="keywords" content="keywords-ключевые слова для поиска")
+		block link 
+			link(rel="icon" type="image/icon" href="/img/icons/icon.svg") 
+		block script 
+
+		block title
+		- var text
+			title #{text}
+block page
+	body
+		//- include @/pug/utils/loaded-timer
+		include @/pug/includes/mixins
+		script(defer type="module" src="/src/js/main.js")
+		.wrapper
+			.page
+				block header 
+					header.page__header
+						include @/pug/layouts/header
+						nav.page__dropdown-menu
+							block dropdown-menu 
+								include @/pug/components/dropdown-menu 
+				block page-content
+					main.page__main-content
+						.main-content#wrapper
+							.main-content__content#content
+								block main-content 
+						.main-content__section
+							block section-news 
+						footer.page__footer
+							block footer 
+								include footer
+				//- nav.page__aside-menu
+					block burger-menu
+						include @/pug/components/sidebar-menu 
+				//- block menu-float
+					.menu-float
+						.menu-float__body._container
+				//- block cookies
+					include @/pug/components/cookies-accept
+			//- .page__form-login
+				include @/pug/components/modal-login 
+			//- .page__order-call
+				include @/pug/components/order-call 
+			//- .page__widget
+				include @/pug/components/widget 

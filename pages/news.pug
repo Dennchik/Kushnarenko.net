@@ -1,0 +1,28 @@
+extends @/pug/layouts/app_layout.pug
+
+append link 
+prepend script 
+	script(defer type="module" src="/src/js/news.js")
+block title
+	- var text = 'News company page'
+
+block page-content
+	main.page__main-content.accent-color
+		.main-content#wrapper
+			.main-content__content#content
+				block main-content 
+					section.main-content__section
+						nav.bread-crumbs._container
+							.bread-crumbs__body
+								ul.bread-crumbs__list
+									li.link-underline-center
+										a.bread-crumbs__link(href=getWebRoot(filename) + "index.html" title="/ Главная") Главная 
+									li / 
+									li
+										span.bread-crumbs__current-item Новости
+					section.main-content__section 
+						include @/pug/sections/news-company/main-news 
+	footer.page__footer
+		block footer 
+			include @/pug/layouts/footer
+

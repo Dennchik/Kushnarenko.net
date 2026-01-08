@@ -1,0 +1,17 @@
+.widget._container 
+	.widget__body._slideToggle 
+		.widget__content._collapse
+			.widget__items
+				.widget__icon 
+					+iconfont('plus', 'icon')
+				button.widget__item.phone-call 
+					+iconfont('phone-call', 'icon')
+					span.link-underline-center Заказать звонок
+				a(href="#").widget__item.telegram 
+					+iconfont('telegram', 'icon')
+					span.link-underline-center Написать в Telegram
+				a(href="#").widget__item.whatsapp 
+					+iconfont('whatsapp', 'icon')
+					span.link-underline-center Написать в WhatsApp
+		button.widget__button._trigger
+			+imgSvg('img/widget.svg', 'image')

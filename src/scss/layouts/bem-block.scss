@@ -1,0 +1,321 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
+.swiper-wrapper > .swiper-slide:not(.swiper-slide-active) {
+  .main-slide__title {
+    opacity: 0 !important;
+    transition: opacity 0.9s ease-in-out;
+  }
+
+  .main-slide__text {
+    opacity: 0 !important;
+    transition: opacity 0.9s ease-in-out;
+  }
+}
+
+._collapse:not(._show) {
+  display: none;
+}
+
+.button {
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+  padding: 11px 2.4rem;
+
+  font-size: 16px;
+  line-height: 1;
+  span,
+  a {
+    font-weight: 500;
+    line-height: 100%;
+  }
+
+  @include screen-490 {
+    padding: 9.5px 2.4rem;
+    font-size: 14px;
+  }
+}
+
+.menu-float {
+  position: fixed;
+  z-index: 17;
+  bottom: 0;
+
+  width: 100%;
+  border-top: 0.5px solid rgb(87 96 105 / 50.7%);
+
+  background-color: #fff;
+  box-shadow: 0 -2px 5px #0000002d;
+
+  @include min-768 {
+    display: none;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+    padding-block: 1rem !important;
+  }
+}
+
+.return-button {
+  cursor: pointer;
+
+  position: fixed;
+  z-index: 13;
+  top: 50%;
+  right: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 35px;
+  height: 65px;
+  margin-top: -17px;
+  border-radius: 4px;
+
+  background: #f2ebe4;
+
+  i {
+    &::before {
+      font-weight: 400;
+      text-shadow: none;
+    }
+  }
+
+  ._button {
+    cursor: pointer;
+
+    position: relative;
+    z-index: 13;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+
+    width: 35px;
+    height: 35px;
+
+    font-size: 3.8rem;
+
+    background: transparent;
+
+    transition: all 0.5s ease-in-out;
+    img {
+      width: 20px;
+      height: 100%;
+      // height: 35px;
+    }
+
+    &:hover {
+      animation: fadeInBackground;
+    }
+  }
+
+  &._rotate {
+    ._button {
+      scale: -1;
+    }
+  }
+}
+
+.checkbox {
+  // .checkbox__input
+  &__input {
+    display: none;
+
+    &:checked + .checkbox__checked ._icon {
+      scale: 1;
+    }
+  }
+
+  &__checked {
+    cursor: pointer;
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    width: 16px;
+    height: 16px;
+
+    line-height: 130%;
+  }
+
+  // .checkbox__label
+  &__label {
+    cursor: pointer;
+
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+
+    max-width: 66.1rem;
+
+    font-size: 1.6rem;
+    line-height: 110%;
+
+    &::before {
+      content: '';
+
+      position: absolute;
+
+      flex: 0 0 16px;
+
+      width: 16px;
+      height: 16px;
+
+      background: $background;
+
+      transition: box-shadow 0.3s ease-in-out;
+    }
+
+    .icon {
+      position: absolute;
+      transform: translateX(-1px);
+      scale: 0;
+
+      display: block;
+
+      width: 16px;
+      height: 16px;
+
+      transition: scale 0.2s ease;
+
+      &::before {
+        font-size: 18px;
+      }
+    }
+
+    a {
+      font-weight: 600;
+      text-decoration: underline;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    @include screen-490 {
+      font-size: 12px;
+    }
+  }
+}
+
+//* ------------------------- [Class _ibg] -------------------------------------
+
+.t-h1 {
+  font-size: 36px;
+  line-height: 117.4%; /* 54/46 */
+  text-transform: uppercase;
+  filter: contrast(120%);
+
+  @include minmax-490-1440 {
+    font-size: calc(
+      17px + (36 - 17) * ((100vw - 490px) / (1440 - 490))
+    ) !important;
+  }
+
+  @include screen-490 {
+    font-size: 17px !important;
+  }
+}
+.t-h2 {
+  font-size: 40px;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+
+  @include minmax-490-1440 {
+    font-size: calc(
+      17px + (40 - 17) * ((100vw - 490px) / (1440 - 490))
+    ) !important;
+  }
+
+  @include screen-490 {
+    font-size: 17px !important;
+  }
+}
+
+.t-h3 {
+  font-size: 35px;
+  line-height: 100%;
+  text-transform: uppercase;
+
+  @include minmax-490-1920 {
+    font-size: calc(
+      17px + (35 - 17) * ((100vw - 490px) / (1920 - 490))
+    ) !important;
+  }
+
+  @include screen-490 {
+    font-size: 17px !important;
+  }
+}
+
+.t-h4 {
+  font-size: 25px;
+  line-height: 100%;
+
+  @include minmax-490-1920 {
+    font-size: calc(
+      15px + (25 - 15) * ((100vw - 490px) / (1920 - 490))
+    ) !important;
+  }
+
+  @include screen-490 {
+    font-size: 15px !important;
+  }
+}
+
+.t-h5 {
+  font-size: 16px;
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.t-text-18-14 {
+  font-size: 18px;
+  line-height: 100%;
+
+  @include minmax-490-1440 {
+    font-size: calc(14px + (18 - 14) * ((100vw - 490px) / (1440 - 490)));
+  }
+
+  @include screen-490 {
+    font-size: 14px;
+  }
+}
+.t-text-16-14 {
+  font-size: 16px;
+  line-height: 100%;
+
+  @include minmax-490-1440 {
+    font-size: calc(14px + (16 - 14) * ((100vw - 490px) / (1440 - 490)));
+  }
+
+  @include screen-490 {
+    font-size: 14px;
+  }
+}
+.t-text-14-12 {
+  font-size: 14px;
+  letter-spacing: 0;
+
+  @include minmax-490-1440 {
+    font-size: calc(12px + (14 - 12) * ((100vw - 490px) / (1440 - 490)));
+  }
+
+  @include screen-490 {
+    font-size: 12px;
+  }
+}
+
+//* ----------------------------------------------------------------------------

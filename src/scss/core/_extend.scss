@@ -1,0 +1,288 @@
+/* stylelint-disable plugin/selector-bem-pattern */
+@use 'variables' as *;
+@use 'mixins.scss' as *;
+
+//* ----------------------------------------------------------------------------
+.anime-border {
+  --t: transparent;
+  --c: rgb(75 128 16); //* 👈 цвет границы
+  --b: 2px; //* 👈 толщина границы
+  --g: 3px; //* 👈 промежуток при наведении курсора мыши или события
+  --var: var(--t) 25%, var(--c) 0;
+
+  position: relative;
+  z-index: 1;
+
+  padding: calc(var(--g) + var(--b));
+  border: 2px solid var(--t);
+
+  background:
+    conic-gradient(from 180deg at top var(--b) right var(--b), var(--var))
+      var(--i, 200%) 0 /200% var(--i, var(--b)) no-repeat,
+    conic-gradient(at bottom var(--b) left var(--b), var(--var)) 0
+      var(--i, 200%) / var(--i, var(--b)) 200% no-repeat;
+
+  transition:
+    0.3s,
+    background-position 0.3s 0.3s;
+}
+
+.box-shadow {
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 5px #000;
+}
+
+.gradient-loader {
+  background-image:
+    radial-gradient(
+      at 20% 31%,
+      hsl(240deg 0.97% 40% / 100%) 0%,
+      hsl(240deg 0.97% 40% / 0%) 100%
+    ),
+    radial-gradient(
+      at 70% 63%,
+      hsl(127deg 58% 19% / 100%) 0%,
+      hsl(127deg 58% 19% / 0%) 100%
+    ),
+    radial-gradient(
+      at 90.375% 78.106%,
+      hsl(85deg 86% 28% / 100%) 0%,
+      hsl(85deg 86% 28% / 0%) 100%
+    ),
+    radial-gradient(
+      at 92% 43%,
+      hsl(220deg 3% 15% / 100%) 0%,
+      hsl(220deg 3% 15% / 0%) 100%
+    ),
+    radial-gradient(
+      at 77% 25%,
+      hsl(240deg 0.97% 40% / 100%) 0%,
+      hsl(240deg 0.97% 40% / 0%) 100%
+    ),
+    radial-gradient(
+      at 4.25% 55%,
+      hsl(127deg 58% 19% / 100%) 0%,
+      hsl(127deg 58% 19% / 0%) 100%
+    ),
+    radial-gradient(
+      at 97% 62%,
+      hsl(85deg 86% 28% / 100%) 0%,
+      hsl(85deg 86% 28% / 0%) 100%
+    ),
+    radial-gradient(
+      at 37% 16%,
+      hsl(220deg 3% 15% / 100%) 0%,
+      hsl(220deg 3% 15% / 0%) 100%
+    ),
+    radial-gradient(
+      at 83% 39%,
+      hsl(240deg 0.9% 40% / 100%) 0%,
+      hsl(240deg 0.9% 40% / 0%) 100%
+    ),
+    radial-gradient(
+      at 35% 91%,
+      hsl(127deg 58% 19% / 100%) 0%,
+      hsl(127deg 58% 19% / 0%) 100%
+    ),
+    radial-gradient(
+      at 87% 74%,
+      hsl(85deg 86% 28% / 100%) 0%,
+      hsl(85deg 86% 28% / 0%) 100%
+    ),
+    linear-gradient(45deg, #346918 50%, #0d471b);
+}
+
+.link-split {
+  position: relative;
+
+  display: inline-block;
+
+  line-height: 1;
+  white-space: nowrap;
+
+  outline: 0;
+
+  transition: color 0s 0.3s;
+  &::before {
+    clip-path: polygon(0 0, 100% 0%, 100% 30%, 0 65%);
+  }
+
+  &::after {
+    clip-path: polygon(0 65%, 100% 30%, 100% 100%, 0 100%);
+  }
+
+  &::before,
+  &::after {
+    content: attr(data-letters);
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    opacity: 1;
+
+    transition:
+      color 0.3s,
+      opacity 0.3s,
+      transform 0.5s;
+  }
+  &:hover {
+    color: transparent;
+    text-shadow: none;
+    transition: none;
+
+    &::before {
+      transform: translate3d(0, -2px, 0);
+    }
+
+    &::after {
+      transform: translate3d(0, 2px, 0);
+    }
+
+    &::before,
+    &::after {
+      transition:
+        color 0.3s,
+        transform 0.3s;
+    }
+  }
+}
+
+.link-underline-center {
+  position: relative;
+  transition: color 0.3s ease-in-out;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    transform: scaleX(0);
+
+    width: 100%;
+    height: 1px;
+
+    opacity: 0.6;
+    background-color: $color-green;
+
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &::after {
+    bottom: 0;
+    left: 0;
+  }
+
+  &:hover {
+    &::before {
+      transform: scaleX(1);
+    }
+
+    a {
+      opacity: 1;
+    }
+  }
+}
+
+.link-underline {
+  position: relative;
+  transition: color 0.3s ease-in-out;
+
+  &::before,
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    transform: scaleX(0);
+
+    width: 0;
+    height: 1px;
+
+    opacity: 0.6;
+    background-color: $font-color-secondary;
+
+    transition: transform 0.3s ease-in-out;
+  }
+
+  &::after {
+    bottom: 0;
+    left: 0;
+  }
+
+  &::before {
+    right: 0;
+    bottom: 0;
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      transform: scaleX(1);
+      width: 47%;
+    }
+
+    a {
+      opacity: 1;
+    }
+  }
+}
+.link-underline-lr {
+  position: relative;
+  transition: color 0.3s ease-in-out;
+
+  &::before {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 0;
+    height: 1px;
+    // opacity: 0.6;
+    background: linear-gradient(to right, #ffffffb0, #5e4da8);
+
+    transition: width 0.3s ease-in-out;
+  }
+  span {
+    pointer-events: none;
+  }
+
+  &:hover {
+    &::before {
+      width: 100%;
+    }
+    span {
+      opacity: 1;
+    }
+  }
+}
+
+//* ------------------------------- Gradient -----------------------------------
+.grad-underline {
+  /* Размер фона для каждого слоя */
+  background-image:
+    linear-gradient(to left, transparent, transparent),
+    linear-gradient(
+      to left,
+      var(--background-selected),
+      var(--font-color-active)
+    );
+
+  /* Позиционирование фона */
+  background-repeat: no-repeat;
+
+  /* Повторение фона */
+  background-position:
+    100% 100%,
+    /* Первое изображение */ 0 100%; /* Второе изображение */
+
+  /* Переход для изменения размера фона */
+  background-size:
+    100% 1px,
+    /* Первое изображение */ 0 1px; /* Второе изображение */
+
+  /* Определяем фоновые изображения */
+  transition: background-size 400ms;
+}
