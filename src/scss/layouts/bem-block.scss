@@ -230,8 +230,6 @@
 .t-h2 {
   font-size: 40px;
   line-height: 100%;
-  text-align: center;
-  text-transform: uppercase;
 
   @include minmax-490-1440 {
     font-size: calc(
@@ -283,7 +281,7 @@
 
 .t-text-18-14 {
   font-size: 18px;
-  line-height: 100%;
+  line-height: 120%;
 
   @include minmax-490-1440 {
     font-size: calc(14px + (18 - 14) * ((100vw - 490px) / (1440 - 490)));
@@ -295,7 +293,7 @@
 }
 .t-text-16-14 {
   font-size: 16px;
-  line-height: 100%;
+  line-height: 110%;
 
   @include minmax-490-1440 {
     font-size: calc(14px + (16 - 14) * ((100vw - 490px) / (1440 - 490)));

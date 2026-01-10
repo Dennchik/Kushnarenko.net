@@ -30,183 +30,18 @@
   letter-spacing: 0;
 }
 
-.icon-whatsapp {
+.icon-check {
   &::before {
-    content: $icon-whatsapp;
+    content: $icon-check;
   }
 }
-.icon-phone-call {
+.icon-check-box {
   &::before {
-    content: $icon-phone-call;
+    content: $icon-check-box;
   }
 }
-.icon-telegram {
+.icon-pencil-alt {
   &::before {
-    content: $icon-telegram;
-  }
-}
-.icon-angle-down {
-  &::before {
-    content: $icon-angle-down;
-  }
-}
-.icon-yandex {
-  &::before {
-    content: $icon-yandex;
-  }
-}
-.icon-sum {
-  &::before {
-    content: $icon-sum;
-  }
-}
-.icon-rub {
-  &::before {
-    content: $icon-rub;
-  }
-}
-.icon-vk {
-  &::before {
-    content: $icon-vk;
-  }
-}
-.icon-pointer-right {
-  &::before {
-    content: $icon-pointer-right;
-  }
-}
-.icon-pointer-left {
-  &::before {
-    content: $icon-pointer-left;
-  }
-}
-.icon-pointer {
-  &::before {
-    content: $icon-pointer;
-  }
-}
-.icon-phone-outbound {
-  &::before {
-    content: $icon-phone-outbound;
-  }
-}
-.icon-paragraph-right {
-  &::before {
-    content: $icon-paragraph-right;
-  }
-}
-.icon-local {
-  &::before {
-    content: $icon-local;
-  }
-}
-.icon-house-hall {
-  &::before {
-    content: $icon-house-hall;
-  }
-}
-.icon-persons {
-  &::before {
-    content: $icon-persons;
-  }
-}
-.icon-clock {
-  &::before {
-    content: $icon-clock;
-  }
-}
-.icon-union {
-  &::before {
-    content: $icon-union;
-  }
-}
-.icon-car {
-  &::before {
-    content: $icon-car;
-  }
-}
-.icon-patch-plus {
-  &::before {
-    content: $icon-patch-plus;
-  }
-}
-.icon-heart-like {
-  &::before {
-    content: $icon-heart-like;
-  }
-}
-.icon-house {
-  &::before {
-    content: $icon-house;
-  }
-}
-.icon-tools {
-  &::before {
-    content: $icon-tools;
-  }
-}
-.icon-person {
-  &::before {
-    content: $icon-person;
-  }
-}
-.icon-search {
-  &::before {
-    content: $icon-search;
-  }
-}
-.icon-cart {
-  &::before {
-    content: $icon-cart;
-  }
-}
-.icon-telephone {
-  &::before {
-    content: $icon-telephone;
-  }
-}
-.icon-bar-chart {
-  &::before {
-    content: $icon-bar-chart;
-  }
-}
-.icon-minus {
-  &::before {
-    content: $icon-minus;
-  }
-}
-.icon-plus {
-  &::before {
-    content: $icon-plus;
-  }
-}
-.icon-heart {
-  &::before {
-    content: $icon-heart;
-  }
-}
-.icon-recycle {
-  &::before {
-    content: $icon-recycle;
-  }
-}
-.icon-arrow-down {
-  &::before {
-    content: $icon-arrow-down;
-  }
-}
-.icon-arrow-up {
-  &::before {
-    content: $icon-arrow-up;
-  }
-}
-.icon-arrow-left {
-  &::before {
-    content: $icon-arrow-left;
-  }
-}
-.icon-arrow-right {
-  &::before {
-    content: $icon-arrow-right;
+    content: $icon-pencil-alt;
   }
 }

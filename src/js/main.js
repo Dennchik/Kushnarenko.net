@@ -9,6 +9,7 @@ import '../scss/main.scss';
 // import { validateForm } from './assets/validate-form.js';
 import {
   logicLooping,
+  videoInView,
   //   addFavorites,
   //   sidebarMenuHandle,
   //   hideTopMenu,
@@ -24,6 +25,7 @@ import {
 
 document.addEventListener('DOMContentLoaded', () => {
   logicLooping();
+  videoInView();
   //   slide('.product-slide');
   //   slidNews('.slide-news');
   //   maskPhone('.phone');

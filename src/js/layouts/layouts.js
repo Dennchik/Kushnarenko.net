@@ -4,7 +4,7 @@ export function logicLooping() {
   if (!container) return;
 
   const items = container.querySelectorAll('span');
-  const showTime = 3000;
+  const showTime = 4000;
   let index = 0;
 
   function showNext() {
@@ -16,7 +16,70 @@ export function logicLooping() {
   showNext();
   setInterval(showNext, showTime);
 }
+//* ✅ - [ isVideoInView ]
+export function videoInView(videoSelector = '#player-id') {
+  const video = document.querySelector(videoSelector);
+  if (!video) return;
 
+  // Проверка видимости видео
+  const isVideoInView = () => {
+    const videoTop = video.getBoundingClientRect().top;
+    return videoTop > -300;
+  };
+
+  // Авто-воспроизведение при инициализации
+  const playVideo = async () => {
+    if (isVideoInView() && video.paused) {
+      try {
+        await video.play();
+        console.log('Видео воспроизводится');
+      } catch (err) {
+        if (err.name !== 'AbortError') {
+          console.warn('Не удалось воспроизвести видео:', err);
+        }
+      }
+    }
+  };
+
+  // Управление по клику
+  const handleVideoClick = () => {
+    if (video.paused) {
+      video.play().catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.warn('Не удалось воспроизвести видео:', err);
+        }
+      });
+    } else {
+      video.pause();
+    }
+  };
+
+  // Управление при скролле
+  const handleScroll = () => {
+    const videoTop = video.getBoundingClientRect().top;
+
+    if (videoTop < -100 && !video.paused) {
+      video.pause();
+    } else if (videoTop > -100 && video.paused) {
+      video.play().catch((err) => {
+        if (err.name !== 'AbortError') {
+          console.warn('Не удалось воспроизвести видео:', err);
+        }
+      });
+    }
+  };
+
+  // Инициализация
+  playVideo();
+  video.addEventListener('click', handleVideoClick);
+  window.addEventListener('scroll', handleScroll);
+
+  // Возврат функции очистки (опционально)
+  return () => {
+    video.removeEventListener('click', handleVideoClick);
+    window.removeEventListener('scroll', handleScroll);
+  };
+}
 //* ✅ - [ Hiding an element when scrolling ]
 export function shadowScrollHeader() {
   const handleScroll = () => {

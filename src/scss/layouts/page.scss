@@ -211,6 +211,9 @@
     z-index: 1;
     width: 100%;
     height: 100%;
+    &.accent-color {
+      background: rgb(255 192 125);
+    }
   }
 
   // .main-content__section-news

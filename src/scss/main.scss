@@ -22,7 +22,7 @@
 @use 'components/sidebar-menu';
 @use 'components/dropdown-menu';
 @use 'components/cookies-accept';
-@use 'sections/not-found.scss';
+
 @use 'components/form-login';
 @use 'components/widget';
 @use 'components/order-call';
@@ -31,11 +31,12 @@
 @use 'chunks/collection';
 @use 'chunks/check-box';
 // todo -------------------------- Section -------------------------------------
-@use 'sections/index/section-slide';
-@use 'sections/section-categories';
-@use 'sections/section-partners';
-@use 'sections/index/section-news';
-@use 'sections/news-company/main-news';
+@use 'sections/section-perform';
+@use 'sections/section-services';
+@use 'sections/section-about';
+// @use 'sections/section-partners';
+// @use 'sections/index/section-news';
+// @use 'sections/news-company/main-news';
 // todo --------------------------- Style --------------------------------------
 .wrapper {
   display: flex;
