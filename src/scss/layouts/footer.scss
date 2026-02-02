@@ -1,170 +1,224 @@
 @use '../core/variables' as *;
 @use '../core/mixins' as *;
+@use 'sass:color';
+// --- Переменные (те же, что и ранее) ---
+// $color-bg-dark: #111; // Темный фон футера
+$radius: 24px;
 
 .footer {
-  .link-underline-center {
-    &::before {
-      background: #fff;
-    }
-  }
+  color: $color-white;
+  background-color: $color-bg-dark;
+
   // .footer__body
   &__body {
-    padding-block: 5rem;
+    padding-block: 8rem 3rem !important;
 
-    @include screen-768 {
-      padding-block: 5rem 8rem;
+    @include screen-490 {
+      padding-block: 4rem 3rem !important;
     }
   }
 
-  // .footer__content
-  &__content {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 31px;
+  &__wrapper {
+    display: flex;
+    gap: 60px;
+    justify-content: space-between;
+    margin-bottom: 8rem !important;
+
+    @include screen-490 {
+      margin-bottom: 4rem;
+    }
+
+    @media (width <= 992px) {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  // --- Левая колонка (Инфо) ---
+  &__info {
+    max-width: 500px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    font-size: 42px;
+    font-weight: 800;
+    line-height: 1.2;
+
+    @media (width <= 768px) {
+      font-size: 32px;
+    }
+  }
+
+  &__desc {
+    margin-bottom: 40px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: $color-text-gray;
+  }
+
+  &__phone {
+    display: block;
+
+    margin-bottom: 24px;
+
+    font-size: 36px;
+    font-weight: 700;
+    color: $color-white;
+    text-decoration: none;
+
+    transition: color 0.3s;
+
+    &:hover {
+      color: $color-accent;
+    }
+
+    @media (width <= 768px) {
+      font-size: 28px;
+    }
+  }
+
+  &__socials {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 50%;
+
+    color: $color-white;
+    text-decoration: none;
+
+    background-color: #222;
+
+    transition: 0.3s;
+
+    .icon {
+      font-size: 24px;
+    }
+    &:hover {
+      border-color: $color-white;
+      color: $color-bg-dark;
+      background-color: $color-white;
+    }
+  }
+
+  // --- Правая колонка (Форма) ---
+  &__form {
+    flex: 1;
+
+    max-width: 500px;
+    padding: 40px;
+    border-radius: $radius;
+
+    background-color: #161616; // Чуть светлее фона
+
+    @media (width <= 768px) {
+      max-width: 100%;
+      padding: 24px;
+    }
+  }
+
+  .form {
+    &__row {
+      margin-bottom: 16px;
+    }
+
+    &__input {
+      width: 100%;
+      height: 60px;
+      padding: 0 20px;
+      border: 1px solid #333;
+      border-radius: 12px;
+
+      font-family: $font-main;
+      font-size: 16px;
+      color: $color-white;
+
+      background-color: $color-bg-input;
+      outline: none;
+
+      transition: border-color 0.3s;
+
+      &::placeholder {
+        color: #555;
+      }
+
+      &:focus {
+        border-color: $color-accent;
+      }
+    }
+
+    &__submit {
+      cursor: pointer;
+
+      width: 100%;
+      height: 60px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 12px;
+
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-white;
+
+      background-color: $color-accent;
+
+      transition: 0.3s;
+
+      &:hover {
+        background-color: color.scale($color-accent, $lightness: -10%);
+      }
+    }
+
+    &__agreement {
+      margin-top: 16px;
+
+      font-size: 12px;
+      line-height: 1.4;
+      color: #555;
+      text-align: center;
+
+      a {
+        color: #777;
+        text-decoration: underline;
+        &:hover {
+          color: #999;
+        }
+      }
+    }
+  }
+
+  // --- Нижняя линия ---
+  &__bottom {
+    display: flex;
     justify-content: space-between;
 
-    font-size: 12px;
-    color: #fff;
+    padding-top: 30px;
+    border-top: 1px solid #222;
 
-    @include screen-1289 {
-      grid-template-columns: repeat(4, 1fr);
-      column-gap: 20px;
-    }
+    font-size: 14px;
+    color: #444;
 
-    @include screen-1024 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @include screen-768 {
-      grid-template-columns: repeat(2, 1fr);
-      column-gap: 16px;
-    }
-  }
-
-  // .footer__column
-  &__column {
-    width: 100%;
-
-    &:nth-child(1) {
-      display: flex;
-      flex: 1 1 20%;
+    @media (width <= 768px) {
       flex-direction: column;
-
-      .footer__text {
-        &:not(:last-child) {
-          margin-bottom: 10px;
-        }
-        &:nth-child(2) {
-          flex: 1 1 auto;
-        }
-      }
-    }
-
-    &:nth-child(2) {
-      grid-column: 2 / 4;
-
-      @include screen-768 {
-        grid-column: 2 / 3;
-      }
-
-      @include screen-690 {
-        grid-column: 1 / 3;
-        grid-row: 2 / 3;
-      }
-    }
-
-    &:nth-child(3) {
-      display: flex;
-    }
-
-    &:nth-child(4) {
-      .footer__links-col {
-        margin-bottom: 16px;
-      }
-    }
-
-    @include screen-490 {
-      &:nth-child(4) {
-        grid-column: 1 / 3;
-      }
+      gap: 10px;
+      text-align: center;
     }
   }
 
-  // .footer__row
-  &__row {
-    display: flex;
-  }
-
-  // .footer__logo
-  &__logo {
-    margin-bottom: 23px;
-  }
-
-  // .footer__text
-  &__text {
-    font-size: 12px;
-  }
-
-  // .footer__title
-  &__title {
-    margin-bottom: 16px;
-
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 100%;
-    color: rgb(103 103 103 / 100%);
-    text-transform: uppercase;
-
-    @include screen-490 {
-      margin-bottom: 10px;
+  &__developer {
+    color: #444;
+    text-decoration: none;
+    &:hover {
+      color: #666;
     }
-  }
-
-  // .footer__catalog
-  &__catalog {
-    display: flex;
-    column-gap: 31px;
-
-    @include screen-1289 {
-      column-gap: 20px;
-    }
-
-    @include screen-768 {
-      column-gap: 16px;
-    }
-  }
-
-  // .footer__links
-  &__links {
-    flex: 0 1 50%;
-  }
-
-  // .footer__links-col
-  &__links-col {
-    display: inline-flex;
-    flex-direction: column;
-    width: 100%;
-
-    li {
-      margin-bottom: 10px;
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-
-  // .footer__link
-  &__link {
-    display: inline;
-  }
-
-  // .footer__phone
-  &__phone {
-    margin-bottom: 10px;
-    // .link-underline-center {
-    //   &::before {
-    //     background: #fff;
-    //   }
-    // }
   }
 }

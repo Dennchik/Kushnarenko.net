@@ -1,0 +1,22 @@
+section.section-promo._container
+	.section-promo__head
+		h2.section-promo__title Внимание на экран
+		p.section-promo__subtitle Посмотрите 2 минуты, чтобы понять мою энергетику
+
+	//- Обертка видео. 
+	//- В data-video-id вставляем ID видео с YouTube (то, что после v=)
+	.section-promo__video-box(data-video-id="dQw4w9WgXcQ")
+
+		//- 1. Обложка (Заглушка)
+		.video-cover
+			img.video-cover__img(src="@img/video-preview.jpg" alt="Обложка видео")
+			//- Затемнение
+			.video-cover__overlay
+
+		//- 2. Кнопка Play (Пульсирующая)
+		button.video-play-btn(type="button" aria-label="Запустить видео")
+			span.video-play-btn__icon
+				//- Треугольник (рисуем CSS или SVG)
+
+		//- 3. Текстовая подпись (опционально)
+		.video-caption Смотреть шоурил 2025

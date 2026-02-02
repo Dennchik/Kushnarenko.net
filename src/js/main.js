@@ -1,15 +1,11 @@
 import '../scss/main.scss';
-// import { buildSwiper } from './utils/build-swiper.js';
-// import { slide, slidNews } from './components/slide.js';
 // import { maskPhone } from './assets/mask-phone.js';
-// import { loadedTimer } from './utils/loaded-timer.js';
 // import { addCartAnimation } from './animations/add-cart-animation.jsx';
-// import { counterProduct } from './components/counter.js';
 // import { dynamicAdaptive } from './modules/dynamic-adaptive.js';
-// import { validateForm } from './assets/validate-form.js';
 import {
   logicLooping,
-  videoInView,
+  shadowScrollHeader,
+  // videoInView,
   //   addFavorites,
   //   sidebarMenuHandle,
   //   hideTopMenu,
@@ -17,28 +13,41 @@ import {
   //   cookiesAccept,
   //   toggleModalOpen,
 } from './layouts/layouts.js';
-// import {
-//   dropDownMenu,
-//   collapseToggle,
-//   collapseToggleOne,
-// } from './modules/drop-menu.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   logicLooping();
-  videoInView();
-  //   slide('.product-slide');
-  //   slidNews('.slide-news');
-  //   maskPhone('.phone');
-  //   toggleModalOpen();
-  //   counterProduct();
-  //   hideTopMenu();
-  //   collapseToggle();
-  //   collapseToggleOne();
-  //   addFavorites('.product-card__favourites');
-  //   sidebarMenuHandle();
-  //   dynamicAdaptive();
+  shadowScrollHeader();
 });
 
+// Дождитесь загрузки DOM
+document.addEventListener('DOMContentLoaded', function () {
+  const video = document.getElementById('player-id');
+
+  if (video) {
+    // Уберите автовоспроизведение на всякий случай
+    video.removeAttribute('autoplay');
+
+    // Промис для надежной паузы
+    const pauseVideo = function () {
+      if (!video.paused) {
+        video.pause();
+      }
+
+      // Сбросить время на начало (если нужно)
+      // video.currentTime = 0;
+    };
+
+    // Пауза при разных событиях
+    video.addEventListener('loadedmetadata', pauseVideo);
+    video.addEventListener('canplay', pauseVideo);
+    video.addEventListener('play', pauseVideo);
+
+    // Пауза сразу, если видео уже загружено
+    if (video.readyState >= 2) {
+      pauseVideo();
+    }
+  }
+});
 //* - [Utils] -
 // loadedTimer();
 
@@ -50,22 +59,30 @@ document.addEventListener('DOMContentLoaded', () => {
 // '.icon-heart-like',
 // 'like'
 
-//* - [ Components ] -
-// buildSwiper();
-// validateForm();
 //* layouts
 // addToBlock();
 // cookiesAccept('.cookies-accept', '.cookies-accept__button');
 // dropDownMenu('.main-menu__link');
+document.addEventListener('DOMContentLoaded', () => {
+  const faqItems = document.querySelectorAll('.faq-item');
 
-document.querySelectorAll('.product-card__label').forEach((priceBlock) => {
-  const span = priceBlock.querySelector('span');
+  faqItems.forEach((item) => {
+    const trigger = item.querySelector('.faq-item__trigger');
 
-  if (!span || !span.textContent.trim()) {
-    priceBlock.style.display = 'none';
-  }
+    trigger.addEventListener('click', () => {
+      // 1. Если хотим, чтобы открывался только один за раз - раскомментируй код ниже:
+
+      faqItems.forEach((otherItem) => {
+        if (otherItem !== item) {
+          otherItem.classList.remove('is-active');
+        }
+      });
+
+      // 2. Переключаем класс на текущем элементе
+      item.classList.toggle('is-active');
+    });
+  });
 });
-
 //* ----------------------------------------------------------------------------
 console.log(
   '%c РОССИЯ ',
@@ -74,5 +91,3 @@ console.log(
     'border-right: 2px solid black; border-bottom: 30px solid red;'
 );
 //* ----------------------------------------------------------------------------
-import { tabsPage } from './components/tabs-page.js';
-tabsPage();

@@ -2,17 +2,19 @@
 	.section-perform__body 
 		.section-perform__content
 			.section-perform__video
-				video#player-id.video-js(preload="pause" muted="muted" tabindex="-1", playsinline, autoplay, loop poster="./img/audio/cover-v2-3.png" src="./img/audio/cover-v2-3.webm")
+				//- video#player-id.video-js(preload="pause" muted="muted" tabindex="-1", playsinline, autoplay, loop poster="./img/audio/cover-v2-3.png" src="./img/audio/cover-v2-3.webm")
+				video#player-id.video-js(preload="metadata" muted="muted" tabindex="-1" playsinline loop poster="./img/audio/cover-v2-3.png" src="./img/audio/cover-v2-3.webm")
+
 			.section-perform__text
 				h1.section-perform__title.t-h1.js-rotator 
 					span Импровизирую в&nbsp;самых</br>непредсказуемых ситуациях
 					span Обнимашки в конце банкета БЕСПЛАТНО
 					span Стану для вашей бабушки </br>ещё одним внуком
-//- .section-perform__text Бесплатная доставка при&nbsp;заказе от&nbsp;5000&nbsp;₽
-//- .collection.section-perform__collection 
-	each item in selection
-		a(href=linkTo("categories/" + item.links, filename)).collection__button 
-			span= item.text
-		//- .section-perform__column
-			.section-perform__image
-				+picture('/img/picture/building.png', 'image')
+		//- .section-perform__text Бесплатная доставка при&nbsp;заказе от&nbsp;5000&nbsp;₽
+		//- .collection.section-perform__collection 
+			each item in selection
+				a(href=linkTo("categories/" + item.links, filename)).collection__button 
+					span= item.text
+				//- .section-perform__column
+					.section-perform__image
+						+picture('/img/picture/building.png', 'image')

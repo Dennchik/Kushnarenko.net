@@ -31,12 +31,16 @@
 @use 'chunks/collection';
 @use 'chunks/check-box';
 // todo -------------------------- Section -------------------------------------
-@use 'sections/section-perform';
-@use 'sections/section-services';
+// @use 'sections/section-perform';
+@use 'sections/section-hero.scss';
+@use 'sections/section-promo';
 @use 'sections/section-about';
-// @use 'sections/section-partners';
-// @use 'sections/index/section-news';
-// @use 'sections/news-company/main-news';
+@use 'sections/section-approach';
+@use 'sections/section-events';
+@use 'sections/section-price';
+@use 'sections/section-reviews';
+@use 'sections/section-partners';
+@use 'sections/section-faq';
 // todo --------------------------- Style --------------------------------------
 .wrapper {
   display: flex;

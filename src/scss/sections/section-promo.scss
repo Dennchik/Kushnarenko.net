@@ -1,0 +1,187 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
+// --- Переменные ---
+$font-main: 'Manrope', sans-serif;
+$color-bg-page: #f5f5f7;
+$color-white: #fff;
+$color-accent: #ff5a5f;
+$radius: 32px; // Большое скругление
+
+.section-promo {
+  padding: 80px 0;
+  font-family: $font-main;
+  background-color: $color-bg-page;
+
+  &__head {
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 12px;
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: #666;
+  }
+
+  // Контейнер видео
+  &__video-box {
+    cursor: pointer;
+
+    position: relative;
+
+    overflow: hidden;
+
+    aspect-ratio: 16 / 9; // Пропорция видео (важно!)
+    width: 100%;
+    max-width: 1000px; // Ограничиваем ширину, чтобы не было гигантским
+    margin: 0 auto;
+    border-radius: $radius;
+
+    background-color: #000; // Черный фон пока грузится
+    box-shadow: 0 20px 40px rgb(0 0 0 / 15%); // Тень для объема
+
+    // При наведении зумим картинку
+    &:hover {
+      .video-cover__img {
+        transform: scale(1.05);
+      }
+      .video-play-btn {
+        transform: translate(-50%, -50%) scale(1.1);
+        border-color: $color-accent;
+        background-color: $color-accent;
+      }
+      .video-play-btn__icon {
+        border-left-color: #fff;
+      }
+    }
+
+    // Класс, который добавит JS, когда видео включится
+    &.is-playing {
+      .video-cover,
+      .video-play-btn,
+      .video-caption {
+        display: none; // Скрываем обложку
+      }
+    }
+  }
+}
+
+// Обложка
+.video-cover {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgb(0 0 0 / 30%); // Легкое затемнение
+  }
+}
+
+// Кнопка PLAY
+.video-play-btn {
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 80px;
+  height: 80px;
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 50%;
+
+  background-color: rgb(255 255 255 / 20%); // Полупрозрачный фон
+  backdrop-filter: blur(10px); // Размытие фона под кнопкой (Glassmorphism)
+
+  transition: all 0.3s ease;
+
+  // Анимация пульсации
+  animation: pulse 2s infinite;
+
+  &__icon {
+    width: 0;
+    height: 0;
+    margin-left: 4px; // Визуальная центровка
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 18px solid #fff; // Белый треугольник
+
+    transition: border-left-color 0.3s;
+  }
+}
+
+// Подпись внизу
+.video-caption {
+  position: absolute;
+  z-index: 2;
+  bottom: 30px;
+  left: 30px;
+
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+
+  @media (width <= 768px) {
+    display: none; // На мобильном можно скрыть
+  }
+}
+
+// iframe (генерируется JS)
+iframe.video-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+// Анимация пульса
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(255 255 255 / 70%);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgb(255 255 255 / 0%);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgb(255 255 255 / 0%);
+  }
+}
+
+// Адаптив размера кнопки
+@media (width <= 768px) {
+  .video-play-btn {
+    width: 60px;
+    height: 60px;
+  }
+}

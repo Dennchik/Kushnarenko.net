@@ -1,76 +1,43 @@
-.footer._container
-	.footer__body 
-		.footer__content 
-			.footer__column 
-				.footer__logo 
-					img(src="/img/logo-h.svg" alt="logo") 
-				.footer__text Ваш надежный поставщик строительных материалов, инструментов и товаров для&nbsp;ремонта.
-				.footer__text
-					a.link-underline-center(href="" target="_blank" rel="noopener noreferrer nofollow") Политика конфиденциальности
-				.footer__text 
-					a.link-underline-center(href="" target="_blank") Договор оферты
-			.footer__column 
-				.footer__title
-					h5.t-h5 каталог
-				.footer__catalog 
-					ul.footer__links-col
-						li
-							a(href="#").footer__link.link-underline-center Строительные материалы
-						li
-							a(href="#").footer__link.link-underline-center Электроинструмент
-						li
-							a(href="#").footer__link.link-underline-center Бензоинструмент
-						li
-							a(href="#").footer__link.link-underline-center Пиломатериалы
-						li
-							a(href="#").footer__link.link-underline-center Электротовары
-						li
-							a(href="#").footer__link.link-underline-center Сантехника
-						li
-							a(href="#").footer__link.link-underline-center Крепеж и метизы
-					ul.footer__links-col
-						li
-							a(href="#").footer__link.link-underline-center Измерительные приборы
-						li
-							a(href="#").footer__link.link-underline-center Ручной инструмент
-						li
-							a(href="#").footer__link.link-underline-center Товары для сада и огорода
-						li
-							a(href="#").footer__link.link-underline-center Краски и химия
-						li
-							a(href="#").footer__link.link-underline-center Металл
-						li
-							a(href="#").footer__link.link-underline-center Сопутствующие товары
-						li
-							a(href="#").footer__link.link-underline-center Товары со скидкой
-			.footer__column 
-				.footer__links 
-					.footer__title
-						h5.t-h5 информация
-					ul.footer__links-col
-						li 
-							a(href=linkTo("about", filename)).footer__link.link-underline-center О магазине
-						li 
-							a(href=linkTo("news", filename)).footer__link.link-underline-center Новости
-						li 
-							a(href="#").footer__link.link-underline-center Производители
-						li 
-							a(href="#").footer__link.link-underline-center Реквизиты
-						li 
-							a(href="#").footer__link.link-underline-center Оплата и доставка
-						li 
-							a(href="#").footer__link.link-underline-center Личный кабинет
-						li 
-							a(href="#").footer__link.link-underline-center Избранное 
-			.footer__column 
-				.footer__links 
-					.footer__title
-						h5.t-h5 контакты
-					.footer__links-col 
-						a.footer__phone(href="tel:+89611205000")
-							span.link-underline-center 8&nbsp;961&nbsp;120&nbsp;50-00 
-						.footer__text Боровский район, деревня Тимашово строение 3 
-					.footer__links-col 
-						.footer__title
-							h5.t-h5 режим работы
-						.footer__text Пн-вс 08:00-19:00
+footer.footer
+	.footer__body
+		.footer__wrapper._container
+
+			//- Левая колонка: Призыв и Контакты
+			.footer__info
+				h2.footer__title Остались вопросы? <br> Давайте обсудим ваш праздник!
+				p.footer__desc Заполните форму, и я свяжусь с вами в течение 15 минут, чтобы уточнить детали и забронировать дату.
+
+				.footer__contacts-block
+					a.footer__phone(href="tel:+79990000000") +7 (999) 000-00-00
+
+					.footer__socials
+						a.footer__social-link(href="#telegram" aria-label="Telegram")
+							+iconfont('telegram-draw', 'icon')
+						a.footer__social-link(href="#whatsapp" aria-label="WhatsApp")
+							+iconfont('whatsapp-draw', 'icon')
+						a.footer__social-link(href="#vk" aria-label="VK")
+							+iconfont('vk-draw', 'icon')
+
+			//- Правая колонка: Форма
+			form.footer__form.form(action="#" method="POST")
+				.form__row
+					input.form__input(type="text" placeholder="Ваше имя" required)
+
+				.form__row
+					input.form__input(type="tel" placeholder="Номер телефона" required)
+
+				.form__row
+					input.form__input(type="text" placeholder="Дата мероприятия (если известна)")
+
+				button.form__submit.btn(type="submit") Получить смету и презентацию
+
+				p.form__agreement 
+					| Нажимая кнопку, вы соглашаетесь с 
+					a(href="#") политикой конфиденциальности
+
+		//- Нижняя линия (Копирайт)
+		.footer__bottom-wrapper._container
+			.footer__bottom
+
+				span.footer__copy © 2025 Максим Кушнаренко. Ведущий.
+				a.footer__developer(href="#") Дизайн и разработка Gusli Media-Group

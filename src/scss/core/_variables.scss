@@ -3,8 +3,32 @@
 $maxWidthContainer: 1440px;
 
 //! - [Font Variables] -
+// --- Переменные (Настройте под свой проект) ---
+$font-main: 'Manrope', sans-serif; // Основной шрифт
+$font-hand: 'cursive'; // Шрифт для "Pf" (подключите рукописный)
+$color-bg-page: #f5f5f7; // Фон секции (светло-серый)
+$color-card-white: #fff;
+$color-card-gray: #f2f3f5; // Фон для карточек статистики и контактов
+$color-text: #111;
+$color-text-light: #5f5f5f;
+$color-bg-dark: #111; // Темный фон футера
+$color-text-gray: #888;
+$color-white: #fff;
+$color-bg-input: #1f1f1f; // Фон полей ввода
+$color-accent: #ff5a5f; // Красный акцент (можно поменять)
+$radius-btn: 50px;
+$color-white: #fff;
+$color-accent: #ff5a5f; // Красный акцент (стрелки)
+$radius: 32px; // Скругление углов (как на референсе)
+$gap: 16px; // Отступы между карточками
+
 $font-path: '../fonts';
-$font-family-default: 'Roboto', sans-serif;
+$font-family-default: 'Montserrat Alternates', sans-serif;
+$font-family-logo: 'Dancing Script', sans-serif;
+// $font-title: 'GreatVibes' sans-serif;
+// $font-title: 'DancingScript' sans-serif;
+$font-title: 'Cormorant' sans-serif;
+
 $font-weight-default: 400;
 $font-size: 1.6rem;
 //* - [Font color] -
@@ -13,7 +37,7 @@ $font-color-secondary: rgb(255 255 255);
 // $neon-carrot: rgb(255 163 67);
 $neon-carrot: rgb(255 142 67);
 //* - [Background Color] -
-$background: rgb(17 18 20);
+$background: rgb(240 240 240);
 $background-secondary: rgb(239 239 241);
 $background-ui: rgb(87 96 105 / 100%);
 

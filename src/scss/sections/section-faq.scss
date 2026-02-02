@@ -1,0 +1,176 @@
+// --- Переменные ---
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
+$color-bg-page: #f5f5f7;
+$color-text-gray: #666;
+$color-accent: #ff5a5f;
+$radius: 24px;
+
+.section-faq {
+  // font-family: $font-main;
+  background-color: $color-bg-page; // Или белый, если хотите чередовать
+
+  // .section-faq__body
+  &__body {
+    padding-block: 8rem !important;
+
+    @include screen-490 {
+      padding-block: 4rem !important;
+    }
+  }
+
+  &__head {
+    max-width: 600px;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-left: auto;
+
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: $color-text-gray;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px; // Расстояние между плашками
+
+    max-width: 800px; // Ограничиваем ширину для удобства чтения
+    margin: 0 auto;
+  }
+}
+
+// --- Карточка вопроса ---
+.faq-item {
+  overflow: hidden;
+  border-radius: $radius;
+  background-color: #fff;
+  transition: box-shadow 0.3s ease;
+
+  // При наведении чуть подсвечиваем
+  &:hover {
+    box-shadow: 0 4px 20px rgb(0 0 0 / 3%);
+  }
+
+  // --- Состояние: Открыт (добавляется через JS) ---
+  &.is-active {
+    .faq-item__icon {
+      transform: rotate(45deg); // Поворачиваем плюс в крестик
+      border-color: $color-accent;
+      background-color: $color-accent;
+
+      &::before,
+      &::after {
+        background-color: #fff;
+      }
+    }
+
+    .faq-item__content {
+      grid-template-rows: 1fr; // Показываем контент
+      padding-bottom: 24px;
+      opacity: 1;
+    }
+  }
+
+  // Кнопка-триггер (весь заголовок)
+  &__trigger {
+    cursor: pointer;
+
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    padding: 24px 30px;
+    border: none;
+
+    text-align: left;
+
+    background: none;
+  }
+
+  &__question {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text;
+
+    @media (width <= 768px) {
+      font-size: 16px;
+    }
+  }
+
+  // Иконка плюса
+  &__icon {
+    position: relative;
+
+    flex-shrink: 0;
+
+    width: 40px;
+    height: 40px;
+    border: 1px solid #e0e0e0;
+    border-radius: 50%;
+
+    transition: all 0.3s ease;
+
+    // Рисуем плюс через псевдоэлементы
+    &::before,
+    &::after {
+      content: '';
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      background-color: $color-text;
+
+      transition: background-color 0.3s;
+    }
+
+    &::before {
+      width: 14px;
+      height: 2px;
+    } // Горизонтальная палка
+    &::after {
+      width: 2px;
+      height: 14px;
+    } // Вертикальная палка
+  }
+
+  // Контейнер для скрытого текста
+  &__content {
+    display: grid;
+    grid-template-rows: 0fr; // По умолчанию высота 0
+
+    padding: 0 30px; // Боковые отступы
+
+    opacity: 0;
+
+    transition:
+      grid-template-rows 0.4s ease-out,
+      opacity 0.4s ease,
+      padding 0.4s ease;
+  }
+
+  &__text {
+    overflow: hidden; // Обязательно для анимации Grid
+    font-size: 16px;
+    line-height: 1.6;
+    color: $color-text-gray;
+
+    p {
+      margin: 0;
+    }
+  }
+}

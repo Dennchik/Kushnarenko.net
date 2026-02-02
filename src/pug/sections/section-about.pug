@@ -1,54 +1,85 @@
 .section-about._container
 	.section-about__body
 		.section-about__content
-			.section-about__column
-				.card.section-about__card
-					.card__body
-						.card__title
-							h2.t-h2 Обо Мне
-						.card__content 
-							p.t-text-14-12 Lorem ipsum dolor sit amet, consectetur adipisicing elit se do eiusmod tempor incididunt ut labore et dolore mag nasaaliqua.Ut enim ad minim veniam, quis
-							ul.card__list 
-								li.card__item
-									+iconfont('check', 'icon')
-									span.t-text-14-12 Different of web developmentt 
-								li.card__item
-									+iconfont('check', 'icon')
-									span.t-text-14-12 Gun Violence Prevention
-								li.card__item
-									+iconfont('check', 'icon')
-									span.t-text-14-12 Eiusmod tempor incidid labore
-						.card__button
-			.section-about__column
-				.card.section-about__card
-					.card__body
-						.card__content 
-							.card__column
-								.card__icon 
-									+iconfont('pencil-alt', 'icon')
-								.card__info 
-									.card__number
-										span 10
-									.card__text.t-h4 Запущено проектов  
-							.card__column
-								.card__icon 
-									+iconfont('check-box', 'icon') 
-								.card__info 
-									.card__number
-										span 170
-									.card__text.t-h4 Завершено проектов
-			.section-about__column
-				.card.section-about__card
-					.card__body
-						.card__title
-							h2.t-h2 Мое мастерство
-						ul.card__list 
-							li.card__item
-								+iconfont('check', 'icon')
-								span.t-text-14-12 Different of web developmentt 
-							li.card__item
-								+iconfont('check', 'icon')
-								span.t-text-14-12 Gun Violence Prevention
-							li.card__item 
-								+iconfont('check', 'icon')
-								span.t-text-14-12 Eiusmod tempor incidid labore
+			//- Обертка для CSS Grid сетки
+			.section-about__grid
+
+				//- 1. Карточка: Фото слева (В полный рост)
+				.about-card.about-card--hero-left
+					//- Фоновое изображение можно задать через CSS модификатор или img
+					img.about-card__bg-img(src="/img/about/host-fullbody.png" alt="Кушнаренко Максим")
+					.about-card__overlay
+						h3.about-card__name Максим Кушнаренко
+						p.about-card__caption Лучший ведущий России по версии премии Wedding Awards 2021 и 2023 года
+
+				//- 2. Карточка: Центральный оффер
+				.about-card.about-card--offer
+					.about-card__decor
+					.about-card__center-content
+						p.about-card__top-text Трехкратный победитель главной свадебной премии России Wedding Awards 2021, 2023 и 2024
+						h2.about-card__title Максим Кушнаренко
+						p.about-card__description 
+							| Регулярно женю знаменитостей: артистов, блогеров, музыкантов
+							br 
+							| И да, мне это не надоедает!
+						.about-card__actions
+							button.about-card__btn.btn Забронировать
+							a.about-card__arrow-link(href="#")
+								span.icon-arrow-up
+
+				//- 3. Карточка: Фото справа (Ч/Б портрет)
+				.about-card.about-card--hero-right
+					img.about-card__bg-img(src="/img/about/host-full.png" alt="Портрет ведущего")
+					.about-card__social-overlay
+						.about-card__social-icons
+							a.about-card__social-link(href="#")
+								+iconfont('telegram-draw', 'icon')
+							a.about-card__social-link(href="#")
+								+iconfont('vk-draw', 'icon')
+						a.about-card__follow-btn(href="#") Follow
+
+				//- 4. Карточка: Текстовая статистика (Широкая)
+				.about-card.about-card--stats
+					h3.about-card__stats-title К 2025 году провел более 1 000 мероприятий разных форматов и уровней.
+					p.about-card__text Я сам в шоке от цифры!
+					p.about-card__text Был ведущим почти в каждом городе России и за её пределами: Дубай, Мальдивы, Грузия, Армения, Беларусь, Кипр.
+					p.about-card__text Нет, я не устал от перелётов!
+
+				//- 5. Карточка: Цитата
+				.about-card.about-card--quote
+					p.about-card__quote-text Для меня нет ничего невозможного, <br> могу буквально всё!
+
+				//- 6. Карточка: Фановое фото (с гусем)
+				.about-card.about-card--fun
+					img.about-card__bg-img(src="/img/about/photo-goose.png" alt="Веселое фото с гусем")
+
+				//- 7. Карточка: Ссылка на портфолио
+				a.about-card.about-card--portfolio(href="#portfolio")
+					span.about-card__handwritten-icon Pf
+					h4.about-card__subtitle Portfolio - это наша обратная связь.
+					p.about-card__small-text Отзывы ивент индустрии. <br> Отзывы организаторов. <br> И ваши впечатления.
+
+				//- 8. Карточка: Аудитория
+				.about-card.about-card--audience
+					span.about-card__number +50к
+					.about-card__avatars
+						img(src="/img/about/avatars-group.png" alt="Avatars")
+					p.about-card__label аудитория в соц. сетях
+
+				//- 9. Карточка: Мессенджеры
+				.about-card.about-card--contacts
+					a.about-card__messenger-row(href="#telegram")
+						.about-card__messenger-info
+							span.about-card__label-light Связаться с Максимом
+							span.about-card__label-bold в Telegram
+						span.about-card__arrow-circle
+							span.icon-arrow-up
+
+					.about-card__divider
+
+					a.about-card__messenger-row(href="#whatsapp")
+						.about-card__messenger-info
+							span.about-card__label-light Связаться с Максимом
+							span.about-card__label-bold VKontakte
+						span.about-card__arrow-circle
+							span.icon-arrow-up

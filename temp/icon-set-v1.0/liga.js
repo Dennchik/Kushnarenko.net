@@ -25,9 +25,25 @@
     var icons;
     if (!supportsProperty('fontFeatureSettings')) {
         icons = {
-            'check': '&#xe90f;',
+            'location': '&#xe909;',
             'check-box': '&#xe900;',
             'pencil-alt': '&#xe901;',
+            'check': '&#xe910;',
+            'check': '&#xe911;',
+            'check': '&#xe912;',
+            'check': '&#xe913;',
+            'check': '&#xe914;',
+            'check': '&#xe90f;',
+            'volume-control-phone': '&#xf2a0;',
+            'phone-call': '&#xe915;',
+            'vk-draw': '&#xe902;',
+            'telegram-draw': '&#xe903;',
+            'whatsapp-draw': '&#xe904;',
+            'contacts': '&#xe907;',
+            'arrow-down': '&#xe92c;',
+            'arrow-left': '&#xe92d;',
+            'arrow-thin': '&#xe950;',
+            'arrow-up': '&#xe95c;',
           '0': 0
         };
         delete icons['0'];

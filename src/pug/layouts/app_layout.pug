@@ -10,7 +10,7 @@ html(lang="ru")
 		meta(name="description" content="Краткое описание документа")
 		meta(name="keywords" content="keywords-ключевые слова для поиска")
 		block link 
-			link(rel="icon" type="image/icon" href="/img/icons/icon.svg") 
+			link(rel="icon" type="image/icon" href="/img/icons/logo.png") 
 		block script 
 
 		block title
@@ -25,10 +25,7 @@ block page
 			.page
 				block header 
 					header.page__header
-						include @/pug/layouts/header
-						nav.page__dropdown-menu
-							block dropdown-menu 
-								include @/pug/components/dropdown-menu 
+						include @/pug/layouts/header 
 				block page-content
 					main.page__main-content
 						.main-content#wrapper

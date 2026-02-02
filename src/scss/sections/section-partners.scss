@@ -1,0 +1,111 @@
+@use '../core/variables' as *;
+@use '../core/mixins' as *;
+
+// --- Переменные ---
+$font-main: 'Manrope', sans-serif;
+$color-bg-white: #fff;
+$color-bg-gray: #f5f5f7; // Фон самих карточек с лого
+$color-text: #111;
+$color-text-gray: #666;
+$radius: 24px;
+$gap: 16px;
+
+.section-partners {
+  background-color: $color-bg-white; // Сама секция белая, чтобы отделить от соседей
+
+  // .section-partners__body
+  &__body {
+    padding-block: 8rem !important;
+
+    @include screen-490 {
+      padding-block: 4rem !important;
+    }
+  }
+
+  &__head {
+    max-width: 600px;
+    margin-right: auto;
+    margin-bottom: 50px;
+    margin-left: auto;
+
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 12px;
+    font-size: 36px;
+    font-weight: 800;
+    color: $color-text;
+
+    @media (width <= 768px) {
+      font-size: 28px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 16px;
+    color: $color-text-gray;
+  }
+
+  // Сетка логотипов
+  &__grid {
+    display: grid;
+    // 4 колонки на десктопе
+    grid-template-columns: repeat(4, 1fr);
+    gap: $gap;
+
+    @media (width <= 992px) {
+      grid-template-columns: repeat(3, 1fr); // 3 колонки на планшете
+    }
+
+    @media (width <= 600px) {
+      grid-template-columns: repeat(2, 1fr); // 2 колонки на мобильном
+    }
+  }
+}
+
+// Карточка отдельного логотипа
+.partner-item {
+  cursor: default;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 140px; // Фиксированная высота карточки
+  padding: 30px; // Внутренние отступы, чтобы лого не прилипало к краям
+  border-radius: $radius;
+
+  background-color: $color-bg-gray;
+
+  transition: all 0.3s ease;
+
+  // Изображение логотипа
+  &__logo {
+    max-width: 100%;
+    max-height: 100%;
+
+    opacity: 0.5; // Полупрозрачный (неактивный вид)
+    object-fit: contain; // Сохраняем пропорции
+
+    // --- Эффект "Стиль и Статус" ---
+    filter: grayscale(100%); // Полностью ЧБ
+    // Смешивание с фоном для лучшего вписывания (опционально)
+    mix-blend-mode: multiply;
+
+    transition: all 0.3s ease;
+  }
+
+  // Ховер эффект
+  &:hover {
+    transform: translateY(-5px); // Чуть всплывает
+    background-color: #fff; // Карточка становится белой
+    box-shadow: 0 10px 30px rgb(0 0 0 / 8%); // Появляется тень
+
+    .partner-item__logo {
+      opacity: 1; // Возвращаем яркость
+      filter: grayscale(0%); // Возвращаем цвет
+      mix-blend-mode: normal;
+    }
+  }
+}

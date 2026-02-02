@@ -83,7 +83,7 @@ export function videoInView(videoSelector = '#player-id') {
 //* ✅ - [ Hiding an element when scrolling ]
 export function shadowScrollHeader() {
   const handleScroll = () => {
-    const headerMain = document.querySelector('.header');
+    const headerMain = document.querySelector('.page__header');
     const pageContainer = document.querySelector('.page__main-content');
     const pageContainerTop = pageContainer.getBoundingClientRect().top;
 

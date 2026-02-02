@@ -30,9 +30,9 @@
   letter-spacing: 0;
 }
 
-.icon-check {
+.icon-location {
   &::before {
-    content: $icon-check;
+    content: $icon-location;
   }
 }
 .icon-check-box {
@@ -43,5 +43,85 @@
 .icon-pencil-alt {
   &::before {
     content: $icon-pencil-alt;
+  }
+}
+.icon-check5 {
+  &::before {
+    content: $icon-check5;
+  }
+}
+.icon-check4 {
+  &::before {
+    content: $icon-check4;
+  }
+}
+.icon-check3 {
+  &::before {
+    content: $icon-check3;
+  }
+}
+.icon-check2 {
+  &::before {
+    content: $icon-check2;
+  }
+}
+.icon-check1 {
+  &::before {
+    content: $icon-check1;
+  }
+}
+.icon-check {
+  &::before {
+    content: $icon-check;
+  }
+}
+.icon-volume-control-phone {
+  &::before {
+    content: $icon-volume-control-phone;
+  }
+}
+.icon-phone-call {
+  &::before {
+    content: $icon-phone-call;
+  }
+}
+.icon-vk-draw {
+  &::before {
+    content: $icon-vk-draw;
+  }
+}
+.icon-telegram-draw {
+  &::before {
+    content: $icon-telegram-draw;
+  }
+}
+.icon-whatsapp-draw {
+  &::before {
+    content: $icon-whatsapp-draw;
+  }
+}
+.icon-contacts {
+  &::before {
+    content: $icon-contacts;
+  }
+}
+.icon-arrow-down {
+  &::before {
+    content: $icon-arrow-down;
+  }
+}
+.icon-arrow-left {
+  &::before {
+    content: $icon-arrow-left;
+  }
+}
+.icon-arrow-right {
+  &::before {
+    content: $icon-arrow-right;
+  }
+}
+.icon-arrow-up {
+  &::before {
+    content: $icon-arrow-up;
   }
 }
