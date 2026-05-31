@@ -16,9 +16,9 @@
 // todo --------------------------- utils ------------------------------------
 @use 'utils/loaded-timer';
 // todo --------------------------- Assets -------------------------------------
-@use 'assets/burger-button';
 @use 'assets/swiper-11.2.10';
-@use 'assets/burder-button';
+@use 'assets/burger-button';
+@use 'assets/mobile-menu';
 // todo ------------------------ components ------------------------------------
 @use 'components/sidebar-menu';
 @use 'components/dropdown-menu';

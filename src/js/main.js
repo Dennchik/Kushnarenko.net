@@ -6,16 +6,23 @@ anchorsSmoothScrolling();
 import { videoInView } from './assets/videoInView.js';
 videoInView();
 import { gravityNavigator } from './assets/gravity-navigator.js';
-gravityNavigator();
 
 import { burgerMenu } from './assets/burger-button.js';
 document.addEventListener('DOMContentLoaded', burgerMenu);
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+if (!isMobile) {
+  gravityNavigator();
+}
+
+// document.addEventListener('DOMContentLoaded', dynamicAdaptive);
 // import { initVideoPlayer } from './assets/video-player.js';
 // initVideoPlayer();
 // document.addEventListener('DOMContentLoaded', initVideoPlayer);
 // import { maskPhone } from './assets/mask-phone.js';
 // import { addCartAnimation } from './animations/add-cart-animation.jsx';
-// import { dynamicAdaptive } from './modules/dynamic-adaptive.js';
+import { dynamicAdaptive } from './modules/dynamic-adaptive.js';
+dynamicAdaptive();
 import {
   logicLooping,
   shadowScrollHeader,
