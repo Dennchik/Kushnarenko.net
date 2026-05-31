@@ -7,6 +7,9 @@ import { videoInView } from './assets/videoInView.js';
 videoInView();
 import { gravityNavigator } from './assets/gravity-navigator.js';
 gravityNavigator();
+
+import { burgerMenu } from './assets/burger-button.js';
+document.addEventListener('DOMContentLoaded', burgerMenu);
 // import { initVideoPlayer } from './assets/video-player.js';
 // initVideoPlayer();
 // document.addEventListener('DOMContentLoaded', initVideoPlayer);
