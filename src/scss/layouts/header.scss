@@ -55,7 +55,7 @@
       background: hsl(205deg 0% 100% / 10%);
       backdrop-filter: blur(7px) brightness(1.05);
 
-      mask-image: url('../img/picture/nnnoise.png');
+      mask-image: url('../../img/picture/nnnoise.png');
       mask-mode: luminance;
       mask-repeat: repeat;
       mask-size: 55%;
@@ -78,7 +78,7 @@
         inset 0 -1px 1px hsl(205deg 70% 90% / 40%),
         inset 0 1px 2px hsl(205deg 70% 90% / 30%);
 
-      mask-image: url('../img/picture/nnnoise.png');
+      mask-image: url('../../img/picture/nnnoise.png');
       mask-mode: luminance;
       mask-repeat: repeat;
       mask-size: 50%;

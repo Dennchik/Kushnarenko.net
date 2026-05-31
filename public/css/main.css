@@ -601,7 +601,7 @@
   border-radius: 100vw;
   background: hsla(205, 0%, 100%, 0.1);
   backdrop-filter: blur(7px) brightness(1.05);
-  mask-image: url("../img/picture/nnnoise.png");
+  mask-image: url("../../img/picture/nnnoise.png");
   mask-mode: luminance;
   mask-repeat: repeat;
   mask-size: 55%;
@@ -615,7 +615,7 @@
   background: hsla(205, 0%, 20%, 0.05);
   backdrop-filter: blur(5px) brightness(0.95);
   box-shadow: inset 0 -4px 15px 5px hsla(205, 70%, 90%, 0.3), inset 0 -2px 5px hsla(205, 70%, 90%, 0.15), inset 0 -1px 1px hsla(205, 70%, 90%, 0.4), inset 0 1px 2px hsla(205, 70%, 90%, 0.3);
-  mask-image: url("../img/picture/nnnoise.png");
+  mask-image: url("../../img/picture/nnnoise.png");
   mask-mode: luminance;
   mask-repeat: repeat;
   mask-size: 50%;
