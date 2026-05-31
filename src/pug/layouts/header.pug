@@ -7,20 +7,22 @@
 				.header__link 
 					a(href="") kushnarenko.net
 		.header__top-menu
-			.top-menu__wrapper
-				.top-menu(data-da="sidebar-menu__body" data-da-position="0" data-da-resolution="690")   
-					ul.top-menu__list 
-						li.top-menu__item
-							a(href="#events").top-menu__link.link-underline-center.anchor-link Мероприятия
-						li.top-menu__item
-							a(href="#promo").top-menu__link.link-underline-center.anchor-link Видео
-						li.top-menu__item
-							a(href=("#about")).top-menu__link.link-underline-center.anchor-link О нас
-						li.top-menu__item
-							a(href=("#service")).top-menu__link.link-underline-center.anchor-link Услуги
-						//- li.top-menu__item
-							a(href=linkTo("news", filename)).top-menu__link.link-underline-center Новости
-						li.top-menu__item
-							a(href="#contacts").top-menu__link.link-underline-center.anchor-link Контакты
+			//- .top-menu__wrapper
+			nav.top-menu(data-da="sidebar-menu__body" data-da-position="0" data-da-resolution="690")   
+				ul.top-menu__list 
+					li.top-menu__item
+						a(href="#events").top-menu__link.anchor-link Мероприятия
+					li.top-menu__item
+						a(href="#promo").top-menu__link.anchor-link Видео
+					li.top-menu__item
+						a(href=("#about")).top-menu__link.anchor-link О нас
+					li.top-menu__item
+						a(href=("#service")).top-menu__link.anchor-link Услуги
+					//- li.top-menu__item
+						a(href=linkTo("news", filename)).top-menu__link.link-underline-center Новости
+					li.top-menu__item
+						a(href="#contacts").top-menu__link.anchor-link Контакты
+			span.effect.filter
+			span.effect.text.active.hidden
 		.header__contacts 
 			a.top-menu__link(href="tel:+000000000") +7 999 000-00 -00

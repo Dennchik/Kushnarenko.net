@@ -5,7 +5,8 @@ anchorsSmoothScrolling();
 
 import { videoInView } from './assets/videoInView.js';
 videoInView();
-
+import { gravityNavigator } from './assets/gravity-navigator.js';
+gravityNavigator();
 // import { initVideoPlayer } from './assets/video-player.js';
 // initVideoPlayer();
 // document.addEventListener('DOMContentLoaded', initVideoPlayer);
