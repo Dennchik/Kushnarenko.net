@@ -53,10 +53,37 @@
     grid-row: span 2;
     justify-content: flex-end; // Текст внизу
 
-    .about-card__overlay {
-      position: relative;
-      z-index: 2;
+    .about-card__overlay-content {
+      z-index: 4;
+      top: 0;
+      width: 100%;
+    }
 
+    .about-card__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding: 24px;
+    }
+
+    .about-card__item {
+      font-size: 1.8rem;
+      color: #fff;
+    }
+
+    .about-card__title {
+      padding: 24px;
+      font-size: 3.2rem;
+      color: #fff;
+    }
+
+    .about-card__overlay-footer {
+      position: absolute;
+      z-index: 4;
+      bottom: 0;
+      left: 0;
+
+      width: 100%;
       padding: 24px;
 
       color: #fff;
@@ -67,12 +94,41 @@
         margin-bottom: 8px;
         font-size: 20px;
         font-weight: 700;
+        color: $color-text;
       }
       p {
         font-size: 14px;
         line-height: 1.3;
         opacity: 0.9;
       }
+    }
+
+    .about-card__fon {
+      position: relative;
+      z-index: 3;
+
+      flex: 0 1 65%;
+
+      width: 100%;
+      height: 100%;
+
+      background: linear-gradient(
+        0deg,
+        #e3caab,
+        #2e1b14
+      ); /* Chrome 10-25, Safari 5.1-6 */
+    }
+
+    .about-card__bg-img {
+      position: relative;
+      flex: 0 1 35%;
+      width: 35%;
+    }
+
+    .about-card__image {
+      display: flex;
+      width: 100%;
+      height: 100%;
     }
   }
 
@@ -86,7 +142,7 @@
     align-items: center;
     justify-content: center;
 
-    padding: 30px;
+    padding: 15px;
 
     text-align: center;
 
@@ -413,6 +469,7 @@
 
     object-fit: cover;
   }
+
   // .about-card__overlay
   &__overlay {
   }

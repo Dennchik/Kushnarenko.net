@@ -1,11 +1,21 @@
 import '../scss/main.scss';
+
+import { anchorsSmoothScrolling } from './assets/anchors-smooth-scrolling.js';
+anchorsSmoothScrolling();
+
+import { videoInView } from './assets/videoInView.js';
+videoInView();
+
+// import { initVideoPlayer } from './assets/video-player.js';
+// initVideoPlayer();
+// document.addEventListener('DOMContentLoaded', initVideoPlayer);
 // import { maskPhone } from './assets/mask-phone.js';
 // import { addCartAnimation } from './animations/add-cart-animation.jsx';
 // import { dynamicAdaptive } from './modules/dynamic-adaptive.js';
 import {
   logicLooping,
   shadowScrollHeader,
-  // videoInView,
+
   //   addFavorites,
   //   sidebarMenuHandle,
   //   hideTopMenu,
@@ -20,34 +30,35 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Дождитесь загрузки DOM
-document.addEventListener('DOMContentLoaded', function () {
-  const video = document.getElementById('player-id');
+// document.addEventListener('DOMContentLoaded', function () {
+//   const video = document.getElementById('player-id');
 
-  if (video) {
-    // Уберите автовоспроизведение на всякий случай
-    video.removeAttribute('autoplay');
+//   if (video) {
+//     // Уберите автовоспроизведение на всякий случай
+//     video.removeAttribute('autoplay');
 
-    // Промис для надежной паузы
-    const pauseVideo = function () {
-      if (!video.paused) {
-        video.pause();
-      }
+//     // Промис для надежной паузы
+//     const pauseVideo = function () {
+//       if (!video.paused) {
+//         video.pause();
+//       }
 
-      // Сбросить время на начало (если нужно)
-      // video.currentTime = 0;
-    };
+//       // Сбросить время на начало (если нужно)
+//       // video.currentTime = 0;
+//     };
 
-    // Пауза при разных событиях
-    video.addEventListener('loadedmetadata', pauseVideo);
-    video.addEventListener('canplay', pauseVideo);
-    video.addEventListener('play', pauseVideo);
+//     // Пауза при разных событиях
+//     video.addEventListener('loadedmetadata', pauseVideo);
+//     video.addEventListener('canplay', pauseVideo);
+//     video.addEventListener('play', pauseVideo);
 
-    // Пауза сразу, если видео уже загружено
-    if (video.readyState >= 2) {
-      pauseVideo();
-    }
-  }
-});
+//     // Пауза сразу, если видео уже загружено
+//     if (video.readyState >= 2) {
+//       pauseVideo();
+//     }
+//   }
+// });
+
 //* - [Utils] -
 // loadedTimer();
 

@@ -1,4 +1,4 @@
-.section-events
+.section-events#events
 	.section-events__body._container
 		.section-events__head
 			h2.section-events__title Форматы событий
@@ -10,12 +10,13 @@
 			a.event-card(href="#weddings")
 				//- Обертка для картинки (нужна для зума)
 				.event-card__image-box
-					img.event-card__img(src="@img/events/wedding-party.jpg" alt="Проведение свадеб")
+					.event-card__img 
+						+picture('img/events/wedding-party.jpg', 'Проведение свадеб')
 
 				//- Контент поверх фото
 				.event-card__content
 					.event-card__text
-						h3.event-card__title Свадьбы
+						//- h3.event-card__title Свадьбы
 						p.event-card__desc От камерных семейных ужинов до масштабных вечеринок
 
 					//- Кнопка-стрелка
@@ -25,7 +26,8 @@
 			//- Карточка 2: Корпоративы
 			a.event-card(href="#corporate")
 				.event-card__image-box
-					img.event-card__img(src="@img/events/corp-party.jpg" alt="Корпоративы и тимбилдинги")
+					.event-card__img 
+						+picture('img/events/wedding-party.jpg', 'Проведение свадеб')
 
 				.event-card__content
 					.event-card__text
@@ -38,7 +40,8 @@
 			//- Карточка 3: Частные события (Юбилеи)
 			a.event-card(href="#private")
 				.event-card__image-box
-					img.event-card__img(src="@img/events/birthday.jpg" alt="Дни рождения и Юбилеи")
+					.event-card__img 
+						+picture('img/events/wedding-party.jpg', 'Проведение свадеб')
 
 				.event-card__content
 					.event-card__text

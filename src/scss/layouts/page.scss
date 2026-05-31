@@ -19,7 +19,7 @@
     transition: all 0.5s ease;
 
     &.with-shadow {
-      background: #111;
+      background: rgb(17 17 17 / 90%);
       box-shadow: 0 1px 9px #585858;
 
       .header__content {
@@ -48,18 +48,6 @@
 
     &.accent-color {
       background: rgb(239 239 241 / 100%);
-    }
-
-    @include screen-1260 {
-      padding-top: 155px;
-    }
-
-    @include screen-690 {
-      padding-top: 165px;
-    }
-
-    @include screen-490 {
-      padding-top: 135px;
     }
   }
 

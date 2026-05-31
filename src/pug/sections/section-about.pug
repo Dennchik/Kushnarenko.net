@@ -1,4 +1,4 @@
-.section-about._container
+.section-about._container#about
 	.section-about__body
 		.section-about__content
 			//- Обертка для CSS Grid сетки
@@ -6,20 +6,34 @@
 
 				//- 1. Карточка: Фото слева (В полный рост)
 				.about-card.about-card--hero-left
-					//- Фоновое изображение можно задать через CSS модификатор или img
-					img.about-card__bg-img(src="/img/about/host-fullbody.png" alt="Кушнаренко Максим")
-					.about-card__overlay
-						h3.about-card__name Максим Кушнаренко
-						p.about-card__caption Лучший ведущий России по версии премии Wedding Awards 2021 и 2023 года
+					.about-card__image
+						.about-card__overlay-footer 
+							h3.about-card__name Максим Кушнаренко
+							p.about-card__caption Ведущий, которого советуют «своим»
+						//- Фоновое изображение можно задать через CSS модификатор или img
+						.about-card__fon
+							.about-card__overlay-content
+								.about-card__title Меню
+								ul.about-card__list
+									li.about-card__item
+										span Хорошее настроение
+									li.about-card__item
+										span Запомнится навсегда
+									li.about-card__item 
+										span Стану для твоей бабушки еще одним внуком
+									li.about-card__item
+										span Обнимашки самый лучший день в твоей жизни 
+						img.about-card__bg-img(src="/img/about/max-full.png" alt="Кушнаренко Максим")
+
 
 				//- 2. Карточка: Центральный оффер
 				.about-card.about-card--offer
 					.about-card__decor
-					.about-card__center-content
-						p.about-card__top-text Трехкратный победитель главной свадебной премии России Wedding Awards 2021, 2023 и 2024
+					.about-card__center-content 
+						p.about-card__top-text За моими плечами — десятки ярких свадеб, дней рождений, корпоративов и частных мероприятий. Для меня важно не просто провести вечер по сценарию, а создать атмосферу, в которой гости чувствуют себя легко, много смеются и по-настоящему проживают этот день.
 						h2.about-card__title Максим Кушнаренко
 						p.about-card__description 
-							| Регулярно женю знаменитостей: артистов, блогеров, музыкантов
+							| Моя задача — сделать так, чтобы ваш праздник прошёл спокойно для вас и незабываемо для всех присутствующих. 
 							br 
 							| И да, мне это не надоедает!
 						.about-card__actions
@@ -29,7 +43,7 @@
 
 				//- 3. Карточка: Фото справа (Ч/Б портрет)
 				.about-card.about-card--hero-right
-					img.about-card__bg-img(src="/img/about/host-full.png" alt="Портрет ведущего")
+					img.about-card__bg-img(src="/img/about/max-fullbody.png" alt="Портрет ведущего")
 					.about-card__social-overlay
 						.about-card__social-icons
 							a.about-card__social-link(href="#")
@@ -40,10 +54,8 @@
 
 				//- 4. Карточка: Текстовая статистика (Широкая)
 				.about-card.about-card--stats
-					h3.about-card__stats-title К 2025 году провел более 1 000 мероприятий разных форматов и уровней.
-					p.about-card__text Я сам в шоке от цифры!
-					p.about-card__text Был ведущим почти в каждом городе России и за её пределами: Дубай, Мальдивы, Грузия, Армения, Беларусь, Кипр.
-					p.about-card__text Нет, я не устал от перелётов!
+					h3.about-card__stats-title К 2025 году провел более 1 000 мероприятий разных форматов и уровней. 
+					p.about-card__top-text Я умею держать правильный темп, шутить уместно и без «кринжа», поддерживать гостей и молодожёнов, сглаживать любые неловкие моменты и быть опорой для заказчика на протяжении всего мероприятия. 
 
 				//- 5. Карточка: Цитата
 				.about-card.about-card--quote

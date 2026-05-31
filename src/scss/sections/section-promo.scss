@@ -9,9 +9,11 @@ $color-accent: #ff5a5f;
 $radius: 32px; // Большое скругление
 
 .section-promo {
-  padding: 80px 0;
-  font-family: $font-main;
-  background-color: $color-bg-page;
+  &__body {
+    padding: 80px 0;
+    font-family: $font-main;
+    background-color: $color-bg-page;
+  }
 
   &__head {
     margin-bottom: 40px;
