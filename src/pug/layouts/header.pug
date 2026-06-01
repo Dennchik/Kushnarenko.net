@@ -1,11 +1,11 @@
 .header._container 
 	.header__content
-		.heaer__logo 
+		a(href="#home").heaer__logo 
 			.header__icon-logo
 				.header__icon-text 
 					span К
-				.header__link 
-					a(href="") kushnarenko.net
+				.header__link  
+					span kushnarenko.net
 		.header__top-menu(data-da="bp-1" data-da-position="0" data-da-resolution="960")   
 			//- .top-menu__wrapper
 			nav.top-menu
@@ -18,8 +18,6 @@
 						a(href=("#about")).top-menu__link.anchor-link О нас
 					li.top-menu__item
 						a(href=("#service")).top-menu__link.anchor-link Услуги
-					//- li.top-menu__item
-						a(href=linkTo("news", filename)).top-menu__link.link-underline-center Новости
 					li.top-menu__item
 						a(href="#contacts").top-menu__link.anchor-link Контакты
 			span.effect.filter

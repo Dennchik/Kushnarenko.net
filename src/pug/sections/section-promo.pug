@@ -6,15 +6,15 @@
 				controls,
 				preload="auto", 
 				tabindex="-1", 
-				playsinline, muted,
-				poster="./img/audio/cover-v2-3.png", 
+				playsinline, muted, autoplay="false" 
+				poster="./img/audio/cover.png", 
 				src="./img/audio/cover.mp4"
 			)
 
 			//- Обложка (поверх видео)
 			.video-cover
 				.video-cover__img 
-					+picture('img/audio/cover-v2-3.png', 'image')
+					+picture('img/audio/cover.png', 'image')
 				.video-cover__overlay
 
 			//- Кнопка Play (поверх обложки)

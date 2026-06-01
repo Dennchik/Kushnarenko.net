@@ -1,98 +1,81 @@
 @use '../core/variables' as *;
 @use '../core/mixins' as *;
 
-//* ----------------------------------------------------------------------------
-.sidebar-menu {
-  pointer-events: all;
+.mobile-menu {
+  pointer-events: none;
 
   position: fixed;
-  z-index: 13;
-  top: 130px;
+  z-index: 18;
+  top: 0;
   right: 0;
-  transform: translateX(100%);
+  transform: translateX(110%);
 
   width: 100%;
-  height: calc(100vh - 90px);
+  max-width: 320px;
+  height: 100vh;
 
-  background-color: #fff;
+  background: rgb(17 17 17 / 90%);
 
   transition: transform 0.3s ease-in-out;
-
-  @include min-490 {
-    top: 155px;
-    height: calc(100vh - 100px);
-  }
-
-  &._open-menu {
+  &._show {
     transform: translateX(0);
   }
 
-  // .sidebar-menu__content
-  &__content {
-    transform-origin: 200% 100%;
+  // .mobile-menu__body
+  &__body {
+    pointer-events: all;
 
-    overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+    position: relative;
 
     width: 100%;
     height: 100%;
-    padding: 16px 16px 70px;
 
-    font-size: 16px;
-
-    background: $background-secondary;
-
-    @include screen-490 {
-      padding: 16px 10px 55px;
-      font-size: 12px;
-    }
+    background: rgb(17 17 17 / 90%);
   }
 
-  // .sidebar-menu__body
-  &__body {
-    height: auto;
+  // .mobile-menu__header
+  &__header {
+    display: flex;
+    align-items: center;
+
+    height: 77px;
+    padding: 024px;
+    border-bottom: 1px solid #5f5f5f;
   }
 
-  // .sidebar-menu__catalog
-  &__catalog {
-    border-radius: 5px;
-    line-height: 100%;
-
-    &._open {
-      .sidebar-menu__link {
-        .icon {
-          transform: rotate(-90deg);
-        }
+  // .mobile-menu__content
+  &__content {
+    height: 100%;
+    .header {
+      // .header__top-menu
+      &__top-menu {
+        display: block;
+        height: calc(100% - 76px);
       }
     }
-  }
 
-  .top-menu {
-    // .top-menu__list
-    &__list {
-      flex-direction: column;
-      gap: 3px;
-      align-items: start;
-    }
-
-    // .top-menu__item
-    &__item {
-      width: 100%;
-      border-radius: 5px;
-      background: $background;
-    }
-
-    // .top-menu__link
-    &__link {
-      display: block;
-      width: 100%;
-      padding: 10px 8px;
-      font-size: 16px;
-
-      @include screen-490 {
-        font-size: 12px;
+    .top-menu {
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      border-radius: 0;
+      &::before,
+      &::after {
+        border-radius: 0;
+      }
+      // .top-menu__list
+      &__list {
+        display: inline-block;
+        height: auto;
+        border-radius: 0;
+      }
+      // .top-menu__item
+      &__item {
+        font-size: 24px;
+      }
+      // .top-menu__link
+      &__link {
+        font-size: inherit;
       }
     }
   }

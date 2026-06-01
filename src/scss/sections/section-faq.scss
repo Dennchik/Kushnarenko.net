@@ -13,7 +13,7 @@ $radius: 24px;
 
   // .section-faq__body
   &__body {
-    padding-block: 8rem !important;
+    padding-block: 8rem 9rem !important;
 
     @include screen-490 {
       padding-block: 4rem !important;

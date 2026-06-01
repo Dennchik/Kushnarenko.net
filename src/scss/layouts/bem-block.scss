@@ -13,6 +13,10 @@
   }
 }
 
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
 ._collapse:not(._show) {
   display: none;
 }
@@ -30,6 +34,7 @@
 
   font-size: 16px;
   line-height: 1;
+
   span,
   a {
     font-weight: 500;

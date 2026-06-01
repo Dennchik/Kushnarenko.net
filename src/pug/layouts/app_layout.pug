@@ -2,7 +2,7 @@
 include @/pug/includes/mixins
 
 doctype html
-html(lang="ru")
+html(lang="ru").scroll-smooth 
 	head
 		meta(charset="UTF-8")
 		meta(http-equiv="X-UA-Compatible" content="IE=edge") 
@@ -26,7 +26,7 @@ block page
 				block mobile-menu 
 					include @/pug/assets/mobile-menu
 				block header 
-					header.page__header
+					header.page__header.offset-header 
 						include @/pug/layouts/header 
 				block page-content
 					main.page__main-content

@@ -1,4 +1,4 @@
-import { toggleSidebarMenu } from '../layouts/layouts.js';
+import toggleSidebarMenu from './toggleSidebarMenu';
 
 export function anchorsSmoothScrolling() {
   // Функция плавного скролла к якорю по ID

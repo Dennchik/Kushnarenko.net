@@ -1,7 +1,20 @@
 import '../scss/main.scss';
 
-import { anchorsSmoothScrolling } from './assets/anchors-smooth-scrolling.js';
-anchorsSmoothScrolling();
+import AnchorScroller from './modules/AnchorScroller.js';
+
+new AnchorScroller({
+  headerSelector: '.offset-header', // Заменил 3 параметра на один!
+  selector: '.anchor-link',
+  // Коллбек срабатывает при клике на ссылку в сайдбаре:
+
+  onCloseSidebar: (sidebar) => {
+    sidebar.classList.remove('_show');
+  },
+
+  onCloseButton: (sidebar) => {
+    sidebar.classList.remove('_open');
+  },
+});
 
 import { videoInView } from './assets/videoInView.js';
 videoInView();
@@ -9,8 +22,8 @@ import { gravityNavigator } from './assets/gravity-navigator.js';
 
 import { burgerMenu } from './assets/burger-button.js';
 document.addEventListener('DOMContentLoaded', burgerMenu);
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
+const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 if (!isMobile) {
   gravityNavigator();
 }

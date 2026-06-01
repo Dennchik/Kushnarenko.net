@@ -33,6 +33,10 @@ body {
     overflow: hidden;
   }
 }
+[tabindex='-1']:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
 
 * {
   scrollbar-width: none;
@@ -47,10 +51,6 @@ body {
   &::before,
   &::after {
     box-sizing: border-box;
-  }
-
-  @media screen {
-    // scrollbar-width: thin;
   }
 }
 
