@@ -1,4 +1,6 @@
-export function loadedTimer() {
+//* Preloader с таймером загрузки страницы
+
+export default function loadedTimer() {
   const loader = document.querySelector('.loader');
   const loaderTimer = document.querySelector('.loader__timer');
   const startTime = performance.now();

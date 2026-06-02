@@ -55,7 +55,7 @@ export function gravityNavigator(params) {
           $particle.append($point);
           $place.append($particle);
           requestAnimationFrame(() => {
-            $place.classList.add('active');
+            $place.classList.add('active-link');
           });
           setTimeout(() => {
             try {
@@ -99,18 +99,18 @@ export function gravityNavigator(params) {
   const activate = ($el) => {
     updateEffectPosition($el);
 
-    if (!$el.classList.contains('active')) {
-      nav.querySelectorAll('li').forEach(($el) => {
-        $el.classList.remove('active');
+    if (!$el.classList.contains('active-link')) {
+      nav.querySelectorAll('.top-menu__item').forEach(($el) => {
+        $el.classList.remove('active-link');
       });
       effectEl.querySelectorAll('.particle').forEach(($el) => {
         effectEl.removeChild($el);
       });
-      $el.classList.add('active');
-      textEl.classList.remove('active');
+      $el.classList.add('active-link');
+      textEl.classList.remove('active-link');
 
       setTimeout(() => {
-        textEl.classList.add('active');
+        textEl.classList.add('active-link');
       }, 100);
 
       makeParticles(effectEl);
@@ -132,7 +132,7 @@ export function gravityNavigator(params) {
 
   // Resize Observer
   const resizeObserver = new ResizeObserver(() => {
-    const activeEl = nav.querySelector('li.active');
+    const activeEl = nav.querySelector('.top-menu__item.active-link');
     if (activeEl) {
       updateEffectPosition(activeEl);
     }
@@ -141,6 +141,6 @@ export function gravityNavigator(params) {
   resizeObserver.observe(document.body);
 
   setTimeout(() => {
-    activate(nav.querySelector('li'));
+    activate(nav.querySelector('.top-menu__item'));
   }, 200);
 }

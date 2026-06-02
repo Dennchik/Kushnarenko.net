@@ -18,7 +18,7 @@ html(lang="ru").scroll-smooth
 			title #{text}
 block page
 	body
-		//- include @/pug/utils/loaded-timer
+		include @/pug/utils/loaded-timer
 		include @/pug/includes/mixins
 		script(defer type="module" src="/src/js/main.js")
 		.wrapper

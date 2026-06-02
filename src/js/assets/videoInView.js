@@ -1,5 +1,5 @@
 //* ✅ - [ isVideoInView ]
-export function videoInView(videoSelector = '#player-id') {
+export default function videoInView(videoSelector = '#player-id') {
   const video = document.querySelector(videoSelector);
   const playBtn = document.querySelector('.video-play-btn');
   const cover = document.querySelector('.video-cover');

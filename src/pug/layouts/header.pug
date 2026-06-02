@@ -7,21 +7,22 @@
 				.header__link  
 					span kushnarenko.net
 		.header__top-menu(data-da="bp-1" data-da-position="0" data-da-resolution="960")   
-			//- .top-menu__wrapper
 			nav.top-menu
-				ul.top-menu__list 
-					li.top-menu__item
-						a(href="#events").top-menu__link.anchor-link Мероприятия
-					li.top-menu__item
-						a(href="#promo").top-menu__link.anchor-link Видео
-					li.top-menu__item
-						a(href=("#about")).top-menu__link.anchor-link О нас
-					li.top-menu__item
-						a(href=("#service")).top-menu__link.anchor-link Услуги
-					li.top-menu__item
-						a(href="#contacts").top-menu__link.anchor-link Контакты
+				.top-menu__list 
+					//- a(href="#home").top-menu__item.anchor-link
+						.top-menu__link О нас
+					a(href="#about").top-menu__item.anchor-link
+						.top-menu__link О нас
+					a(href="#promo").top-menu__item.anchor-link
+						.top-menu__link Видео
+					a(href="#events").top-menu__item.anchor-link
+						.top-menu__link Мероприятия
+					a(href="#service").top-menu__item.anchor-link 
+						.top-menu__link Услуги
+					a(href="#contacts").top-menu__item.anchor-link
+						.top-menu__link Контакты
 			span.effect.filter
-			span.effect.text.active.hidden
+			span.effect.text.hidden
 		.header__contacts 
 			a.top-menu__link(href="tel:+9106071900") +7 910 607-19-00
 			.header__burger-button

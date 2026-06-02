@@ -743,11 +743,11 @@
 .top-menu__item:focus-within:has(:focus-visible) {
   box-shadow: 0 0 0.5px 1.5px white;
 }
-.top-menu__item.active {
+.top-menu__item.active-link {
   color: black;
   text-shadow: none;
 }
-.top-menu__item.active::after {
+.top-menu__item.active-link::after {
   scale: 1;
   opacity: 1;
 }
@@ -803,14 +803,14 @@
 .effect.text.hidden {
   opacity: 0;
 }
-.effect.text.active {
+.effect.text.active-link {
   color: black;
   transition: color 1.8s var(--linear-ease) 0.2s;
 }
 .effect {
   /* Active effect animation */
 }
-.effect.active::after {
+.effect.active-link::after {
   animation: pill 2s var(--linear-ease) 0.2s both;
 }
 

@@ -119,6 +119,7 @@
   backdrop-filter: blur(9px) brightness(1.1);
 
   /* First noise texture layer */
+
   &::before {
     content: '';
 
@@ -243,7 +244,7 @@
     &:focus-within:has(:focus-visible) {
       box-shadow: 0 0 0.5px 1.5px white;
     }
-    &.active {
+    &.active-link {
       color: black;
       text-shadow: none;
 
@@ -323,14 +324,14 @@
       opacity: 0;
     }
 
-    &.active {
+    &.active-link {
       color: black;
       transition: color 1.8s var(--linear-ease) 0.2s;
     }
   }
 
   /* Active effect animation */
-  &.active {
+  &.active-link {
     &::after {
       animation: pill 2s var(--linear-ease) 0.2s both;
     }
