@@ -11,10 +11,6 @@
     }
   }
 
-  // .section-about__content
-  &__content {
-  }
-
   // .section-about__grid
   &__grid {
     display: grid;
@@ -34,7 +30,7 @@
 
   border-radius: $radius;
 
-  background-color: $color-card-white;
+  background-color: $color-white;
 
   transition:
     transform 0.3s ease,
@@ -45,13 +41,19 @@
     box-shadow: 0 12px 30px rgb(0 0 0 / 5%);
   }
 
-  // --- МОДИФИКАТОРЫ (Сетка) ---
+  //* --- МОДИФИКАТОРЫ (Сетка) ---
   // .about-card--hero-left
-  //* 1. Левое фото (4 колонки, 2 ряда)
   &--hero-left {
+    //* 1. Левое фото (4 колонки, 2 ряда)
     grid-column: span 4;
     grid-row: span 2;
     justify-content: flex-end; // Текст внизу
+
+    .about-card__content {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
 
     .about-card__overlay-content {
       z-index: 4;
@@ -104,7 +106,7 @@
       }
     }
 
-    .about-card__fon {
+    .about-card__overlay-column {
       position: relative;
       z-index: 3;
 
@@ -125,12 +127,6 @@
       flex: 0 1 35%;
       width: 35%;
     }
-
-    .about-card__image {
-      display: flex;
-      width: 100%;
-      height: 100%;
-    }
   }
 
   // .about-card--offer
@@ -143,26 +139,29 @@
     align-items: center;
     justify-content: center;
 
-    padding: 15px;
+    padding: 24px;
 
     text-align: center;
 
     .about-card__center-content {
       position: relative;
       z-index: 2;
+
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      justify-content: space-between;
+
+      height: 100%;
     }
 
     .about-card__top-text {
-      margin-bottom: 20px;
+      margin-bottom: 0;
       font-size: 14px;
-      font-style: italic;
-      // color: #777;
     }
 
     .about-card__title {
       margin-bottom: 20px;
-
-      font-family: $font-title;
       font-size: 32px;
       font-weight: 800;
       line-height: 1.1;
@@ -192,9 +191,13 @@
       font-size: 14px;
       font-weight: 700;
 
-      background: #ebebeb;
+      background-color: #ebebeb;
 
       transition: 0.3s;
+      transition:
+        color 1.8s,
+        background-color 1.8s $transition-linear-ease;
+
       &:hover {
         color: #fff;
         background: $color-text;
@@ -235,9 +238,54 @@
       } // ЦВ эффект
     }
 
+    .about-card__content {
+      display: flex;
+      width: 100%;
+      height: 100%;
+    }
+
+    .about-card__overlay-column {
+      position: relative;
+      z-index: 3;
+
+      flex: 0 1 57%;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    .about-card__overlay-content {
+      z-index: 4;
+      top: 0;
+      width: 100%;
+    }
+
+    .about-card__title {
+      padding: 24px;
+
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.1;
+      color: $color-bg-dark;
+      text-align: center;
+    }
+
+    .about-card__text {
+      padding: 15px;
+
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.3;
+      text-align: center;
+      text-shadow: 1px 1px 1px rgb(255 255 255 / 80%);
+      letter-spacing: 0.1em;
+
+      filter: contrast(170%);
+    }
+
     .about-card__bg-img {
       user-select: none;
-      filter: grayscale(100%); // ЧБ эффект
+      filter: grayscale(1); // ЧБ эффект
     }
 
     .about-card__social-overlay {
@@ -263,11 +311,17 @@
 
       width: 40px;
       height: 40px;
-      border: 1px solid rgb(255 255 255 / 60%);
+      // border: 1px solid $color-text-gray;
       border-radius: 50%;
 
       color: #fff;
       text-decoration: none;
+
+      background-color: $color-text-gray;
+
+      transition:
+        color 1.8s,
+        background-color 1.8s $transition-linear-ease;
 
       .icon-vk-draw {
         font-size: 24px;
@@ -277,22 +331,6 @@
         font-size: 24px;
       }
 
-      &:hover {
-        color: #000;
-        background: #fff;
-      }
-    }
-
-    .about-card__follow-btn {
-      padding: 8px 20px;
-      border: 1px solid #fff;
-      border-radius: 40px;
-
-      font-size: 12px;
-      font-weight: 700;
-      color: #fff;
-      text-decoration: none;
-      text-transform: uppercase;
       &:hover {
         color: #000;
         background: #fff;
@@ -346,10 +384,6 @@
   &--contacts {
     grid-column: span 3;
     min-height: 220px; // Высота нижних блоков
-  }
-
-  // .about-card--fun
-  &--fun {
   }
 
   // .about-card--portfolio
@@ -472,22 +506,6 @@
     object-fit: cover;
   }
 
-  // .about-card__overlay
-  &__overlay {
-  }
-  // .about-card__name
-  &__name {
-  }
-  // .about-card__caption
-  &__caption {
-  }
-  // .about-card__decor
-  &__decor {
-  }
-  // .about-card__center-content
-  &__center-content {
-  }
-
   // .about-card__top-text
   &__top-text {
     // Базовая типографика
@@ -527,79 +545,6 @@
     // Опционально: если текст кажется слишком светлым на белом фоне,
     // можно добавить очень легкую внутреннюю тень через filter (поддержка браузерами хорошая)
     filter: drop-shadow(0 1px 0 rgb(0 0 0 / 10%));
-  }
-
-  // .about-card__title
-  &__title {
-  }
-  // .about-card__description
-  &__description {
-  }
-  // .about-card__actions
-  &__actions {
-  }
-  // .about-card__btn
-  &__btn {
-  }
-  // .about-card__arrow-link
-  &__arrow-link {
-  }
-  // .about-card__social-overlay
-  &__social-overlay {
-  }
-  // .about-card__social-icons
-  &__social-icons {
-  }
-  // .about-card__social-link
-  &__social-link {
-  }
-  // .about-card__follow-btn
-  &__follow-btn {
-  }
-  // .about-card__stats-title
-  &__stats-title {
-  }
-  // .about-card__text
-  &__text {
-  }
-  // .about-card__quote-text
-  &__quote-text {
-  }
-  // .about-card__handwritten-icon
-  &__handwritten-icon {
-  }
-  // .about-card__subtitle
-  &__subtitle {
-  }
-  // .about-card__small-text
-  &__small-text {
-  }
-  // .about-card__number
-  &__number {
-  }
-  // .about-card__avatars
-  &__avatars {
-  }
-  // .about-card__label
-  &__label {
-  }
-  // .about-card__messenger-row
-  &__messenger-row {
-  }
-  // .about-card__messenger-info
-  &__messenger-info {
-  }
-  // .about-card__label-light
-  &__label-light {
-  }
-  // .about-card__label-bold
-  &__label-bold {
-  }
-  // .about-card__arrow-circle
-  &__arrow-circle {
-  }
-  // .about-card__divider
-  &__divider {
   }
 }
 

@@ -10,12 +10,33 @@
     align-items: center;
     justify-content: space-between;
 
-    color: #363636;
+    // color: #363636;
+    color: $color-white;
 
-    transition: color 0.9s ease 0s;
+    transition: color 0.9s $transition-linear-ease;
 
     @include screen-490 {
       gap: 5px;
+    }
+  }
+
+  // .header__logo
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      .header__link {
+        color: $color-accent;
+      }
+
+      .header__icon-text {
+        background: $color-accent;
+        span {
+          color: $color-white;
+        }
+      }
     }
   }
 
@@ -41,47 +62,45 @@
     display: flex;
     gap: 1rem;
     align-items: center;
-
-    .top-menu__link {
-      color: #fff;
-      white-space: nowrap;
-    }
   }
 
   // .header__icon-text
   &__icon-text {
     transform: rotate(45deg);
 
-    width: 25px;
-    height: 25px;
-    margin-right: 1rem;
+    width: 35px;
+    height: 35px;
     border-radius: 8px;
 
-    color: #fff;
+    color: $color-white;
 
     background: #000;
 
-    transition:
-      color 0.9s,
-      background 0.9s ease 0s;
+    transition: background 1.8s $transition-linear-ease;
 
     span {
       transform: rotate(-45deg);
       font-size: 15px;
       font-weight: 700;
+      transition: color 1.8s $transition-linear-ease;
     }
   }
 
   // .header__link
   &__link {
-    transform: scaleY(1.5);
+    transform: scaleY(1.5) translateY(-3px);
+
+    margin-left: 1.6rem;
 
     font-family: $font-family-logo;
     font-size: 2.6rem;
-    font-weight: 800;
-    color: #fff;
+    font-weight: 700;
+    line-height: 100%;
+    color: $color-white;
     text-shadow: 1px 1px 2px #000;
     letter-spacing: 1.1px;
+
+    transition: color 1.8s $transition-linear-ease;
   }
 
   // .header__main-menu
@@ -173,16 +192,6 @@
     }
   }
 
-  // .top-menu__wrapper
-  &__wrapper {
-    position: relative;
-    z-index: 3;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
   // .top-menu__list
   &__list {
     position: relative;
@@ -221,11 +230,6 @@
 
     box-shadow: 0 0 0.5px 1.5px transparent;
 
-    transition: color 0.3s ease;
-    transition:
-      all 1.8s var(--linear-ease) 0.2s,
-      box-shadow 0.3s ease;
-
     &::after {
       content: '';
 
@@ -237,15 +241,16 @@
       border-radius: 100vw;
 
       opacity: 0;
-      background: rgb(255 255 255);
+      background: $color-accent;
 
-      transition: all 2s var(--linear-ease) 0.2s;
+      transition: all 2s $transition-linear-ease;
     }
     &:focus-within:has(:focus-visible) {
       box-shadow: 0 0 0.5px 1.5px white;
     }
+
     &.active-link {
-      color: black;
+      // color: black;
       text-shadow: none;
 
       &::after {
@@ -253,17 +258,18 @@
         opacity: 1;
       }
     }
-    &:hover {
-      color: #ff5a5f;
-      filter: contrast(150%);
-    }
   }
 
   // .top-menu__link
   &__link {
     font-size: 16px;
     font-weight: 500;
-    // text-shadow: 1px 1px 2px #000;
+    white-space: nowrap;
+    transition: color 1.8s $transition-linear-ease;
+
+    &:hover {
+      color: $color-accent;
+    }
   }
 }
 //* -------------------- Effect element for animations -------------------------
@@ -306,7 +312,7 @@
       border-radius: 100vw;
 
       opacity: 0;
-      background: white;
+      background: $color-accent;
     }
   }
 
@@ -325,15 +331,15 @@
     }
 
     &.active-link {
-      color: black;
-      transition: color 1.8s var(--linear-ease) 0.2s;
+      // color: black;
+      transition: color 1.8s $transition-linear-ease;
     }
   }
 
   /* Active effect animation */
   &.active-link {
     &::after {
-      animation: pill 2s var(--linear-ease) 0.2s both;
+      animation: pill 2s $transition-linear-ease both;
     }
   }
 }
@@ -355,6 +361,7 @@
 
   animation: particle calc(var(--time)) ease 1 -350ms;
 }
+
 .particle,
 .point {
   transform-origin: center;
@@ -432,33 +439,4 @@
     scale: 1;
     opacity: 1;
   }
-}
-
-:root {
-  --linear-ease: linear(
-    0,
-    0.068,
-    0.19 2.7%,
-    0.804 8.1%,
-    1.037,
-    1.199 13.2%,
-    1.245,
-    1.27 15.8%,
-    1.274,
-    1.272 17.4%,
-    1.249 19.1%,
-    0.996 28%,
-    0.949,
-    0.928 33.3%,
-    0.926,
-    0.933 36.8%,
-    1.001 45.6%,
-    1.013,
-    1.019 50.8%,
-    1.018 54.4%,
-    1 63.1%,
-    0.995 68%,
-    1.001 85%,
-    1
-  );
 }

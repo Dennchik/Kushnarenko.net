@@ -2,9 +2,11 @@
 @use 'mixins.scss' as *;
 
 html {
+  // scroll-behavior: smooth;
   counter-reset: heading;
   height: 100%;
-  color: var(--font-color-default);
+  color: $color-text;
+
   font: {
     size: 62.5%;
 
@@ -19,8 +21,6 @@ html {
 }
 
 body {
-  // scroll-behavior: smooth;
-
   overscroll-behavior: none;
 
   font: 16px/16px $font-family-default;
@@ -141,7 +141,8 @@ h6 {
 
 //  * Изменить стиль выделения текста
 ::selection {
-  color: $text-color-selection;
+  color: $color-text;
+  color: red;
   background-color: $text-selection;
 }
 

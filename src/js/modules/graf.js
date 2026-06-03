@@ -9,7 +9,7 @@
  * - Клик → подсветка сразу на нужной ссылке, observer замолкает на 2 сек
  */
 
-export function GraphitiNavigator(params = {}) {
+export default function GraphitiNavigator(params = {}) {
   const nav = document.querySelector('.header__top-menu');
   const effectEl = document.querySelector('.effect.filter');
   const textEl = document.querySelector('.effect.text');

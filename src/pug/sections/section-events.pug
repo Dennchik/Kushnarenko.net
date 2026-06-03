@@ -6,7 +6,20 @@
 
 		.section-events__grid
 
-			//- Карточка 1: Свадьбы
+			//- Карточка 1: Корпоративы
+			a.event-card(href="#corporate")
+				.event-card__image-box
+					.event-card__img 
+						+picture('img/events/corporate-party.png', 'Корпоративы')
+
+						.event-card__content
+							.event-card__text
+								h3.event-card__title Корпоративы
+								p.event-card__desc Презентации, тимбилдинги и новогодние гала-ужины
+							span.event-card__arrow
+								+iconfont('arrow-right', 'icon')
+
+			//- Карточка 2: Свадьбы
 			a.event-card(href="#weddings")
 				//- Обертка для картинки (нужна для зума)
 				.event-card__image-box
@@ -20,20 +33,6 @@
 								p.event-card__desc От камерных семейных ужинов до масштабных вечеринок
 
 							//- Кнопка-стрелка
-							span.event-card__arrow
-								+iconfont('arrow-right', 'icon')
-
-			//- Карточка 2: Корпоративы
-			a.event-card(href="#corporate")
-				.event-card__image-box
-					.event-card__img 
-						+picture('img/events/corporate-party.png', 'Корпоративы')
-
-						.event-card__content
-							.event-card__text
-								h3.event-card__title Корпоративы
-								p.event-card__desc Презентации, тимбилдинги и новогодние гала-ужины
-
 							span.event-card__arrow
 								+iconfont('arrow-right', 'icon')
 

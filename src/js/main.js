@@ -3,7 +3,7 @@ import '../scss/main.scss';
 import loadedTimer from './utils/loaded-timer.js';
 import AnchorScroller from './modules/AnchorScroller.js';
 import videoInView from './assets/videoInView.js';
-import { GraphitiNavigator } from './modules/graf.js';
+import GraphitiNavigator from './modules/graf.js';
 import { burgerMenu } from './assets/burger-button.js';
 
 new AnchorScroller({

@@ -89,6 +89,12 @@
   }
 }
 
+@mixin screen-992 {
+  @media screen and (width < 992px) {
+    @content;
+  }
+}
+
 @mixin screen-980 {
   @media screen and (width <= 980px) {
     @content;

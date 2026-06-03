@@ -63,7 +63,7 @@ $gap: 20px;
   background-color: $color-bg-card;
 
   transition:
-    transform 0.3s ease,
+    transform 1.8s $transition-linear-ease,
     box-shadow 0.3s ease;
 
   // Ховер для боковых карточек
@@ -76,8 +76,12 @@ $gap: 20px;
   &--popular {
     z-index: 2; // Поверх остальных
     transform: scale(1.05); // Чуть больше остальных
+
     border: 2px solid $color-accent; // Красная рамка
+
     box-shadow: 0 10px 40px rgb(0 0 0 / 8%);
+
+    transition: transform 1.8s $transition-linear-ease;
 
     @media (width <= 992px) {
       transform: scale(1); // На мобильном убираем увеличение
@@ -240,19 +244,21 @@ $gap: 20px;
 
     font-size: 16px;
     font-weight: 700;
-
-    transition: 0.3s;
   }
 
   // Прозрачная кнопка (для обычных тарифов)
   .btn-outline {
     border: 1px solid #ddd;
     color: $color-text;
-    background: transparent;
+    background-color: transparent;
+    transition:
+      color 1.8s,
+      border 1.8s,
+      background-color 1.8s $transition-linear-ease;
 
     &:hover {
       border-color: $color-text;
-      color: #fff;
+      color: $color-white;
       background: $color-text;
     }
   }

@@ -1,8 +1,6 @@
 @use '../core/variables' as *;
 @use '../core/mixins' as *;
 
-// --- Переменные (те же, что и выше) ---
-
 .section-hero {
   position: relative;
 
@@ -18,7 +16,7 @@
   font-family: $font-family-default;
   color: $color-white;
 
-  // Фон
+  // .section-hero__bg
   &__bg {
     position: absolute;
     z-index: 1;
@@ -36,8 +34,9 @@
     object-position: right top; // Фокус на верхней части (лицо)
   }
 
-  // Градиентное затемнение (снизу вверх), чтобы текст читался
+  // .section-hero__overlay
   &__overlay {
+    // Градиентное затемнение (снизу вверх), чтобы текст читался
     position: absolute;
     z-index: 2;
     top: 0;
@@ -54,6 +53,7 @@
     );
   }
 
+  // .section-hero__body
   &__body {
     padding-block: 8rem !important;
 
@@ -62,8 +62,9 @@
     }
   }
 
-  // Контейнер (ограничитель ширины)
+  // .section-hero__info
   &__info {
+    // Контейнер (ограничитель ширины)
     position: relative;
     z-index: 3; // Поверх затемнения
 
@@ -72,12 +73,14 @@
     margin: 0 auto;
   }
 
+  // .section-hero__content
   &__content {
     max-width: 800px; // Ограничиваем ширину текста
   }
 
-  // Имя (верхняя метка)
+  // .section-hero__name-label
   &__name-label {
+    // Имя (верхняя метка)
     display: inline-block;
 
     margin-bottom: 24px;
@@ -94,7 +97,7 @@
     backdrop-filter: blur(10px);
   }
 
-  // Заголовок
+  // .section-hero__title
   &__title {
     display: flex;
     flex-direction: column;
@@ -109,17 +112,19 @@
       text-shadow: -1px 1px 3px #1b1b1b;
     }
 
-    @media (width <= 768px) {
+    @include screen-768 {
       font-size: 40px; // Меньше на телефоне
     }
   }
 
+  // .section-hero__title-text
   &__title-text {
     display: block;
   }
 
-  // Подзаголовок (Гео)
+  // .section-hero__subtitle
   &__subtitle {
+    // Подзаголовок (Гео)
     display: flex;
     align-items: center;
 
@@ -146,7 +151,7 @@
     }
   }
 
-  // Кнопка
+  // .section-hero__btn
   &__btn {
     cursor: pointer;
 
@@ -163,8 +168,9 @@
     background-color: $color-white;
 
     transition:
-      transform 0.3s ease,
-      background-color 0.3s ease;
+      transform 1.8s $transition-linear-ease,
+      background-color 1.8s $transition-linear-ease,
+      color 1.8s $transition-linear-ease;
 
     &:hover {
       transform: scale(1.05); // Легкое увеличение

@@ -16,19 +16,19 @@
 // todo --------------------------- utils ------------------------------------
 @use 'utils/loaded-timer';
 // todo --------------------------- Assets -------------------------------------
-@use 'assets/swiper-11.2.10';
+// @use 'assets/swiper-11.2.10';
 @use 'assets/burger-button';
 // todo ------------------------ components ------------------------------------
 @use 'components/sidebar-menu';
-@use 'components/dropdown-menu';
-@use 'components/cookies-accept';
-@use 'components/form-login';
-@use 'components/widget';
-@use 'components/order-call';
+// @use 'components/dropdown-menu';
+// @use 'components/cookies-accept';
+// @use 'components/form-login';
+// @use 'components/widget';
+// @use 'components/order-call';
 // todo --------------------------- Chunks -------------------------------------
-@use 'chunks/bread-crumbs';
-@use 'chunks/collection';
-@use 'chunks/check-box';
+// @use 'chunks/bread-crumbs';
+// @use 'chunks/collection';
+// @use 'chunks/check-box';
 // todo -------------------------- Section -------------------------------------
 @use 'sections/section-hero.scss';
 @use 'sections/section-promo';

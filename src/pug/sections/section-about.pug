@@ -5,12 +5,8 @@
 			.section-about__grid
 				//* - 1. Карточка: Фото слева (В полный рост)
 				.about-card.about-card--hero-left
-					.about-card__image
-						.about-card__overlay-footer 
-							h3.about-card__name Максим Кушнаренко
-							p.about-card__caption Ведущий, которого советуют «своим»
-						//- Фоновое изображение можно задать через CSS модификатор или img
-						.about-card__fon
+					.about-card__content
+						.about-card__overlay-column
 							.about-card__overlay-content
 								.about-card__title Меню
 								ul.about-card__list
@@ -22,6 +18,10 @@
 										span Стану для твоей бабушки еще одним внуком
 									li.about-card__item
 										span Обнимашки самый лучший день в твоей жизни 
+						.about-card__overlay-footer 
+							h3.about-card__name Максим Кушнаренко
+							p.about-card__caption Ведущий, которого советуют «своим»
+						//- Фоновое изображение можно задать через CSS модификатор или img
 						img.about-card__bg-img(src="/img/about/max-full.webp" alt="Кушнаренко Максим")
 
 				//* - 2. Карточка: Центральный оффер
@@ -41,14 +41,21 @@
 
 				//* - 3. Карточка: Фото справа (Ч/Б портрет)
 				.about-card.about-card--hero-right
-					img.about-card__bg-img(src="/img/about/max-fullbody.webp" alt="Портрет ведущего")
+					.about-card__content
+						.about-card__overlay-column
+							.about-card__overlay-content
+								.about-card__title Как я работаю
+								.about-card__text 
+									p Я умею держать правильный темп, шутить уместно и&nbsp;без «кринжа», поддерживать гостей и&nbsp;молодожёнов, сглаживать любые неловкие моменты и&nbsp;быть опорой для&nbsp;заказчика на&nbsp;протяжении всего мероприятия.
 					.about-card__social-overlay
 						.about-card__social-icons
-							a.about-card__social-link(href="#")
+							a.about-card__social-link(href="#telegram" aria-label="Telegram")
 								+iconfont('telegram-draw', 'icon')
-							a.about-card__social-link(href="#")
+							a.about-card__social-link(href="#whatsapp" aria-label="WhatsApp")
+								+iconfont('whatsapp-draw', 'icon')
+							a.about-card__social-link(href="#vk" aria-label="VK")
 								+iconfont('vk-draw', 'icon')
-						a.about-card__follow-btn(href="#") Follow
+					img.about-card__bg-img(src="/img/about/max-fullbody.webp" alt="Портрет ведущего")
 
 				//* - 4. Карточка: Текстовая статистика (Широкая)
 				.about-card.about-card--stats

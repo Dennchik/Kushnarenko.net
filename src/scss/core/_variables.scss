@@ -4,56 +4,44 @@ $maxWidthContainer: 1440px;
 
 //! - [Font Variables] -
 // --- Переменные (Настройте под свой проект) ---
-$font-main: 'Manrope', sans-serif; // Основной шрифт
-$font-hand: 'cursive'; // Шрифт для "Pf" (подключите рукописный)
-$color-bg-page: #f5f5f7; // Фон секции (светло-серый)
-$color-card-white: #fff;
-$color-card-gray: #f2f3f5; // Фон для карточек статистики и контактов
-$color-text: #111;
-$color-text-light: #5f5f5f;
-$color-bg-dark: #111; // Темный фон футера
-$color-text-gray: #888;
-$color-white: #fff;
-$color-bg-input: #1f1f1f; // Фон полей ввода
-$color-accent: #ff5a5f; // Красный акцент (можно поменять)
-$radius-btn: 50px;
-$color-white: #fff;
-$color-accent: #ff5a5f; // Красный акцент (стрелки)
+
 $radius: 32px; // Скругление углов (как на референсе)
 $gap: 16px; // Отступы между карточками
+$transition-linear-ease: var(--linear-ease) 0.2s;
+$radius-btn: 50px;
 
 $font-path: '../fonts';
 $font-family-default: 'Montserrat Alternates', sans-serif;
 $font-family-logo: 'Dancing Script', sans-serif;
-// $font-title: 'GreatVibes' sans-serif;
-// $font-title: 'DancingScript' sans-serif;
-$font-title: 'Cormorant' sans-serif;
-
+$font-main: 'Manrope', sans-serif; // Основной шрифт
+$font-hand: 'cursive', sans-serif; // Шрифт для "Pf" (подключите рукописный)
 $font-weight-default: 400;
 $font-size: 1.6rem;
+
 //* - [Font color] -
 $font-color-secondary: rgb(255 255 255);
+
 //* - [Color]
-// $neon-carrot: rgb(255 163 67);
-$neon-carrot: rgb(255 142 67);
+$color-bg-page: rgb(245 245 247); // Фон секции (светло-серый)
+$color-card-gray: rgb(242 243 245); // Фон для карточек статистики и контактов
+$color-text: rgb(16 22 32);
+$color-text-light: rgb(95 95 95);
+$color-bg-dark: rgb(17 17 17); // Темный фон футера
+$color-text-gray: rgb(136 136 136);
+$color-accent: rgb(255 90 95); // Красный акцент (можно поменять)
+$color-white: rgb(255 255 255);
+$border-color: rgb(51 51 51);
+$color-placeholder: rgb(85 85 85);
+$color-gray-hover: rgb(173 173 173);
+
 //* - [Background Color] -
 $background: rgb(240 240 240);
-$background-secondary: rgb(239 239 241);
-$background-ui: rgb(87 96 105 / 100%);
+$background-input: rgb(31 31 31); // Фон полей ввода
 
-$color: rgb(0 0 0 / 100%);
-$color-green: rgb(16 71 28);
-$color-secondary: #fff;
-$border-color: hsl(251deg 37% 48%);
+//* - [text-selection]
+$text-selection: rgb(255 90 96 / 25.3%);
 
-//* - [Shadow] -
-$boxShadow: 0 0 17px 1px rgb(0 0 0 / 15%);
-$filter: drop-shadow(1px 0px 3px rgb(32 25 71)) invert(5%);
-//* -
-$text-selection: rgb(16 71 28 / 42.5%);
-$text-color-selection: rgb(16 71 28);
-//* -
-
+//* - [root]
 :root {
   --alarm-color: rgb(255 74 74 / 60%);
   --width: calc(0px + (260 - 0) * ((100vw - 320px) / (1024 - 320)));
@@ -71,6 +59,44 @@ $text-color-selection: rgb(16 71 28);
   --inset-bottom: 100%;
   --inset-left: 0;
   //* --------------------------------------------------------------------------
+  // --color-1: #ff5a60be;
+  --color-1: #ff5adbbe;
+
+  /* Emerald */
+  --color-2: #ff5a6079;
+
+  /* Cyan */
+  // --color-3: #ff5a6044;
+  --color-3: #5affe944;
+
+  /* Violet */
+  --color-4: #fff45a2a;
+  --linear-ease: linear(
+    0,
+    0.068,
+    0.19 2.7%,
+    0.804 8.1%,
+    1.037,
+    1.199 13.2%,
+    1.245,
+    1.27 15.8%,
+    1.274,
+    1.272 17.4%,
+    1.249 19.1%,
+    0.996 28%,
+    0.949,
+    0.928 33.3%,
+    0.926,
+    0.933 36.8%,
+    1.001 45.6%,
+    1.013,
+    1.019 50.8%,
+    1.018 54.4%,
+    1 63.1%,
+    0.995 68%,
+    1.001 85%,
+    1
+  );
 }
 
 $snap: cubic-bezier(1, 0.005, 0.24, 1);

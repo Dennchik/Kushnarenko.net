@@ -1,42 +1,35 @@
 footer.footer#contacts
 	.footer__body
 		.footer__wrapper._container
-
 			//- Левая колонка: Призыв и Контакты
 			.footer__info
 				h2.footer__title Остались вопросы? <br> Давайте обсудим ваш праздник!
 				p.footer__desc Заполните форму, и я свяжусь с вами в течение 15 минут, чтобы уточнить детали и забронировать дату.
 				.footer__contacts-block
 					a.footer__phone(href="tel:+79106071900") +7 (910) 607-19-00
-
 					.footer__socials
-						a.footer__social-link(href="#telegram" aria-label="Telegram")
-							+iconfont('telegram-draw', 'icon')
-						a.footer__social-link(href="#whatsapp" aria-label="WhatsApp")
-							+iconfont('whatsapp-draw', 'icon')
-						a.footer__social-link(href="#vk" aria-label="VK")
-							+iconfont('vk-draw', 'icon')
-
+						.footer-socials
+							a.footer-socials__social-link(href="#telegram" aria-label="Telegram")
+								+iconfont('telegram-draw', 'icon')
+							a.footer-socials__social-link(href="#whatsapp" aria-label="WhatsApp")
+								+iconfont('whatsapp-draw', 'icon')
+							a.footer-socials__social-link(href="#vk" aria-label="VK")
+								+iconfont('vk-draw', 'icon')
 			//- Правая колонка: Форма
 			form.footer__form.form(action="#" method="POST")
 				.form__row
 					input.form__input(type="text" placeholder="Ваше имя" required)
-
 				.form__row
 					input.form__input(type="tel" placeholder="Номер телефона" required)
-
 				.form__row
 					input.form__input(type="text" placeholder="Дата мероприятия (если известна)")
-
-				button.form__submit.btn(type="submit") Получить смету и презентацию
-
+				button.form__submit.btn(type="submit") Забронировать дату
 				p.form__agreement 
-					| Нажимая кнопку, вы соглашаетесь с 
-					a(href="#") политикой конфиденциальности
-
+					span Нажимая кнопку, вы соглашаетесь 
+					span c
+						a(href="#")   политикой конфиденциальности
 		//- Нижняя линия (Копирайт)
 		.footer__bottom-wrapper._container
 			.footer__bottom
-
-				span.footer__copy © 2025 Максим Кушнаренко. Ведущий.
-				a.footer__developer(href="#") Дизайн и разработка Gusli Media-Group
+				span.footer__copy © 2026 Максим Кушнаренко. Ведущий.
+				a.footer__developer(href="https://gusli-studio.ru/" target="_blank") Дизайн и разработка Gusli Media-Group
