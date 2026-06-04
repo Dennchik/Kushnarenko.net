@@ -217,44 +217,36 @@
 //* ------------------------- [Class _ibg] -------------------------------------
 
 .t-h1 {
-  font-size: 36px;
-  line-height: 117.4%; /* 54/46 */
-  text-transform: uppercase;
-  filter: contrast(120%);
+  font-size: clamp(3.6rem, 3.1vw, 6.4rem);
 
-  @include minmax-490-1440 {
-    font-size: calc(
-      17px + (36 - 17) * ((100vw - 490px) / (1440 - 490))
-    ) !important;
-  }
-
-  @include screen-490 {
-    font-size: 17px !important;
+  @include screen-375 {
+    font-size: 24px;
   }
 }
+
 .t-h2 {
   font-size: 40px;
   line-height: 100%;
 
   @include minmax-490-1440 {
     font-size: calc(
-      17px + (40 - 17) * ((100vw - 490px) / (1440 - 490))
+      22px + (40 - 22) * ((100vw - 490px) / (1440 - 490))
     ) !important;
   }
 
   @include screen-490 {
-    font-size: 17px !important;
+    font-size: 22px !important;
   }
 }
 
 .t-h3 {
-  font-size: 35px;
+  font-size: 20px;
   line-height: 100%;
   text-transform: uppercase;
 
   @include minmax-490-1920 {
     font-size: calc(
-      17px + (35 - 17) * ((100vw - 490px) / (1920 - 490))
+      17px + (20 - 17) * ((100vw - 490px) / (1920 - 490))
     ) !important;
   }
 

@@ -1,6 +1,6 @@
 .header._container 
 	.header__content
-		a(href="#home").header__logo 
+		a(href="#home").header__logo.anchor-link 
 			.header__icon-logo
 				.header__icon-text 
 					span МК
@@ -24,6 +24,8 @@
 			span.effect.filter
 			span.effect.text.hidden
 		.header__contacts 
-			a.top-menu__link(href="tel:+9106071900") +7 910 607-19-00
+			a.top-menu__link(href="tel:+9106071900")
+				span +7 910 607-19-00
+				+iconfont('volume-control-phone', 'icon')
 			.header__burger-button
 				include @/pug/assets/burger-button

@@ -24,12 +24,11 @@ $gap: 20px;
   &__title {
     margin-bottom: 12px;
     font-family: $font-family-title;
-    font-size: 44px;
     font-weight: 800;
   }
 
   &__subtitle {
-    font-size: 20px;
+    font-size: 2rem;
     color: $color-text-gray;
   }
 
@@ -40,24 +39,24 @@ $gap: 20px;
     gap: $gap;
 
     // --- АДАПТИВ (Мобильный скролл) ---
-    @media (width <= 992px) {
-      scrollbar-width: none; /* Firefox */
-      scroll-snap-type: x mandatory; // Доводка скролла до элемента
 
-      overflow-x: auto; // Разрешаем скролл по горизонтали
+    @include screen-992 {
+      scroll-snap-type: x proximity; // Доводка скролла до элемента
+
+      overflow-x: scroll; // Разрешаем скролл по горизонтали
       display: flex; // Превращаем грид в флекс-строку
 
-      margin-right: -20px;
-      margin-left: -20px; // Компенсация отступа контейнера
-      padding-right: 20px;
-      padding-bottom: 20px; // Место для скроллбара (если виден)
-      padding-left: 20px; // Чтобы первый элемент не прилипал к краю экрана
+      padding-bottom: 2rem; // Место для скроллбара (если виден)
 
       -ms-overflow-style: none; /* IE and Edge */
 
+      &::-webkit-scrollbar-thumb {
+        background-color: $color-accent;
+      }
+
       // Скрываем полосу прокрутки (для красоты)
       &::-webkit-scrollbar {
-        display: none;
+        height: 0.4rem;
       }
     }
   }
@@ -78,8 +77,8 @@ $gap: 20px;
   padding: 10px;
   border-radius: $radius;
 
-  background-color: #fff;
-  box-shadow: 0 4px 20px rgb(0 0 0 / 5%);
+  background-color: $color-white;
+  box-shadow: 0 0 12px $color-bg-section;
 
   &__image-box {
     overflow: hidden;

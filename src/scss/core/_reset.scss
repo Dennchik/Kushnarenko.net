@@ -4,8 +4,8 @@
 html {
   // scroll-behavior: smooth;
   counter-reset: heading;
+  // scrollbar-width: thin;
   height: 100%;
-  // color: $color-text;
 
   font: {
     size: 62.5%;
@@ -26,6 +26,7 @@ body {
   font: 16px/16px $font-family-default;
   font-weight: $font-weight-default;
   line-height: 1;
+  color: $color-text;
 
   background: $background;
 
@@ -39,7 +40,7 @@ body {
 }
 
 * {
-  scrollbar-width: none;
+  // scrollbar-width: none;
 
   box-sizing: border-box;
   margin: 0;

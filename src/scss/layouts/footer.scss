@@ -45,12 +45,12 @@ $radius: 24px;
     margin-bottom: 20px;
 
     font-family: $font-family-title;
-    font-size: 36px;
+    font-size: 3.6rem;
     font-weight: 800;
-    line-height: 1.2;
+    line-height: 120%;
 
     @include screen-768 {
-      font-size: 32px;
+      font-size: 22px;
     }
   }
 
@@ -74,7 +74,7 @@ $radius: 24px;
 
     margin-bottom: 24px;
 
-    font-size: 36px;
+    font-size: 3.6rem;
     font-weight: 700;
     color: $color-white;
     text-decoration: none;
@@ -86,7 +86,7 @@ $radius: 24px;
     }
 
     @include screen-768 {
-      font-size: 28px;
+      font-size: 24px;
     }
   }
 

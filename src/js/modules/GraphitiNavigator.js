@@ -3,13 +3,26 @@
  *
  * Эффект плавающей плашки и искр над ссылками с адаптивным скроллспаем.
  * Отвечает за всю визуальную часть и слежение за активными секциями при скролле.
+ *
+ * Логика:
+ * - Скролл → IntersectionObserver подсвечивает активную секцию
+ * - Клик → подсветка сразу на нужной ссылке, observer замолкает на 2 сек
+ *
+ * ВАЖНО ДЛЯ SCROLLSMOOTHER (ПК):
+ * - Этот модуль НЕ делает сам скролл (это делает AnchorScroller).
+ * - Здесь только активация UI и scrollspy.
+ * - rootMargin и проверки visibility учитывают offset header'а.
+ * - Если scrollspy всё равно глючит на ПК — рассмотрите замену IntersectionObserver на ScrollTrigger.
  */
 
-export function GraphitiNavigator(params = {}) {
+export default function GraphitiNavigator(params = {}) {
   const nav = document.querySelector('.header__top-menu');
   const effectEl = document.querySelector('.effect.filter');
   const textEl = document.querySelector('.effect.text');
   const headerSelector = params.headerSelector ?? '.offset-header';
+
+  // Можно передать smoother, если понадобится в будущем (пока не используется)
+  const smoother = params.smoother ?? null;
 
   let animationTime = 600;
   let pCount = 15;
@@ -20,7 +33,8 @@ export function GraphitiNavigator(params = {}) {
   const timeVariance = 300;
 
   let currentActiveEl = null;
-  let isScrollingManually = false;
+  let observerBlocked = false;
+  let blockTimeout = null;
   let scrollDirection = 'down';
   let lastScrollY = window.scrollY;
 
@@ -31,12 +45,11 @@ export function GraphitiNavigator(params = {}) {
   }
 
   function getXY(distance, pointIndex, totalPoints) {
-    const x =
-      distance *
-      Math.cos((((360 + noise(8)) / totalPoints) * pointIndex * Math.PI) / 180);
-    const y =
-      distance *
-      Math.sin((((360 + noise(8)) / totalPoints) * pointIndex * Math.PI) / 180);
+    // Исправлено: добавлены операторы умножения, которые пропали при копировании
+    const angle =
+      (((360 + noise(8)) / totalPoints) * pointIndex * Math.PI) / 180;
+    const x = distance * Math.cos(angle);
+    const y = distance * Math.sin(angle);
     return [x, y];
   }
 
@@ -52,34 +65,42 @@ export function GraphitiNavigator(params = {}) {
     const r = 100;
 
     const bubbleTime = animationTime * 2 + timeVariance;
-    $el.style.setProperty('--time', bubbleTime + 'ms');
+    if ($el) {
+      $el.style.setProperty('--time', bubbleTime + 'ms');
+    }
 
     for (let i = 0; i < pCount; i++) {
       const t = animationTime * 2 + noise(timeVariance * 2);
       const p = createParticle(i, t, d, r);
       const $place = $el;
+
       if ($place) {
         $place.classList.remove('active-link');
+
         setTimeout(() => {
           const $particle = document.createElement('span');
           const $point = document.createElement('span');
+
           $particle.classList.add('particle');
-          $particle.style = `
-              --start-x: ${p.start[0]}px;
-              --start-y: ${p.start[1]}px;
-              --end-x: ${p.end[0]}px;
-              --end-y: ${p.end[1]}px;
-              --time: ${p.time}ms;
-              --scale: ${p.scale};
-              --color: var(--color-${p.color}, white);
-              --rotate: ${p.rotate}deg;
-            `;
+          $particle.style.cssText = `
+            --start-x: ${p.start[0]}px;
+            --start-y: ${p.start[1]}px;
+            --end-x: ${p.end[0]}px;
+            --end-y: ${p.end[1]}px;
+            --time: ${p.time}ms;
+            --scale: ${p.scale};
+            --color: var(--color-${p.color}, white);
+            --rotate: ${p.rotate}deg;
+          `;
+
           $point.classList.add('point');
           $particle.append($point);
           $place.append($particle);
+
           requestAnimationFrame(() => {
             $place.classList.add('active-link');
           });
+
           setTimeout(() => {
             try {
               $place.removeChild($particle);
@@ -92,11 +113,12 @@ export function GraphitiNavigator(params = {}) {
 
   function createParticle(i, t, d, r) {
     let rotate = noise(r / 10);
-    let minDistance = d[0];
-    let maxDistance = d[1];
+    let minD = d[0];
+    let maxD = d[1];
+
     return {
-      start: getXY(minDistance, pCount - i, pCount),
-      end: getXY(maxDistance + noise(7), pCount - i, pCount),
+      start: getXY(minD, pCount - i, pCount),
+      end: getXY(maxD + noise(7), pCount - i, pCount),
       time: t,
       scale: 1 + noise(0.2),
       color: colors[Math.floor(Math.random() * colors.length)],
@@ -107,7 +129,10 @@ export function GraphitiNavigator(params = {}) {
   // ─────────────── Позиционирование плашки ───────────────
 
   function updateEffectPosition(element) {
+    if (!effectEl || !textEl || !element) return;
+
     const pos = element.getBoundingClientRect();
+
     const styles = {
       left: `${pos.x}px`,
       top: `${pos.y}px`,
@@ -117,49 +142,60 @@ export function GraphitiNavigator(params = {}) {
 
     Object.assign(effectEl.style, styles);
     Object.assign(textEl.style, styles);
+
     textEl.classList.remove('hidden');
-    textEl.innerText = element.innerText;
+    textEl.innerText = element.innerText || '';
   }
 
   // ─────────────── Деактивация ───────────────
 
   function deactivateAll() {
+    if (!effectEl || !textEl || !nav) return;
+
     effectEl.classList.add('hidden');
     textEl.classList.add('hidden');
-    effectEl.style.left = '';
-    effectEl.style.top = '';
-    effectEl.style.width = '';
-    effectEl.style.height = '';
-    textEl.style.left = '';
-    textEl.style.top = '';
-    textEl.style.width = '';
-    textEl.style.height = '';
+
+    // Сброс стилей
+    const resetStyles = { left: '', top: '', width: '', height: '' };
+    Object.assign(effectEl.style, resetStyles);
+    Object.assign(textEl.style, resetStyles);
+
     textEl.innerText = '';
 
     nav.querySelectorAll('.top-menu__item').forEach(($el) => {
       $el.classList.remove('active-link');
     });
+
     currentActiveEl = null;
 
+    // Удаляем все частицы
     effectEl.querySelectorAll('.particle').forEach(($el) => {
-      effectEl.removeChild($el);
+      try {
+        $el.remove();
+      } catch (e) {}
     });
   }
 
   // ─────────────── Активация ссылки ───────────────
 
   const activate = ($el) => {
-    if (currentActiveEl === $el) return;
+    if (!$el || currentActiveEl === $el) return;
 
     updateEffectPosition($el);
 
     if (!$el.classList.contains('active-link')) {
-      nav.querySelectorAll('.top-menu__item').forEach(($el) => {
-        $el.classList.remove('active-link');
+      // Снимаем active со всех
+      nav.querySelectorAll('.top-menu__item').forEach((el) => {
+        el.classList.remove('active-link');
       });
-      effectEl.querySelectorAll('.particle').forEach(($el) => {
-        effectEl.removeChild($el);
+
+      // Удаляем старые частицы
+      effectEl.querySelectorAll('.particle').forEach((el) => {
+        try {
+          el.remove();
+        } catch (e) {}
       });
+
       $el.classList.add('active-link');
       currentActiveEl = $el;
 
@@ -173,79 +209,53 @@ export function GraphitiNavigator(params = {}) {
     }
   };
 
-  // ─────────────── БЛОКИРОВКА OBSERVER'А ПОСЛЕ КЛИКА ───────────────
+  // ─────────────── БЛОКИРОВКА OBSERVER ПРИ КЛИКЕ ───────────────
 
-  /**
-   * Блокирует observer на всё время плавного скролла после клика.
-   * Использует scrollend (современное API) или fallback с проверкой
-   * стабильности позиции.
-   */
-  function blockObserverUntilScrollEnd() {
-    // isScrollingManually уже установлен в true перед вызовом этой функции
-
-    if ('onscrollend' in window) {
-      const onScrollEnd = () => {
-        isScrollingManually = false;
-        window.removeEventListener('scrollend', onScrollEnd);
-      };
-      window.addEventListener('scrollend', onScrollEnd);
-    } else {
-      // Fallback: проверяем, что скролл стабилен 3 раза подряд (≈450ms)
-      let stableScrollY = window.scrollY;
-      let stableCount = 0;
-      const STABLE_THRESHOLD = 3;
-
-      const onScroll = () => {
-        const currentY = window.scrollY;
-        if (currentY === stableScrollY) {
-          stableCount++;
-          if (stableCount >= STABLE_THRESHOLD) {
-            isScrollingManually = false;
-            window.removeEventListener('scroll', onScroll);
-          }
-        } else {
-          stableScrollY = currentY;
-          stableCount = 0;
-        }
-      };
-      window.addEventListener('scroll', onScroll, { passive: true });
-    }
+  function blockObserver() {
+    if (blockTimeout) clearTimeout(blockTimeout);
+    observerBlocked = true;
+    blockTimeout = setTimeout(() => {
+      observerBlocked = false;
+      blockTimeout = null;
+    }, 2000);
   }
 
-  // ─────────────── КЛИК ПО ССЫЛКАМ ───────────────
+  // Единый обработчик на document — ловит ВСЕ якорные ссылки для мгновенной активации
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a[href^="#"]');
+    if (!anchor) return;
 
-  nav.querySelectorAll('.top-menu__item').forEach(($el) => {
-    const link = $el.querySelector('.top-menu__link');
-    $el.addEventListener('click', () => {
-      // Сначала блокируем observer, чтобы он не переключил
-      // подсветку на промежуточные секции во время плавного скролла
-      isScrollingManually = true;
-      // Сразу подсвечиваем нужную ссылку
-      activate($el);
-      // Блокируем observer до конца скролла
-      blockObserverUntilScrollEnd();
-    });
-    link.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        isScrollingManually = true;
-        activate($el);
-        blockObserverUntilScrollEnd();
+    const href = anchor.getAttribute('href');
+    const targetId = href.substring(1);
+
+    // Обработка клика по #home
+    if (targetId === 'home' || targetId === '') {
+      const homeSection = document.getElementById('home');
+      const homeLink = homeSection ? sectionToLink.get(homeSection) : null;
+
+      if (homeLink) {
+        if (homeLink !== currentActiveEl) {
+          activate(homeLink);
+        }
+      } else {
+        deactivateAll();
       }
-    });
+
+      blockObserver();
+      return;
+    }
+
+    // Обработка клика по остальным якорям
+    const section = document.getElementById(targetId);
+    if (section) {
+      const linkInMenu = sectionToLink.get(section);
+      if (linkInMenu && linkInMenu !== currentActiveEl) {
+        activate(linkInMenu);
+      }
+    }
+
+    blockObserver();
   });
-
-  // ─────────────── ТРЕКИНГ НАПРАВЛЕНИЯ СКРОЛЛА ───────────────
-
-  window.addEventListener(
-    'scroll',
-    () => {
-      const currentScrollY = window.scrollY;
-      scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-      lastScrollY = currentScrollY;
-    },
-    { passive: true }
-  );
 
   // ═══════════════════════════════════════════════════════════════
   //  IntersectionObserver — СКРОЛЛСПАЙ (scroll spy)
@@ -262,26 +272,25 @@ export function GraphitiNavigator(params = {}) {
     sectionOrder.length = 0;
 
     // Собираем все секции из href у пунктов меню
-    nav.querySelectorAll('.top-menu__item').forEach(($el) => {
-      const href = $el.getAttribute('href');
-      if (href && href.startsWith('#')) {
-        const targetId = href.substring(1);
-        const section = document.getElementById(targetId);
-        if (section) {
-          sectionToLink.set(section, $el);
-          sectionOrder.push(section);
+    if (nav) {
+      nav.querySelectorAll('.top-menu__item').forEach(($el) => {
+        const href = $el.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          const targetId = href.substring(1);
+          const section = document.getElementById(targetId);
+          if (section) {
+            sectionToLink.set(section, $el);
+            sectionOrder.push(section);
+          }
         }
-      }
-    });
+      });
+    }
 
     // Секция #home — для сброса активной подсветки в самом верху
     const homeSection = document.getElementById('home');
-    if (homeSection) {
-      // Добавляем home, только если её нет в меню
-      if (!sectionToLink.has(homeSection)) {
-        sectionToLink.set(homeSection, null);
-        sectionOrder.unshift(homeSection);
-      }
+    if (homeSection && !sectionToLink.has(homeSection)) {
+      sectionToLink.set(homeSection, null);
+      sectionOrder.unshift(homeSection);
     }
 
     if (sectionOrder.length === 0) return;
@@ -291,20 +300,56 @@ export function GraphitiNavigator(params = {}) {
     const observerOptions = {
       root: null,
       rootMargin: `-${offset + 1}px 0px -10% 0px`,
-      threshold: [0, 0.25, 0.5, 0.75, 1],
+      threshold: [0, 0.05, 0.25, 0.5, 0.75, 1],
     };
 
     // Хранилище текущей видимости секций
     const visibilityMap = new Map();
 
+    // Scroll-фолбэк: проверка видимости секций через getBoundingClientRect
+    let scrollFallbackTimer = null;
+
+    function checkVisibilityOnScroll() {
+      if (scrollFallbackTimer) return;
+      scrollFallbackTimer = setTimeout(() => {
+        scrollFallbackTimer = null;
+
+        if (observerBlocked) return;
+
+        const currentOffset = getOffset();
+        let anySectionVisible = false;
+
+        for (const section of sectionOrder) {
+          const rect = section.getBoundingClientRect();
+          if (rect.bottom > currentOffset && rect.top < window.innerHeight) {
+            anySectionVisible = true;
+            break;
+          }
+        }
+
+        if (!anySectionVisible && currentActiveEl !== null) {
+          deactivateAll();
+          window.dispatchEvent(
+            new CustomEvent('activeSectionChanged', {
+              detail: { sectionId: null, label: '' },
+            })
+          );
+        }
+      }, 150);
+    }
+
+    // Подписываемся на scroll для фолбэка
+    window.addEventListener('scroll', checkVisibilityOnScroll, {
+      passive: true,
+    });
+
     observer = new IntersectionObserver((entries) => {
+      if (observerBlocked) return;
+
       // Обновляем карту видимости
       entries.forEach((entry) => {
         visibilityMap.set(entry.target, entry.intersectionRatio);
       });
-
-      // Если сейчас ручной скролл после клика — ничего не делаем
-      if (isScrollingManually) return;
 
       // 1. Ищем секцию с максимальной видимостью
       let bestSection = null;
@@ -317,78 +362,61 @@ export function GraphitiNavigator(params = {}) {
         }
       });
 
-      // 2. Если ничего не видно — определяем по направлению скролла
-      if (!bestSection || bestRatio === 0) {
-        if (scrollDirection === 'down') {
-          // Скроллим вниз — берём первую секцию, которая ниже текущего положения
-          for (const section of sectionOrder) {
-            const rect = section.getBoundingClientRect();
-            if (rect.top > offset) {
-              bestSection = section;
-              break;
-            }
-          }
-          if (!bestSection) bestSection = sectionOrder[sectionOrder.length - 1];
-        } else {
-          // Скроллим вверх — берём последнюю секцию, которая выше текущего положения
-          for (let i = sectionOrder.length - 1; i >= 0; i--) {
-            const section = sectionOrder[i];
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= offset + 50) {
-              bestSection = section;
-              break;
-            }
-          }
-          if (!bestSection) bestSection = sectionOrder[0];
-        }
-      }
-
-      // 3. Применяем результат
-      if (bestSection) {
-        const isHome = bestSection === homeSection;
-
-        if (isHome) {
-          const homeLink = sectionToLink.get(homeSection);
-
-          if (!homeLink) {
-            // Home нет в меню — сбрасываем подсветку, плашку прячем
-            if (currentActiveEl !== null) {
-              deactivateAll();
-              window.dispatchEvent(
-                new CustomEvent('activeSectionChanged', {
-                  detail: { sectionId: 'home', label: 'Введение' },
-                })
-              );
-            }
-          } else {
-            // Home есть в меню — подсвечиваем его как обычную секцию
-            if (homeLink !== currentActiveEl) {
-              activate(homeLink);
-              window.dispatchEvent(
-                new CustomEvent('activeSectionChanged', {
-                  detail: {
-                    sectionId: 'home',
-                    label: homeLink.textContent.trim(),
-                  },
-                })
-              );
-            }
-          }
-          return;
-        }
-
-        const targetLink = sectionToLink.get(bestSection);
-        if (targetLink && targetLink !== currentActiveEl) {
-          activate(targetLink);
+      // Если ни одна секция не видна (ratio < 5%) — гасим подсветку
+      if (!bestSection || bestRatio < 0.05) {
+        if (currentActiveEl !== null) {
+          deactivateAll();
           window.dispatchEvent(
             new CustomEvent('activeSectionChanged', {
-              detail: {
-                sectionId: bestSection.id,
-                label: targetLink.textContent.trim(),
-              },
+              detail: { sectionId: null, label: '' },
             })
           );
         }
+        return;
+      }
+
+      // 2. Применяем результат
+      const isHome = bestSection === homeSection;
+
+      if (isHome) {
+        const homeLink = sectionToLink.get(homeSection);
+
+        if (!homeLink) {
+          if (currentActiveEl !== null) {
+            deactivateAll();
+            window.dispatchEvent(
+              new CustomEvent('activeSectionChanged', {
+                detail: { sectionId: 'home', label: 'Введение' },
+              })
+            );
+          }
+        } else {
+          if (homeLink !== currentActiveEl) {
+            activate(homeLink);
+            window.dispatchEvent(
+              new CustomEvent('activeSectionChanged', {
+                detail: {
+                  sectionId: 'home',
+                  label: homeLink.textContent.trim(),
+                },
+              })
+            );
+          }
+        }
+        return;
+      }
+
+      const targetLink = sectionToLink.get(bestSection);
+      if (targetLink && targetLink !== currentActiveEl) {
+        activate(targetLink);
+        window.dispatchEvent(
+          new CustomEvent('activeSectionChanged', {
+            detail: {
+              sectionId: bestSection.id,
+              label: targetLink.textContent.trim(),
+            },
+          })
+        );
       }
     }, observerOptions);
 
@@ -402,7 +430,9 @@ export function GraphitiNavigator(params = {}) {
   // ─────────────── Resize Observer ───────────────
 
   const resizeObserver = new ResizeObserver(() => {
-    const activeEl = nav.querySelector('.top-menu__item.active-link');
+    const activeEl = nav
+      ? nav.querySelector('.top-menu__item.active-link')
+      : null;
     if (activeEl) {
       updateEffectPosition(activeEl);
     }
@@ -410,34 +440,46 @@ export function GraphitiNavigator(params = {}) {
     initScrollspy();
   });
 
-  resizeObserver.observe(document.body);
+  if (document.body) {
+    resizeObserver.observe(document.body);
+  }
 
   // ─────────────── Стартовая активация ───────────────
+  // Ждём полной загрузки страницы (все картинки, шрифты),
+  // чтобы getBoundingClientRect для секций был точен.
 
-  setTimeout(() => {
-    if (window.scrollY > getOffset() + 50) {
-      // Если страница не в самом верху — ищем активную секцию по скроллспаю
-      // Принудительно прокрутим IntersectionObserver, найдя видимую секцию
-      let found = false;
-      for (const section of sectionOrder) {
-        const rect = section.getBoundingClientRect();
-        if (rect.top <= getOffset() + 50 && rect.bottom >= getOffset()) {
-          const link = sectionToLink.get(section);
-          if (link) {
-            activate(link);
-            found = true;
-            break;
-          }
+  function initActiveSection() {
+    const offset = getOffset();
+    let found = false;
+
+    for (const section of sectionOrder) {
+      const rect = section.getBoundingClientRect();
+      if (rect.bottom > offset && rect.top < window.innerHeight) {
+        const link = sectionToLink.get(section);
+        if (link && link !== currentActiveEl) {
+          activate(link);
+          found = true;
+          break;
         }
       }
-      if (!found && sectionOrder.length > 0) {
-        // Если не нашли — активируем первую ссылку из меню (не home)
-        const firstLink = nav.querySelector('.top-menu__item');
-        if (firstLink) activate(firstLink);
-      }
-    } else {
-      // В самом верху — подсветка не нужна
+    }
+
+    if (!found) {
       deactivateAll();
     }
-  }, 200);
+  }
+
+  if (document.readyState === 'complete') {
+    initActiveSection();
+  } else {
+    window.addEventListener('load', initActiveSection, { once: true });
+  }
+
+  // Возвращаем API на случай нужды
+  return {
+    activate,
+    deactivateAll,
+    initScrollspy,
+    getCurrentActive: () => currentActiveEl,
+  };
 }

@@ -2,9 +2,6 @@
 @use '../core/mixins' as *;
 
 .page {
-  position: relative;
-  z-index: 21;
-
   // .page__header
   &__header {
     position: fixed;
@@ -23,12 +20,12 @@
       box-shadow: 0 1px 9px #585858;
 
       .header__content {
-        color: #fff;
+        color: $color-white;
       }
 
       .header__icon-text {
-        color: #111;
-        background: #fff;
+        color: $color-text;
+        background: $color-white;
       }
     }
   }

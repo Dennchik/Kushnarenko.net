@@ -163,7 +163,7 @@
 
     .about-card__title {
       margin-bottom: 20px;
-      font-size: 32px;
+      font-size: 3.2rem;
       font-weight: 800;
       line-height: 1.1;
     }
@@ -274,10 +274,10 @@
     .about-card__text {
       padding: 15px;
 
-      font-size: 14px;
+      font-size: 1.8rem;
       font-weight: 500;
       line-height: 1.3;
-      text-align: center;
+      text-align: right;
       text-shadow: 1px 1px 1px rgb(255 255 255 / 80%);
       letter-spacing: 0.1em;
 
@@ -348,20 +348,18 @@
   &--stats {
     grid-column: span 8;
     justify-content: center;
-    padding: 40px;
+    padding: 4rem;
     background-color: $color-card-gray;
 
     .about-card__stats-title {
       margin-bottom: 16px;
       font-size: 20px;
       font-weight: 700;
-    }
+      line-height: 110%;
 
-    .about-card__text {
-      margin-bottom: 8px;
-      font-size: 16px;
-      line-height: 120%;
-      color: #555;
+      @include screen-490 {
+        font-size: 16px;
+      }
     }
   }
 
@@ -372,12 +370,12 @@
     align-items: center;
     justify-content: center;
 
-    padding: 30px;
+    padding: 3rem;
 
     text-align: center;
 
     .about-card__quote-text {
-      font-size: 18px;
+      font-size: 1.8rem;
       font-weight: 600;
       line-height: 1.4;
     }
@@ -434,11 +432,13 @@
       font-size: 36px;
       font-weight: 800;
     }
+
     .about-card__avatars img {
       height: 100px;
       margin-bottom: 10px;
       border-radius: 100vw;
     }
+
     .about-card__label {
       font-size: 13px;
       color: $color-text-light;
@@ -518,12 +518,10 @@
     font-family: Manrope, sans-serif;
     font-size: 13px;
     font-weight: 800; // Жирность обязательна, чтобы была видна фактура металла
-    line-height: 1.5;
+    line-height: 130%;
 
     // Делаем сам текст прозрачным, чтобы просвечивал наш градиент
     color: transparent;
-    text-align: center;
-    text-shadow: 1 1 1px #000;
 
     // --- ЭФФЕКТ ГРАВИРОВКИ (ENGRAVED DEPTH) ---
     // Светлая тень снизу создает иллюзию, что свет падает на "вырезанную" грань
@@ -549,6 +547,10 @@
     // Опционально: если текст кажется слишком светлым на белом фоне,
     // можно добавить очень легкую внутреннюю тень через filter (поддержка браузерами хорошая)
     filter: drop-shadow(0 1px 0 rgb(0 0 0 / 10%));
+
+    @include screen-490 {
+      font-size: 11px;
+    }
   }
 }
 

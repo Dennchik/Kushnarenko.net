@@ -5,11 +5,9 @@
 $radius: 32px; // Большое скругление
 
 .section-promo {
-  background-color: $color-bg-section;
   &__body {
     padding-block: 8rem 9rem !important;
     font-family: $font-family-title;
-    background-color: $color-bg-section;
   }
 
   &__head {

@@ -5,8 +5,7 @@
 $radius: 24px;
 
 .section-faq {
-  background-color: $color-bg-section; // Или белый, если хотите чередовать
-
+  background-color: $color-bg-section;
   // .section-faq__body
   &__body {
     padding-block: 8rem 9rem !important;
@@ -28,12 +27,11 @@ $radius: 24px;
   &__title {
     margin-bottom: 16px;
     font-family: $font-family-title;
-    font-size: 44px;
     font-weight: 800;
   }
 
   &__subtitle {
-    font-size: 20px;
+    font-size: 2rem;
     color: $color-text-gray;
   }
 
@@ -98,13 +96,9 @@ $radius: 24px;
   }
 
   &__question {
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 700;
     color: $color-text;
-
-    @media (width <= 768px) {
-      font-size: 16px;
-    }
   }
 
   // Иконка плюса

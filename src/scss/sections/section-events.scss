@@ -23,9 +23,7 @@ $gap: 20px;
 
   &__title {
     margin-bottom: 12px;
-
     font-family: $font-family-title;
-    font-size: 44px;
     font-weight: 800;
     color: #111; // Заголовок секции черный
   }
@@ -132,7 +130,7 @@ $gap: 20px;
   &__title {
     margin-bottom: 8px;
 
-    font-size: 24px;
+    font-size: 2.4rem;
     font-weight: 700;
     color: $color-white;
     text-transform: uppercase;

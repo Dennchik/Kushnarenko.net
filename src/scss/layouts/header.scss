@@ -61,6 +61,27 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+
+    .top-menu__link {
+      font-size: 1.6rem;
+      &:hover {
+        color: $color-white;
+      }
+
+      @include screen-375 {
+        span {
+          display: none;
+        }
+      }
+    }
+
+    .icon-volume-control-phone {
+      font-size: 24px;
+
+      @include min-375 {
+        display: none;
+      }
+    }
   }
 
   // .header__icon-text

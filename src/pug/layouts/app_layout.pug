@@ -33,11 +33,9 @@ block page
 						.main-content#wrapper
 							.main-content__content#content
 								block main-content 
-						.main-content__section
-							block section-news 
-						footer.page__footer
-							block footer 
-								include footer
+								footer.page__footer 
+									block footer 
+										include footer
 				//- nav.page__aside-menu
 					block burger-menu
 						include @/pug/components/sidebar-menu 

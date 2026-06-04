@@ -2,12 +2,12 @@
 @use '../core/mixins' as *;
 
 // --- Переменные ---
-$color-bg-white: #fff;
+
 $radius: 24px;
 $gap: 16px;
 
 .section-partners {
-  background-color: $color-bg-white; // Сама секция белая, чтобы отделить от соседей
+  background-color: $color-bg-section;
 
   // .section-partners__body
   &__body {
@@ -30,7 +30,6 @@ $gap: 16px;
   &__title {
     margin-bottom: 12px;
     font-family: $font-family-title;
-    font-size: 44px;
     font-weight: 800;
 
     @include screen-768 {
@@ -39,7 +38,7 @@ $gap: 16px;
   }
 
   &__subtitle {
-    font-size: 20px;
+    font-size: 2rem;
     color: $color-text-gray;
   }
 
@@ -71,8 +70,6 @@ $gap: 16px;
   height: 140px; // Фиксированная высота карточки
   padding: 30px; // Внутренние отступы, чтобы лого не прилипало к краям
   border-radius: $radius;
-
-  background-color: $color-bg-section;
 
   transition: all 0.3s ease;
 
