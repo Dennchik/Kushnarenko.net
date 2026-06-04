@@ -10,7 +10,6 @@
     align-items: center;
     justify-content: space-between;
 
-    // color: #363636;
     color: $color-white;
 
     transition: color 0.9s $transition-linear-ease;
@@ -72,11 +71,12 @@
     height: 35px;
     border-radius: 8px;
 
+    font-family: $font-family-title;
     color: $color-white;
 
-    background: #000;
+    background-color: $color-text;
 
-    transition: background 1.8s $transition-linear-ease;
+    transition: background-color 1.8s $transition-linear-ease;
 
     span {
       transform: rotate(-45deg);
@@ -205,7 +205,7 @@
 
     padding: 0 0.51em;
 
-    color: white;
+    color: $color-white;
     text-shadow: 0 1px 1px hsl(205deg 30% 10% / 20%);
 
     @include screen-820 {
@@ -262,9 +262,11 @@
 
   // .top-menu__link
   &__link {
+    font-family: $font-family-title;
     font-size: 16px;
     font-weight: 500;
     white-space: nowrap;
+
     transition: color 1.8s $transition-linear-ease;
 
     &:hover {
@@ -320,6 +322,7 @@
   &.text {
     z-index: 1;
 
+    font-family: $font-family-title;
     font-weight: 500;
     color: white;
 

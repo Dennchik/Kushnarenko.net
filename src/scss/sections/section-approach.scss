@@ -2,19 +2,12 @@
 @use '../core/mixins' as *;
 
 // --- Переменные ---
-$color-bg-page: #f5f5f7;
-$color-bg-card: #fff;
-$color-text: #111;
-$color-text-gray: #666;
-$color-accent: #ff5a5f; // Красный акцент
-$color-accent-light: rgb(255 90 95 / 10%); // Светло-красный фон для иконок
 $radius: 24px;
 $gap: 20px;
 
 .section-approach {
   padding-block: 8rem 9rem;
-  font-family: $font-main;
-  background-color: $color-bg-page;
+  background-color: $color-bg-section;
 
   &__head {
     margin-bottom: 4rem;
@@ -23,12 +16,13 @@ $gap: 20px;
 
   &__title {
     margin-bottom: 12px;
-    font-size: 36px;
+    font-family: $font-family-title;
+    font-size: 44px;
     font-weight: 800;
   }
 
   &__subtitle {
-    font-size: 16px;
+    font-size: 20px;
     color: $color-text-gray;
   }
 
@@ -63,7 +57,7 @@ $gap: 20px;
 
     // При наведении красим иконку в акцент
     .approach-item__icon-wrapper {
-      color: #fff;
+      color: $color-white;
       background-color: $color-accent;
     }
 
@@ -71,8 +65,8 @@ $gap: 20px;
     .approach-icon::before,
     .approach-icon::after,
     .approach-icon span {
-      border-color: #fff;
-      background-color: #fff;
+      border-color: $color-white;
+      background-color: $color-white;
     }
   }
 

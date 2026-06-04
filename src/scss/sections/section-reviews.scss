@@ -23,12 +23,13 @@ $gap: 20px;
 
   &__title {
     margin-bottom: 12px;
-    font-size: 36px;
+    font-family: $font-family-title;
+    font-size: 44px;
     font-weight: 800;
   }
 
   &__subtitle {
-    font-size: 16px;
+    font-size: 20px;
     color: $color-text-gray;
   }
 

@@ -2,6 +2,7 @@
 @use '../core/mixins' as *;
 
 .section-about {
+  background-color: $color-bg-section;
   // .section-about__body
   &__body {
     padding-block: 8rem 9rem !important;
@@ -191,7 +192,7 @@
       font-size: 14px;
       font-weight: 700;
 
-      background-color: #ebebeb;
+      background-color: $color-bg-section;
 
       transition: 0.3s;
       transition:
@@ -311,13 +312,12 @@
 
       width: 40px;
       height: 40px;
-      // border: 1px solid $color-text-gray;
       border-radius: 50%;
 
-      color: #fff;
+      color: $color-text;
       text-decoration: none;
 
-      background-color: $color-text-gray;
+      background-color: $color-bg-section;
 
       transition:
         color 1.8s,
@@ -327,13 +327,18 @@
         font-size: 24px;
       }
 
+      .icon-whatsapp-draw {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
       .icon-telegram-draw {
         font-size: 24px;
       }
 
       &:hover {
-        color: #000;
-        background: #fff;
+        color: $color-white;
+        background: $color-text;
       }
     }
   }
@@ -509,7 +514,6 @@
   // .about-card__top-text
   &__top-text {
     // Базовая типографика
-    margin-bottom: 24px;
 
     font-family: Manrope, sans-serif;
     font-size: 13px;
