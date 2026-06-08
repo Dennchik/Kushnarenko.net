@@ -1,77 +1,59 @@
-//* ✅ - [ isVideoInView ]
 export default function videoInView(videoSelector = '#player-id') {
   const video = document.querySelector(videoSelector);
   const playBtn = document.querySelector('.video-play-btn');
   const cover = document.querySelector('.video-cover');
-  // if (!video) return;
+
   if (!playBtn || !video || !cover) return;
-  // Проверка видимости видео
-  const isVideoInView = () => {
-    const videoTop = video.getBoundingClientRect().top;
-    return videoTop > -300;
+
+  // Функция скрытия обложки и кнопки
+  const hideCoverAndButton = () => {
+    cover.classList.add('hidden');
+    playBtn.classList.add('hidden');
   };
 
-  // Авто-воспроизведение при инициализации
-  // const playVideo = async () => {
-  //   if (isVideoInView() && video.paused) {
-  //     try {
-  //       await video.play();
-  //       console.log('Видео воспроизводится');
-  //     } catch (err) {
-  //       if (err.name !== 'AbortError') {
-  //         console.warn('Не удалось воспроизвести видео:', err);
-  //       }
-  //     }
-  //   }
-  // };
+  // Функция показа обложки и кнопки (если нужно при паузе)
+  const showCoverAndButton = () => {
+    cover.classList.remove('hidden');
+    playBtn.classList.remove('hidden');
+  };
 
+  // Запуск видео по клику на кнопку Play
   const startVideo = () => {
     video
       .play()
       .then(() => {
-        cover.classList.add('hidden');
-        playBtn.classList.add('hidden');
+        // скрытие произойдет также в обработчике 'play'
+        // но на всякий случай
+        hideCoverAndButton();
       })
-      .catch((error) => console.error('Ошибка:', error));
+      .catch((error) => console.error('Ошибка воспроизведения:', error));
   };
 
-  // Управление по клику
-  const handleVideoClick = () => {
-    if (video.paused) {
-      video.play().catch((err) => {
-        if (err.name !== 'AbortError') {
-          console.warn('Не удалось воспроизвести видео:', err);
-        }
-      });
-    } else {
-      video.pause();
-    }
-  };
+  // Обработчики событий Video.js (или нативного видео)
+  video.addEventListener('play', hideCoverAndButton);
+  video.addEventListener('pause', () => {
+    // При паузе показываем кнопку play а обложку оставляем скрытой.
 
-  // Управление при скролле
-  const handleScroll = () => {
-    const videoTop = video.getBoundingClientRect().top;
+    playBtn.classList.remove('hidden');
+  });
 
-    if (videoTop < -100 && !video.paused) {
-      video.pause();
-    } else if (videoTop > -100 && video.paused) {
-      video.play().catch((err) => {
-        if (err.name !== 'AbortError') {
-          console.warn('Не удалось воспроизвести видео:', err);
-        }
-      });
-    }
-  };
+  // Также при завершении видео (ended) можно показать кнопку play заново
+  video.addEventListener('ended', () => {
+    showCoverAndButton(); // или только playBtn
+  });
 
-  // Инициализация
-  // playVideo();
   playBtn.addEventListener('click', startVideo);
-  video.addEventListener('click', handleVideoClick);
-  window.addEventListener('scroll', handleScroll);
 
-  // Возврат функции очистки (опционально)
+  // Если видео уже запущено (например, после скролла — но мы убрали скролл), то скрываем элементы
+  if (!video.paused) {
+    hideCoverAndButton();
+  }
+
+  // Возврат функции очистки
   return () => {
-    video.removeEventListener('click', handleVideoClick);
-    window.removeEventListener('scroll', handleScroll);
+    video.removeEventListener('play', hideCoverAndButton);
+    video.removeEventListener('pause', showCoverAndButton); // нужно сохранить ссылку
+    video.removeEventListener('ended', showCoverAndButton);
+    playBtn.removeEventListener('click', startVideo);
   };
 }

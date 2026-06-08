@@ -1,26 +1,15 @@
 /*
-Intersection Observer: anim-block
-- Animates element from rotateX(60deg) to rotateX(0deg) when it enters viewport from the bottom.
-- When the element leaves viewport downward (scrolling down), the class is removed so the element "rotates back".
-- Repeats every time the element re-enters from the bottom.
+  Intersection Observer: anim-block 
 
-Usage:
-- Add CSS (see the CSS comment below) to your stylesheet.
-- Add class "anim-block" to the elements you want to animate.
-*/
+  Наблюдатель за пересечением: анимационный блок
+  - Изменяет угол поворота элемента с 60 градусов на 0 градусов, когда он попадает в область просмотра снизу.
+  - Когда элемент покидает область просмотра вниз (прокрутка вниз), класс удаляется, и элемент "поворачивается обратно".
+  - Повторяется каждый раз, когда элемент возвращается снизу.
 
-/* CSS (add to your stylesheet):
-.anim-block {
-  transform: perspective(800px) rotateX(60deg);
-  opacity: 0;
-  transition: transform 600ms cubic-bezier(.2,.9,.2,1), opacity 600ms;
-  transform-origin: center bottom;
-  will-change: transform, opacity;
-}
-.anim-block.visible {
-  transform: perspective(800px) rotateX(0deg);
-  opacity: 1;
-}
+  Использование:
+  - Добавьте CSS (см. комментарий к CSS ниже) в свою таблицу стилей.
+  - Добавьте класс "anim-block" к элементам, которые вы хотите анимировать.
+
 */
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,9 +1,32 @@
-/* stylelint-disable plugin/selector-bem-pattern */
 @use 'variables' as *;
 @use 'mixins.scss' as *;
+.element {
+  &.active {
+    span {
+      @for $var from 1 to 6 {
+        $delay: $var * 0.3;
+        &:nth-child(#{$var}) {
+          @if $var == 1 {
+            transition: transform 0.3s ease-in-out;
+          } @else {
+            transition: transform 0.3s ease-in-out #{$delay}s;
+          }
+        }
+      }
+    }
+  }
+}
 
-//* ----------------------------------------------------------------------------
-.anime-border {
+@mixin theme-colors($light-theme: true) {
+  @if $light-theme {
+    color: $light-text;
+    background-color: $light-background;
+  } @else {
+    color: $dark-text;
+    background-color: $dark-background;
+  }
+}
+------------------------------------------------------------ .anime-border {
   --t: transparent;
   --c: rgb(75 128 16); //* 👈 цвет границы
   --b: 2px; //* 👈 толщина границы
@@ -30,66 +53,6 @@
 .box-shadow {
   backdrop-filter: blur(10px);
   box-shadow: 0 1px 5px #000;
-}
-
-.gradient-loader {
-  background-image:
-    radial-gradient(
-      at 20% 31%,
-      hsl(240deg 0.97% 40% / 100%) 0%,
-      hsl(240deg 0.97% 40% / 0%) 100%
-    ),
-    radial-gradient(
-      at 70% 63%,
-      hsl(127deg 58% 19% / 100%) 0%,
-      hsl(127deg 58% 19% / 0%) 100%
-    ),
-    radial-gradient(
-      at 90.375% 78.106%,
-      hsl(85deg 86% 28% / 100%) 0%,
-      hsl(85deg 86% 28% / 0%) 100%
-    ),
-    radial-gradient(
-      at 92% 43%,
-      hsl(220deg 3% 15% / 100%) 0%,
-      hsl(220deg 3% 15% / 0%) 100%
-    ),
-    radial-gradient(
-      at 77% 25%,
-      hsl(240deg 0.97% 40% / 100%) 0%,
-      hsl(240deg 0.97% 40% / 0%) 100%
-    ),
-    radial-gradient(
-      at 4.25% 55%,
-      hsl(127deg 58% 19% / 100%) 0%,
-      hsl(127deg 58% 19% / 0%) 100%
-    ),
-    radial-gradient(
-      at 97% 62%,
-      hsl(85deg 86% 28% / 100%) 0%,
-      hsl(85deg 86% 28% / 0%) 100%
-    ),
-    radial-gradient(
-      at 37% 16%,
-      hsl(220deg 3% 15% / 100%) 0%,
-      hsl(220deg 3% 15% / 0%) 100%
-    ),
-    radial-gradient(
-      at 83% 39%,
-      hsl(240deg 0.9% 40% / 100%) 0%,
-      hsl(240deg 0.9% 40% / 0%) 100%
-    ),
-    radial-gradient(
-      at 35% 91%,
-      hsl(127deg 58% 19% / 100%) 0%,
-      hsl(127deg 58% 19% / 0%) 100%
-    ),
-    radial-gradient(
-      at 87% 74%,
-      hsl(85deg 86% 28% / 100%) 0%,
-      hsl(85deg 86% 28% / 0%) 100%
-    ),
-    linear-gradient(45deg, #346918 50%, #0d471b);
 }
 
 .link-split {
@@ -257,32 +220,4 @@
       opacity: 1;
     }
   }
-}
-
-//* ------------------------------- Gradient -----------------------------------
-.grad-underline {
-  /* Размер фона для каждого слоя */
-  background-image:
-    linear-gradient(to left, transparent, transparent),
-    linear-gradient(
-      to left,
-      var(--background-selected),
-      var(--font-color-active)
-    );
-
-  /* Позиционирование фона */
-  background-repeat: no-repeat;
-
-  /* Повторение фона */
-  background-position:
-    100% 100%,
-    /* Первое изображение */ 0 100%; /* Второе изображение */
-
-  /* Переход для изменения размера фона */
-  background-size:
-    100% 1px,
-    /* Первое изображение */ 0 1px; /* Второе изображение */
-
-  /* Определяем фоновые изображения */
-  transition: background-size 400ms;
 }

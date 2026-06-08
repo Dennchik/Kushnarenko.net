@@ -1,22 +1,3 @@
-//* ✅ - [ JS — display logic and looping ]
-export function logicLooping() {
-  const container = document.querySelector('.js-rotator');
-  if (!container) return;
-
-  const items = container.querySelectorAll('span');
-  const showTime = 4000;
-  let index = 0;
-
-  function showNext() {
-    items.forEach((el) => el.classList.remove('is-active'));
-    items[index].classList.add('is-active');
-    index = (index + 1) % items.length;
-  }
-
-  showNext();
-  setInterval(showNext, showTime);
-}
-
 //* ✅ - [ Hiding an element when scrolling ]
 export function shadowScrollHeader() {
   const handleScroll = () => {
@@ -79,7 +60,7 @@ export function sidebarMenuHandle() {
   });
 }
 //* ✅ - [ Sidebar - Menu ]
-function toggleSidebarMenu(sidebarMenu) {
+export function toggleSidebarMenu(sidebarMenu) {
   const asideButton = document.querySelector('.page__aside-button');
   if (sidebarMenu.classList.contains('_open-menu')) {
     sidebarMenu.classList.remove('_open-menu');
@@ -275,32 +256,7 @@ export function toggleModalOpen() {
     });
   });
 }
-//* ✅ - [Компенсируем отступы ]
-export function handleScrollbarOffset(enable) {
-  const scrollbarWidth =
-    window.innerWidth - document.documentElement.clientWidth;
 
-  console.log('scrollbarWidth:', scrollbarWidth);
-
-  if (enable && scrollbarWidth > 0) {
-    document.body.style.paddingRight = `${scrollbarWidth}px`;
-  } else {
-    document.body.style.paddingRight = `0px`;
-  }
-}
-//* ✅ - [ Устраняем смещение Contents  ]
-function resetScrollbarOffset(el) {
-  document.documentElement.style.removeProperty('--scroll-position');
-
-  if (el) {
-    el.style.paddingRight = '';
-    pageHeader.style.paddingRight = ``;
-  }
-
-  //🔹 Убираем компенсацию scroll bar
-  document.body.style.paddingRight = '';
-  window.scrollTo(0, scrollY);
-}
 //* ✅ - [ Управление оповещением cookies ] -
 export function cookiesAccept(el, trigger) {
   const cookiesAccept = document.querySelector(el);
@@ -323,49 +279,24 @@ export function cookiesAccept(el, trigger) {
     cookiesAccept.style.transition = 'transform 0.5s ease';
   }, 3000);
 }
-//* ✅ - [Переключение полей формы]
-export function fieldSetsToggle() {
-  const container = document.querySelector('.form-question__content');
-  const fieldSets = document.querySelectorAll(
-    '.form-question .form-question__fieldset-table'
-  );
-  let current = 0;
 
-  const updateContainerHeight = () => {
-    const active = container.querySelector(
-      '.form-question__fieldset-table.active'
-    );
-    if (active) {
-      const height = active.offsetHeight;
-      container.style.height = `${height}px`;
-    }
-  };
+//* ✅ - [ JS — display logic and looping ]
+// export function logicLooping() {
+//   const container = document.querySelector('.js-rotator');
+//   if (!container) return;
 
-  const showFieldset = (index) => {
-    fieldSets.forEach((fs) => fs.classList.remove('active'));
-    fieldSets[index].classList.add('active');
-    updateContainerHeight();
-  };
+//   const items = container.querySelectorAll('span');
+//   console.log(items);
 
-  document.querySelectorAll('._btn-next').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      if (current < fieldSets.length - 1) {
-        current++;
-        showFieldset(current);
-      }
-    });
-  });
+//   const showTime = 4000;
+//   let index = 0;
 
-  document.querySelectorAll('._btn-prev').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      if (current > 0) {
-        current--;
-        showFieldset(current);
-      }
-    });
-  });
+//   function showNext() {
+//     items.forEach((el) => el.classList.remove('is-active'));
+//     items[index].classList.add('is-active');
+//     index = (index + 1) % items.length;
+//   }
 
-  return {
-    showFieldset, // 👈 экспортируем
-  };
-}
+//   showNext();
+//   setInterval(showNext, showTime);
+// }

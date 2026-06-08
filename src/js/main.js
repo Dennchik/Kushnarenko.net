@@ -1,69 +1,102 @@
 import '../scss/main.scss';
-
-import loadedTimer from './utils/loaded-timer.js';
-loadedTimer();
-import { burgerMenu } from './assets/burger-button.js';
-document.addEventListener('DOMContentLoaded', burgerMenu);
+import loaded from './utils/preloader.js';
+import AnchorScroller from './modules/AnchorScroller.js';
+import DynamicAdaptive from './modules/DynamicAdaptive.js';
 import videoInView from './assets/videoInView.js';
-videoInView();
-
-import GraphitiNavigator from './modules/GraphitiNavigator.js';
-import { smoother, applyParallax } from './animations/animations.jsx';
-
-//* Определяем мобильное устройство (для отключения ScrollSmoother на мобилках)
+import { buildSwiper } from './utils/build-swiper.js';
+import { burgerMenu } from './assets/burger-button.js';
+import { partnerSlide } from './components/slide.js';
+import { shadowScrollHeader } from './layouts/layouts.js';
+import animationScrolling from './animations/animationScrolling.js';
+// import GraphitiNavigator from './modules/GraphitiNavigator.js';
+import Rellax from 'rellax';
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-let gsapSmoother = null;
+
+//* ----------------------------------------------------------------------------
+import {
+  animateHeader,
+  composition,
+  smoothScrollTitle,
+} from './animations/anime-js.jsx';
+
+import {
+  smoother,
+  applyParallax,
+  fadeInColumn,
+} from './animations/animations.jsx';
+
+//* ----------------------------------------------------------------------------
+function onDomReady() {
+  DynamicAdaptive();
+  buildSwiper();
+  partnerSlide('.partners-slide');
+  shadowScrollHeader();
+  smoother();
+  if (!isMobile) {
+    animationScrolling();
+    animateHeader();
+
+    composition();
+    fadeInColumn();
+    // smoothScrollTitle('.el-item');
+    applyParallax('.parallax');
+    // logicLooping();
+  }
+}
+//* ----------------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', onDomReady);
 //* ----------------------------------------------------------------------------
 if (!isMobile) {
-  //* Создаём ScrollSmoother ТОЛЬКО на десктопе
-  gsapSmoother = smoother();
-
-  //* Параллакс (если есть элементы с data-speed или класс .parallax)
-  applyParallax('.parallax');
-
-  //* GraphitiNavigator — только на ПК (эффекты + scrollspy)
-  GraphitiNavigator({
-    headerSelector: '.offset-header',
-    // smoother: gsapSmoother,   // раскомментируйте, если понадобится внутри навигатора
+  document.addEventListener('DOMContentLoaded', function () {
+    let rellax = new Rellax('.rellax');
   });
 }
 
+//* ----------------------------------------------------------------------------
+loaded('.preloader');
+document.addEventListener('DOMContentLoaded', burgerMenu);
+videoInView();
+
+//* Определяем мобильное устройство (для отключения ScrollSmoother на мобилках)
+
+let gsapSmoother = null;
+//* ----------------------------------------------------------------------------
+if (!isMobile || window.innerWidth >= 960) {
+  //* Параллакс (если есть элементы с data-speed или класс .parallax)
+  // applyParallax('.parallax');
+  //* GraphitiNavigator — только на ПК (эффекты + scrollspy)
+  // GraphitiNavigator({
+  //   headerSelector: '.offset-header',
+  //   //* раскомментируйте, если понадобится внутри навигатора
+  //   // smoother: gsapSmoother,
+  // });
+}
+//* ----------------------------------------------------------------------------
 //* AnchorScroller — всегда (и на мобилке, и на ПК)
 //* Здесь передаём smoother, чтобы он использовал правильный scrollTo с offset'ом
-import AnchorScroller from './modules/AnchorScroller.js';
 new AnchorScroller({
   headerSelector: '.offset-header',
   selector: '.anchor-link',
-  // smoother: gsapSmoother,
+  //* раскомментируйте, если понадобится внутри навигатора
+  smoother: gsapSmoother,
   onCloseSidebar: (sidebar) => sidebar?.classList.remove('_show'),
   onCloseButton: (sidebar) => sidebar?.classList.remove('_open'),
 });
-//* Опционально: слушаем событие от навигатора (если нужно куда-то ещё)
+// * Опционально: слушаем событие от навигатора (если нужно куда-то ещё)
 window.addEventListener('activeSectionChanged', (e) => {
   console.log('Active section changed:', e.detail);
 });
 //* ----------------------------------------------------------------------------
-import { dynamicAdaptive } from './modules/dynamic-adaptive.js';
-dynamicAdaptive();
-import { logicLooping, shadowScrollHeader } from './layouts/layouts.js';
-
-document.addEventListener('DOMContentLoaded', () => {
-  logicLooping();
-  shadowScrollHeader();
-});
 
 //* - [ Animation ] -
 // addCartAnimation();
-// '.favourites',
-// '.product-card__favourites',
-// '.icon-heart-like',
-// '.icon-heart-like',
-// 'like'
 
 //* layouts
-// addToBlock();
 // cookiesAccept('.cookies-accept', '.cookies-accept__button');
 // dropDownMenu('.main-menu__link');
+
+//* ----------------- [ Блок часто задаваемые вопросы ] ------------------------
 document.addEventListener('DOMContentLoaded', () => {
   const faqItems = document.querySelectorAll('.faq-item');
 

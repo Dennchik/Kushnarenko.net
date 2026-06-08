@@ -6,7 +6,19 @@
     "stylelint-scss",
     "stylelint-config-clean-order"
   ],
+
   "rules": {
+    "at-rule-empty-line-before": [
+      "always",
+      {
+        "except": [
+          "first-nested",
+          "blockless-after-blockless",
+          "after-same-name"
+        ],
+        "ignoreAtRules": ["else"]
+      }
+    ],
     "import-notation": "string",
     "at-rule-no-unknown": null,
     "block-no-empty": true,

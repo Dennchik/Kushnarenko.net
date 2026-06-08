@@ -1,24 +1,31 @@
 // todo --------------------------- Fonts --------------------------------------
+
 @use 'core/fonts';
 @use 'core/fonts-import';
 // todo --------------------------- layout -------------------------------------
+
 @use 'layouts/page';
 @use 'layouts/bem-block';
 @use 'layouts/header';
 @use 'layouts/footer';
 //todo  --------------------------- Icon Fonts ---------------------------------
+
 @use 'core/iconfonts';
 //todo  --------------------------- Core ---------------------------------------
+
 @use 'core/reset' as *;
 @use 'core/variables' as *;
 @use 'core/mixins' as *;
 @use 'core/extend' as *;
 // todo --------------------------- utils ------------------------------------
-@use 'utils/loaded-timer';
+
+@use 'utils/preloader';
 // todo --------------------------- Assets -------------------------------------
-// @use 'assets/swiper-11.2.10';
+
+@use 'assets/swiper-11.2.10';
 @use 'assets/burger-button';
 // todo ------------------------ components ------------------------------------
+
 @use 'components/sidebar-menu';
 // @use 'components/dropdown-menu';
 // @use 'components/cookies-accept';
@@ -30,6 +37,7 @@
 // @use 'chunks/collection';
 // @use 'chunks/check-box';
 // todo -------------------------- Section -------------------------------------
+
 @use 'sections/section-hero.scss';
 @use 'sections/section-promo';
 @use 'sections/section-about';

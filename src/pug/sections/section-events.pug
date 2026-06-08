@@ -1,51 +1,42 @@
-.section-events#events
+.section-events
 	.section-events__body._container
 		.section-events__head
-			h2.section-events__title.t-h2 Форматы событий
+			h2.section-events__title.t-h2.el-item Форматы событий
 			p.section-events__subtitle Я знаю специфику каждого праздника
-
 		.section-events__grid
-
-			//- Карточка 1: Корпоративы
+			//*- Карточка 1: Корпоративы
 			a.event-card(href="#corporate")
 				.event-card__image-box
 					.event-card__img 
 						+picture('img/events/corporate-party.png', 'Корпоративы')
-
 						.event-card__content
 							.event-card__text
 								h3.event-card__title Корпоративы
 								p.event-card__desc Презентации, тимбилдинги и новогодние гала-ужины
 							span.event-card__arrow
 								+iconfont('arrow-right', 'icon')
-
-			//- Карточка 2: Свадьбы
+			//*- Карточка 2: Свадьбы
 			a.event-card(href="#weddings")
 				//- Обертка для картинки (нужна для зума)
 				.event-card__image-box
 					.event-card__img 
 						+picture('img/events/wedding-party.png', 'Проведение свадеб')
-
-						//- Контент поверх фото
+						//*- Контент поверх фото
 						.event-card__content
 							.event-card__text
 								h3.event-card__title Свадьбы
 								p.event-card__desc От камерных семейных ужинов до масштабных вечеринок
-
-							//- Кнопка-стрелка
+							//*- Кнопка-стрелка
 							span.event-card__arrow
 								+iconfont('arrow-right', 'icon')
-
-			//- Карточка 3: Частные события (Юбилеи)
+			//*- Карточка 3: Частные события (Юбилеи)
 			a.event-card(href="#private")
 				.event-card__image-box
 					.event-card__img 
 						+picture('img/events/private-party.jpg', 'Проведение свадеб')
-
 						.event-card__content
 							.event-card__text
 								h3.event-card__title Частные события
 								p.event-card__desc Дни рождения, юбилеи и выпускные вечера
-
 							span.event-card__arrow
 								+iconfont('arrow-right', 'icon')

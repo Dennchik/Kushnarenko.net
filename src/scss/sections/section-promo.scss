@@ -2,7 +2,7 @@
 @use '../core/mixins' as *;
 
 // --- Переменные ---
-$radius: 32px; // Большое скругление
+$radius: 3.2rem; // Большое скругление
 
 .section-promo {
   &__body {

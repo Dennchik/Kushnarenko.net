@@ -3,9 +3,8 @@
 
 // --- Переменные ---
 
-// $color-text: rgb(17 17 17);
-$radius: 24px;
-$gap: 20px;
+$radius: 3.2rem;
+$gap: 2rem;
 
 .section-price {
   background-color: $color-bg-section;
@@ -20,14 +19,13 @@ $gap: 20px;
   }
 
   &__head {
-    margin-bottom: 50px;
+    margin-bottom: 5rem;
     text-align: center;
   }
 
   &__title {
     margin-bottom: 12px;
     font-family: $font-family-title;
-    font-size: 44px;
     font-weight: 800;
   }
 
@@ -42,8 +40,9 @@ $gap: 20px;
     gap: $gap;
     align-items: start; // Чтобы карточки не растягивались по высоте самой большой
 
-    @media (width <= 992px) {
+    @include screen-992 {
       grid-template-columns: 1fr; // 1 колонка на мобильном
+      gap: 5rem;
       max-width: 500px;
       margin: 0 auto;
     }
@@ -54,7 +53,7 @@ $gap: 20px;
 .price-card {
   position: relative;
 
-  padding: 40px 30px;
+  padding: 4rem 3rem;
   border: 1px solid transparent; // Резерв под границу
   border-radius: $radius;
 
@@ -81,9 +80,8 @@ $gap: 20px;
 
     transition: transform 1.8s $transition-linear-ease;
 
-    @media (width <= 992px) {
+    @include screen-992 {
       transform: scale(1); // На мобильном убираем увеличение
-      order: -1; // Ставим популярный тариф первым в списке на телефоне!
     }
   }
 
@@ -108,8 +106,8 @@ $gap: 20px;
 
   // Шапка карточки
   &__header {
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
     border-bottom: 1px solid #eee;
     text-align: center;
   }
@@ -147,7 +145,7 @@ $gap: 20px;
 
   // Список услуг
   &__list {
-    margin-bottom: 40px;
+    margin-bottom: 4rem;
     list-style: none;
   }
 

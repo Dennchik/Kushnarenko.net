@@ -109,7 +109,7 @@
 
   // .header__link
   &__link {
-    transform: scaleY(1.5) translateY(-3px);
+    transform: scaleY(1.5) translateY(-5px);
 
     margin-left: 1.6rem;
 
@@ -122,6 +122,13 @@
     letter-spacing: 1.1px;
 
     transition: color 1.8s $transition-linear-ease;
+
+    @include screen-1440 {
+      transform: scaleY(1.5) translateY(-3px);
+    }
+    @include screen-960 {
+      transform: scaleY(1.5) translateY(-2px);
+    }
   }
 
   // .header__main-menu
@@ -232,7 +239,6 @@
     @include screen-820 {
       gap: 30px;
     }
-
     @include screen-690 {
       gap: 16px;
     }
@@ -266,6 +272,7 @@
 
       transition: all 2s $transition-linear-ease;
     }
+
     &:focus-within:has(:focus-visible) {
       box-shadow: 0 0 0.5px 1.5px white;
     }
@@ -279,20 +286,24 @@
         opacity: 1;
       }
     }
+
+    &:hover {
+      .top-menu__link {
+        color: $color-accent;
+      }
+    }
   }
 
   // .top-menu__link
   &__link {
+    pointer-events: none;
+
     font-family: $font-family-title;
     font-size: 16px;
     font-weight: 500;
     white-space: nowrap;
 
-    transition: color 1.8s $transition-linear-ease;
-
-    &:hover {
-      color: $color-accent;
-    }
+    transition: color 1.1s $transition-linear-ease;
   }
 }
 //* -------------------- Effect element for animations -------------------------
@@ -356,7 +367,7 @@
 
     &.active-link {
       // color: black;
-      transition: color 1.8s $transition-linear-ease;
+      transition: color 1s $transition-linear-ease;
     }
   }
 
@@ -370,14 +381,14 @@
 //* ------------------------ Particle container --------------------------------
 
 .particles {
-  position: absolute;
+  position: fixed;
   inset: 0;
   transform: translate3d(0, 0, 0);
 }
 
 .particle {
   --time: 5s;
-  position: absolute;
+  position: fixed;
   top: calc(50% - 8px);
   left: calc(50% - 8px);
 
@@ -406,61 +417,59 @@
 }
 //* ------------------------ Animation keyframes -------------------------------
 
-@keyframes particle {
-  0% {
-    transform: rotate(0deg)
-      translate(calc(var(--start-x) * 1), calc(var(--start-y) * 1));
-    opacity: 1;
-    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
-  }
-  70% {
-    transform: rotate(calc(var(--rotate) * 0.5))
-      translate(calc(var(--end-x) * 1.2), calc(var(--end-y) * 1.2));
-    opacity: 1;
-    animation-timing-function: ease;
-  }
-  85% {
-    transform: rotate(calc(var(--rotate) * 0.66))
-      translate(calc(var(--end-x) * 1), calc(var(--end-y) * 1));
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(calc(var(--rotate) * 1.2))
-      translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5));
-    opacity: 1;
-  }
-}
-
-@keyframes point {
-  0% {
-    scale: 0;
-    opacity: 0;
-    animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
-  }
-  25% {
-    scale: calc(var(--scale) * 0.25);
-  }
-  38% {
-    opacity: 1;
-  }
-  65% {
-    scale: var(--scale);
-    opacity: 1;
-    animation-timing-function: ease;
-  }
-  85% {
-    scale: var(--scale);
-    opacity: 1;
-  }
-  100% {
-    scale: 0;
-    opacity: 0;
-  }
-}
-
-@keyframes pill {
-  to {
-    scale: 1;
-    opacity: 1;
-  }
-}
+// @keyframes particle {
+//   0% {
+//     transform: rotate(0deg)
+//       translate(calc(var(--start-x) * 1), calc(var(--start-y) * 1));
+//     opacity: 1;
+//     animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+//   }
+//   70% {
+//     transform: rotate(calc(var(--rotate) * 0.5))
+//       translate(calc(var(--end-x) * 1.2), calc(var(--end-y) * 1.2));
+//     opacity: 1;
+//     animation-timing-function: ease;
+//   }
+//   85% {
+//     transform: rotate(calc(var(--rotate) * 0.66))
+//       translate(calc(var(--end-x) * 1), calc(var(--end-y) * 1));
+//     opacity: 1;
+//   }
+//   100% {
+//     transform: rotate(calc(var(--rotate) * 1.2))
+//       translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5));
+//     opacity: 1;
+//   }
+// }
+// @keyframes point {
+//   0% {
+//     scale: 0;
+//     opacity: 0;
+//     animation-timing-function: cubic-bezier(0.55, 0, 1, 0.45);
+//   }
+//   25% {
+//     scale: calc(var(--scale) * 0.25);
+//   }
+//   38% {
+//     opacity: 1;
+//   }
+//   65% {
+//     scale: var(--scale);
+//     opacity: 1;
+//     animation-timing-function: ease;
+//   }
+//   85% {
+//     scale: var(--scale);
+//     opacity: 1;
+//   }
+//   100% {
+//     scale: 0;
+//     opacity: 0;
+//   }
+// }
+// @keyframes pill {
+//   to {
+//     scale: 1;
+//     opacity: 1;
+//   }
+// }

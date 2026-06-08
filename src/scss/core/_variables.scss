@@ -5,9 +5,9 @@ $maxWidthContainer: 1440px;
 //! - [Font Variables] -
 // --- Переменные (Настройте под свой проект) ---
 
-$radius: 32px; // Скругление углов (как на референсе)
+$radius: 3.2rem; // Скругление углов (как на референсе)
 $gap: 16px; // Отступы между карточками
-$transition-linear-ease: var(--linear-ease) 0.2s;
+$transition-linear-ease: var(--linear-ease) 0.1s;
 $radius-btn: 50px;
 
 $font-path: '../fonts';
@@ -26,7 +26,7 @@ $color-bg-section: rgb(240 240 240); // Фон секции (светло-сер
 $color-bg-dark: rgb(17 17 17); // Темный фон футера
 $color-bg-card: rgb(255 255 255);
 $color-card-gray: rgb(242 243 245); // Фон для карточек статистики и контактов
-$color-text: rgb(16 22 32);
+$color-text: rgb(17 17 17);
 $color-text-light: rgb(95 95 95);
 $color-text-gray: rgb(136 136 136);
 $color-accent-light: rgb(255 90 95 / 10%);
@@ -39,6 +39,7 @@ $color-gray-hover: rgb(173 173 173);
 //* - [ Shadow ]
 //* - [ Background Color ] -
 $background: rgb(255 255 255);
+$background-footer: rgb(38 39 41);
 $background-input: rgb(31 31 31); // Фон полей ввода
 
 //* - [ Text-selection ]

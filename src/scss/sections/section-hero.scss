@@ -19,24 +19,6 @@
     padding-bottom: 0;
   }
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; // Фото заполняет весь блок
-    object-position: right top; // Фокус на верхней части (лицо)
-
-    @include minmax-320-768 {
-      object-position: calc(
-          -500px + ((-123) - (-500)) * ((100vw - 320px) / (768 - 320))
-        )
-        top;
-    }
-
-    @include screen-320 {
-      object-position: -500px top;
-    }
-  }
-
   // .section-hero__image
   &__image {
     position: absolute;
@@ -46,6 +28,23 @@
 
     width: 100%;
     height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; // Фото заполняет весь блок
+      object-position: right top; // Фокус на верхней части (лицо)
+
+      @include minmax-320-768 {
+        object-position: calc(
+            -500px + ((-123) - (-500)) * ((100vw - 320px) / (768 - 320))
+          )
+          top;
+      }
+      @include screen-320 {
+        object-position: -500px top;
+      }
+    }
   }
 
   // .section-hero__overlay
@@ -90,6 +89,16 @@
   // .section-hero__content
   &__content {
     max-width: 800px; // Ограничиваем ширину текста
+    transition: transform 1s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+    @include screen-hover {
+      .tl-1,
+      .tl-2,
+      .tl-3,
+      .tl-4 {
+        opacity: 0;
+      }
+    }
   }
 
   // .section-hero__name-label
@@ -120,7 +129,6 @@
     margin-bottom: 24px;
 
     font-family: $font-family-title;
-    // font-size: 64px; // Крупный размер
     font-weight: 800;
     line-height: 1.4;
     color: $color-white;
@@ -181,10 +189,10 @@
 
     background-color: $color-white;
 
-    transition:
-      transform 1.8s $transition-linear-ease,
-      background-color 1.8s $transition-linear-ease,
-      color 1.8s $transition-linear-ease;
+    // transition:
+    //   transform 1.8s $transition-linear-ease,
+    //   background-color 1.8s $transition-linear-ease,
+    //   color 1.8s $transition-linear-ease;
 
     &:hover {
       transform: scale(1.05); // Легкое увеличение
@@ -193,5 +201,36 @@
     }
   }
 }
+//* ----------------------------------------------------------------------------
+// .section-hero__title {
+//   position: relative;
+//   height: 50px;
+//   span {
+//     will-change: opacity, transform;
 
-// Адаптив высоты для мобильных браузеров (убираем скачки адресной строки)
+//     position: absolute;
+//     inset: 0;
+//     transform: translateY(70px);
+
+//     display: block;
+
+//     text-shadow: 1px 1px 17px #000;
+//     white-space: nowrap;
+
+//     opacity: 0;
+//     filter: blur(0) grayscale(0%);
+
+//     transition:
+//       opacity 1s ease,
+//       transform 1s ease;
+
+//     &:not(:last-child) {
+//       margin-bottom: 1rem;
+//     }
+
+//     &.is-active {
+//       transform: translateY(0);
+//       opacity: 1;
+//     }
+//   }
+// }

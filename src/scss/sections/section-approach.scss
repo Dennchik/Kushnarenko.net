@@ -2,7 +2,7 @@
 @use '../core/mixins' as *;
 
 // --- Переменные ---
-$radius: 24px;
+$radius: 2rem;
 $gap: 20px;
 
 .section-approach {
@@ -17,12 +17,11 @@ $gap: 20px;
   &__title {
     margin-bottom: 12px;
     font-family: $font-family-title;
-    // font-size: 44px;
     font-weight: 800;
   }
 
   &__subtitle {
-    font-size: 20px;
+    font-size: 2rem;
     color: $color-text-gray;
   }
 
@@ -31,7 +30,7 @@ $gap: 20px;
     grid-template-columns: repeat(3, 1fr); // 3 колонки
     gap: $gap;
 
-    @media (width <= 992px) {
+    @include screen-992 {
       grid-template-columns: 1fr; // 1 колонка на мобильном
       max-width: 500px;
       margin: 0 auto;
@@ -44,12 +43,38 @@ $gap: 20px;
   padding: 40px 30px;
   border: 1px solid transparent;
   border-radius: $radius;
-
   background-color: $color-bg-card;
 
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  @include screen-hover {
+    &.animate-items {
+      will-change: transform, opacity;
+      transform: translateY(50%);
+      opacity: 0.1;
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out;
+
+      &.active {
+        transform: translateY(0);
+        opacity: 1;
+
+        @for $var from 1 to 4 {
+          $delay: $var * 0.1;
+          &:nth-child(#{$var}) {
+            @if $var == 1 {
+              transition:
+                transform 0.6s ease-in-out,
+                opacity 0.6s ease-in-out;
+            } @else {
+              transition:
+                transform 0.6s ease-in-out #{$delay}s,
+                opacity 0.6s ease-in-out #{$delay}s;
+            }
+          }
+        }
+      }
+    }
+  }
 
   &:hover {
     transform: translateY(-5px);
@@ -84,7 +109,16 @@ $gap: 20px;
 
     background-color: $color-accent-light; // Светлая подложка
 
-    transition: all 0.3s ease;
+    transition: all 1.3s ease;
+    .approach-icon::before,
+    .approach-icon::after,
+    .approach-icon span {
+      transition: all 1.3s ease;
+    }
+    &:hover {
+      color: $color-white;
+      background-color: $color-accent;
+    }
   }
 
   &__title {

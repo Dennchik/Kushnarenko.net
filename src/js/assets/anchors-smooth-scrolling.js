@@ -1,10 +1,12 @@
-// import { toggleSidebarMenu } from '../layouts/layouts.js';
+import { toggleSidebarMenu } from '../layouts/layouts.js';
 
-export function anchorsSmoothScrolling() {
+export function AnchorScroller() {
   // Функция плавного скролла к якорю по ID
   function scrollToAnchor(targetId) {
     // Получаем целевой элемент по ID
     const targetElement = document.getElementById(targetId);
+    console.log(targetElement);
+
     // Если элемент не найден — выходим
     if (!targetElement) return;
 
@@ -37,6 +39,7 @@ export function anchorsSmoothScrolling() {
   document.addEventListener('DOMContentLoaded', function () {
     // Находим все ссылки с классом .anchor-link
     const anchorLinks = document.querySelectorAll('.anchor-link');
+    console.log(anchorLinks);
 
     anchorLinks.forEach((link) => {
       link.addEventListener('click', function (e) {
@@ -57,22 +60,22 @@ export function anchorsSmoothScrolling() {
         const targetId = url.hash.substring(1);
 
         // Проверяем, есть ли открытое боковое меню
-        const sidebarMenu = e.target.closest('.sidebar-menu');
-        if (sidebarMenu && sidebarMenu.classList.contains('_open-menu')) {
-          // Кнопка открытия меню
-          const buttonItems = document.querySelector('.burger-button');
+        // const sidebarMenu = e.target.closest('.sidebar-menu');
+        // if (sidebarMenu && sidebarMenu.classList.contains('_open-menu')) {
+        //   // Кнопка открытия меню
+        //   const buttonItems = document.querySelector('.burger-button');
 
-          // Убираем класс открытия с кнопки
-          buttonItems?.classList.remove('is-active');
+        //   // Убираем класс открытия с кнопки
+        //   buttonItems?.classList.remove('is-active');
 
-          // Разрешаем прокрутку страницы
-          document.body.classList.remove('no-scroll');
+        //   // Разрешаем прокрутку страницы
+        //   document.body.classList.remove('no-scroll');
 
-          //* Закрываем меню, если функция доступна
-          if (typeof toggleSidebarMenu === 'function') {
-            toggleSidebarMenu(sidebarMenu);
-          }
-        }
+        //   //* Закрываем меню, если функция доступна
+        //   if (typeof toggleSidebarMenu === 'function') {
+        //     toggleSidebarMenu(sidebarMenu);
+        //   }
+        // }
 
         // Выполняем прокрутку к нужному якорю
         scrollToAnchor(targetId);

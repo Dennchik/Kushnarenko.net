@@ -1,50 +1,77 @@
-@use '../core/extend' as *;
-
+@use '../core/variables' as *;
 .preloader {
-  @extend .gradient-loader;
   position: fixed;
   z-index: 999;
   inset: 0;
 
   display: flex;
   align-items: center;
-  justify-content: center;
 
-  &__loader {
-    position: relative;
-
-    display: inline-block;
-
-    box-sizing: border-box;
-    width: 48px;
-    height: 48px;
-    border: 3px solid #fff;
-    border-radius: 50%;
-
-    animation: rotation 1s linear infinite;
+  background-color: hsl(0deg 0% 6% / 100%);
+  background-image:
+    radial-gradient(at 91% 91%, hsl(134deg 0% 6% / 100%) 0, transparent 50%),
+    radial-gradient(at 88% 19%, hsl(0deg 0% 33% / 22%) 0, transparent 50%),
+    radial-gradient(at 1% 98%, hsl(0deg 0% 20% / 30%) 0, transparent 50%),
+    radial-gradient(at 8% 15%, hsl(358deg 100% 67% / 7%) 0, transparent 50%);
+  &.preloader-remove {
+    display: none;
   }
+}
+.preloader-5 {
+  position: relative;
 
-  &__loader::after {
+  display: block;
+
+  width: 150px;
+  height: 150px;
+  margin: 30px auto;
+  border: 3px solid transparent;
+  border-top-color: $color-accent;
+  border-radius: 50%;
+
+  animation: preloader-5-spin 2s linear infinite;
+
+  span {
     content: '';
 
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    inset: 25px;
 
-    box-sizing: border-box;
-    width: 56px;
-    height: 56px;
-    border: 3px solid;
-    border-color: #ff3d00 transparent;
+    border: 3px solid transparent;
+    border-top-color: rgb(253 50 50);
     border-radius: 50%;
+
+    animation: preloader-5-spin 4s linear infinite;
   }
 }
-.preloader-remove {
-  display: none;
+
+.preloader-5::before {
+  content: '';
+
+  position: absolute;
+  inset: 5px;
+
+  border: 3px solid transparent;
+  border-top-color: rgb(255 30 30);
+  border-radius: 50%;
+
+  animation: preloader-5-spin 3s linear infinite;
 }
 
-@keyframes rotation {
+.preloader-5::after {
+  content: '';
+
+  position: absolute;
+  inset: 15px;
+
+  border: 3px solid transparent;
+  border-top-color: rgb(253 50 50);
+  border-radius: 50%;
+
+  animation: preloader-5-spin 1.5s linear infinite;
+}
+
+@keyframes preloader-5-spin {
   0% {
     transform: rotate(0deg);
   }

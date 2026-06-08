@@ -1,4 +1,4 @@
-export function dynamicAdaptive() {
+export default function DynamicAdaptive() {
   let originalPositions = [];
   let daElements = document.querySelectorAll('[data-da]');
   let daElementsArray = [];

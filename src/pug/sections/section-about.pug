@@ -1,102 +1,98 @@
-.section-about#about
-	.section-about__body._container
-		.section-about__content
-			//* - Обертка для CSS Grid сетки
-			.section-about__grid
-				//* - 1. Карточка: Фото слева (В полный рост)
-				.about-card.about-card--hero-left
-					.about-card__content
-						.about-card__overlay-column
-							.about-card__overlay-content
-								.about-card__title Меню
-								ul.about-card__list
-									li.about-card__item
-										span Хорошее настроение
-									li.about-card__item
-										span Запомнится навсегда
-									li.about-card__item 
-										span Стану для твоей бабушки еще одним внуком
-									li.about-card__item
-										span Обнимашки самый лучший день в твоей жизни 
-						.about-card__overlay-footer 
-							h3.about-card__name Максим Кушнаренко
-							p.about-card__caption Ведущий, которого советуют «своим»
-						//- Фоновое изображение можно задать через CSS модификатор или img
-						img.about-card__bg-img(src="/img/about/max-full.webp" alt="Кушнаренко Максим")
-
-				//* - 2. Карточка: Центральный оффер
-				.about-card.about-card--offer
-					.about-card__decor
-					.about-card__center-content 
-						p.about-card__top-text За моими плечами — десятки ярких свадеб, дней рождений, корпоративов и частных мероприятий. Для меня важно не просто провести вечер по сценарию, а создать атмосферу, в которой гости чувствуют себя легко, много смеются и по-настоящему проживают этот день.
-						h2.about-card__title Максим Кушнаренко
-						p.about-card__description 
-							| Моя задача — сделать так, чтобы ваш праздник прошёл спокойно для вас и незабываемо для всех присутствующих. 
-							br 
-							| И да, мне это не надоедает!
-						.about-card__actions
-							button.about-card__btn.btn Забронировать
-							a.about-card__arrow-link(href="#")
-								span.icon-arrow-up
-
-				//* - 3. Карточка: Фото справа (Ч/Б портрет)
-				.about-card.about-card--hero-right
-					.about-card__content
-						.about-card__overlay-column
-							.about-card__overlay-content
-								.about-card__title Как я работаю
-								.about-card__text 
-									p Я умею держать правильный темп, шутить уместно и&nbsp;без «кринжа», поддерживать гостей и&nbsp;молодожёнов, сглаживать любые неловкие моменты и&nbsp;быть опорой для&nbsp;заказчика на&nbsp;протяжении всего мероприятия.
-					.about-card__social-overlay
-						.about-card__social-icons
-							a.about-card__social-link(href="#telegram" aria-label="Telegram")
-								+iconfont('telegram-draw', 'icon')
-							//- a.about-card__social-link(href="#whatsapp" aria-label="WhatsApp")
-								+iconfont('whatsapp-draw', 'icon')
-							a.about-card__social-link(href="#vk" aria-label="VK")
-								+iconfont('vk-draw', 'icon')
-					img.about-card__bg-img(src="/img/about/max-fullbody.webp" alt="Портрет ведущего")
-
-				//* - 4. Карточка: Текстовая статистика (Широкая)
-				.about-card.about-card--stats
-					h3.about-card__stats-title К 2025 году провел более 1 000 мероприятий разных форматов и уровней. 
-					p.about-card__top-text Я умею держать правильный темп, шутить уместно и без «кринжа», поддерживать гостей и молодожёнов, сглаживать любые неловкие моменты и быть опорой для заказчика на протяжении всего мероприятия. 
-
-				// *- 5. Карточка: Цитата
-				.about-card.about-card--quote
-					p.about-card__quote-text Для меня нет ничего невозможного, <br> могу буквально всё!
-
-				//* - 6. Карточка: Фановое фото (с гусем)
-				.about-card.about-card--fun
-					img.about-card__bg-img(src="/img/about/photo-fun.webp" alt="Веселое фото")
-
-				//* - 7. Карточка: Ссылка на портфолио
-				a.about-card.about-card--portfolio(href="#portfolio")
-					span.about-card__handwritten-icon Pf
-					h4.about-card__subtitle Portfolio - это наша обратная связь.
-					p.about-card__small-text Отзывы ивент индустрии. <br> Отзывы организаторов. <br> И ваши впечатления.
-
-				//* - 8. Карточка: Аудитория
-				.about-card.about-card--audience
-					span.about-card__number +50к
-					.about-card__avatars
-						img(src="/img/about/avatars-group.webp" alt="Avatars")
-					p.about-card__label аудитория в соц. сетях
-
-				//* - 9. Карточка: Мессенджеры
-				.about-card.about-card--contacts
-					a.about-card__messenger-row(href="#telegram")
-						.about-card__messenger-info
-							span.about-card__label-light Связаться с Максимом
-							span.about-card__label-bold в Telegram
-						span.about-card__arrow-circle
-							span.icon-arrow-up
-
-					.about-card__divider
-
-					a.about-card__messenger-row(href="#whatsapp")
-						.about-card__messenger-info
-							span.about-card__label-light Связаться с Максимом
-							span.about-card__label-bold VKontakte
-						span.about-card__arrow-circle
-							span.icon-arrow-up
+.section-about
+  .section-about__body._container
+    .section-about__content
+      //* - Обертка для CSS Grid сетки
+      .section-about__grid
+        //* - 1. Карточка: Фото слева (В полный рост)
+        .about-card.about-card--hero-left.its-el-left
+          .about-card__content
+            .about-card__overlay-column
+              .about-card__overlay-content
+                .about-card__title Меню
+                ul.about-card__list
+                  li.about-card__item
+                    span Хорошее настроение
+                  li.about-card__item
+                    span Запомнится навсегда
+                  li.about-card__item 
+                    span Стану для твоей бабушки еще одним внуком
+                  li.about-card__item
+                    span Обнимашки самый лучший день в твоей жизни 
+            .about-card__overlay-footer 
+              h3.about-card__name Максим Кушнаренко
+              p.about-card__caption Ведущий, которого советуют «своим»
+              //*- Фоновое изображение можно задать через CSS модификатор или img
+            img.about-card__bg-img(src="/img/about/max-full.webp" alt="Кушнаренко Максим")
+        //* - 2. Карточка: Центральный оффер
+        .about-card.about-card--offer.its-el-center
+          .about-card__decor
+          .about-card__center-content 
+            p.about-card__top-text За моими плечами — десятки ярких свадеб, дней рождений, корпоративов и частных мероприятий. Для меня важно не просто провести вечер по сценарию, а создать атмосферу, в которой гости чувствуют себя легко, много смеются и по-настоящему проживают этот день.
+            h2.about-card__title Максим Кушнаренко
+            p.about-card__description 
+              | Моя задача — сделать так, чтобы ваш праздник прошёл спокойно для вас и незабываемо для всех присутствующих. 
+              br 
+              | И да, мне это не надоедает!
+            .about-card__actions
+              button.about-card__btn.btn Забронировать
+              a.about-card__arrow-link(href="#")
+                span.icon-arrow-up
+        //* - 3. Карточка: Фото справа (Ч/Б портрет)
+        .about-card.about-card--hero-right.its-el-right
+          .about-card__content
+            .about-card__overlay-column
+              .about-card__overlay-content
+                .about-card__title Как я работаю
+                .about-card__text 
+                  p Я умею держать правильный темп, шутить уместно и&nbsp;без «кринжа», поддерживать гостей и&nbsp;молодожёнов, сглаживать любые неловкие моменты и&nbsp;быть опорой для&nbsp;заказчика на&nbsp;протяжении всего мероприятия.
+          .about-card__social-overlay
+            .about-card__social-icons
+              a.about-card__social-link(href="#telegram" aria-label="Telegram")
+                +iconfont('telegram-draw', 'icon')
+              //- a.about-card__social-link(href="#whatsapp" aria-label="WhatsApp")
+                +iconfont('whatsapp-draw', 'icon')
+              a.about-card__social-link(href="#vk" aria-label="VK")
+                +iconfont('vk-draw', 'icon')
+          img.about-card__bg-img(src="/img/about/max-fullbody.webp" alt="Портрет ведущего")
+        //* - 4. Карточка: Текстовая статистика (Широкая)
+        .about-card.about-card--stats.triger-1 
+          .about-card__body.timeline-1 
+            h3.about-card__stats-title К 2025 году провел более 1 000 мероприятий разных форматов и уровней. 
+            p.about-card__top-text Я умею держать правильный темп, шутить уместно и без «кринжа», поддерживать гостей и молодожёнов, сглаживать любые неловкие моменты и быть опорой для заказчика на протяжении всего мероприятия. 
+        // *- 5. Карточка: Цитата
+        .about-card.about-card--quote
+          .about-card__body.timeline-2 
+            p.about-card__quote-text «Ваш праздник — моя забота. А всё остальное я беру на себя.» <br> «Любой формат, любой сценарий — проведу так, что гости запомнят на годы.»
+        //* - 6. Карточка: Фановое фото (Веселое фото)
+        .about-card.about-card--fun.triger-2.animate-items.animate-not-hide
+          .about-card__body.animate-inner
+            img.about-card__bg-img(src="/img/about/photo-fun.webp" alt="Веселое фото")
+        //* - 7. Карточка: Ссылка на портфолио
+        a(href="#portfolio").about-card.about-card--portfolio.animate-items.animate-not-hide 
+          .about-card__body.animate-inner
+            span.about-card__handwritten-icon Pf
+            h4.about-card__subtitle Portfolio - это наша обратная связь.
+            p.about-card__small-text Отзывы ивент индустрии. <br> Отзывы организаторов. <br> И ваши впечатления.
+        //* - 8. Карточка: Аудитория
+        .about-card.about-card--audience.animate-items.animate-not-hide   
+          .about-card__body.timeline-5.animate-inner
+            span.about-card__number +50к
+            .about-card__avatars
+              img(src="/img/about/avatars-group.webp" alt="Avatars")
+            p.about-card__label аудитория в соц. сетях
+        //* - 9. Карточка: Мессенджеры
+        .about-card.about-card--contacts.animate-items.animate-not-hide  
+          .about-card__body.timeline-6.animate-inner
+            a.about-card__messenger-row(href="#telegram")
+              .about-card__messenger-info
+                span.about-card__label-light Связаться с Максимом
+                span.about-card__label-bold в Telegram
+              span.about-card__arrow-circle
+                span.icon-arrow-up
+            .about-card__divider
+            a.about-card__messenger-row(href="#whatsapp")
+              .about-card__messenger-info.animate-inner
+                span.about-card__label-light Связаться с Максимом
+                span.about-card__label-bold VKontakte
+              span.about-card__arrow-circle
+                span.icon-arrow-up

@@ -1,24 +1,23 @@
-.section-promo#promo
+.section-promo._container
 	.section-promo__body
 		.section-promo__video-box
-			//- Видео (основной элемент)
+			//*- Видео (основной элемент)
 			video#player-id.video-js(
 				controls,
 				preload="auto", 
 				tabindex="-1", 
-				playsinline, muted, autoplay="false" 
-				poster="./img/audio/cover.png", 
+				playsinline, muted, 
 				src="./img/audio/cover.mp4"
 			)
-
-			//- Обложка (поверх видео)
+			//*- Обложка (поверх видео)
 			.video-cover
 				.video-cover__img 
 					+picture('img/audio/cover.png', 'image')
 				.video-cover__overlay
 
-			//- Кнопка Play (поверх обложки)
+			//*- Кнопка Play (поверх обложки)
 			button.video-play-btn(type="button" aria-label="Запустить видео")
 				span.video-play-btn__icon
 
 			.video-caption Смотреть шоурил 2025
+				//- poster="./img/audio/cover.png", 

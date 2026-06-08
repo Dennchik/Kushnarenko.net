@@ -1,11 +1,12 @@
 // --- Переменные ---
+
 @use '../core/variables' as *;
 @use '../core/mixins' as *;
 
-$radius: 24px;
+$radius: 2rem;
 
 .section-faq {
-  background-color: $color-bg-section;
+  overflow: hidden;
   // .section-faq__body
   &__body {
     padding-block: 8rem 9rem !important;
@@ -48,13 +49,18 @@ $radius: 24px;
 // --- Карточка вопроса ---
 .faq-item {
   overflow: hidden;
+
+  border: 1px solid rgb(46 46 46 / 5%);
   border-radius: $radius;
+
   background-color: #fff;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 2px 20px rgb(46 46 46 / 5%);
+
+  transition: box-shadow 0.1s ease;
 
   // При наведении чуть подсвечиваем
   &:hover {
-    box-shadow: 0 4px 20px rgb(0 0 0 / 3%);
+    box-shadow: 0 4px 20px rgb(46 46 46 / 10%);
   }
 
   // --- Состояние: Открыт (добавляется через JS) ---
@@ -74,6 +80,26 @@ $radius: 24px;
       grid-template-rows: 1fr; // Показываем контент
       padding-bottom: 24px;
       opacity: 1;
+    }
+  }
+
+  // Анимируемый класс
+
+  @include screen-hover {
+    &.animate-items {
+      transform: translateY(20%);
+      opacity: 0.2;
+      transition:
+        transform 0.3s ease-in-out,
+        opacity 0.3s ease-in-out;
+
+      &.active {
+        transform: translateY(0);
+        opacity: 1;
+        transition:
+          transform 0.7s ease-in-out,
+          opacity 0.7s ease-in-out;
+      }
     }
   }
 
@@ -125,6 +151,7 @@ $radius: 24px;
       transform: translate(-50%, -50%);
 
       background-color: $color-text;
+      background-color: $color-text-light;
 
       transition: background-color 0.3s;
     }
