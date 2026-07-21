@@ -105,21 +105,20 @@ export default class AnchorScroller {
 
   closeSidebars() {
     const sidebar = this.findSidebar();
-
+    // Дополнительно: если есть кнопка закрытия, можно триггерить
+    const closeBtn = document.querySelector(
+      '.sidebar-close, .burger-button, [data-close-sidebar]'
+    );
     if (this.onCloseSidebar && sidebar) {
       this.onCloseSidebar(sidebar);
     }
 
-    if (this.onCloseButton && sidebar) {
-      this.onCloseButton(sidebar);
+    if (this.onCloseButton && closeBtn) {
+      this.onCloseButton(closeBtn);
     }
 
-    // Дополнительно: если есть кнопка закрытия, можно триггерить
-    const closeBtn = document.querySelector(
-      '.sidebar-close, [data-close-sidebar]'
-    );
-    if (closeBtn) {
-      closeBtn.click();
-    }
+    // if (closeBtn) {
+    //   closeBtn.click();
+    // }
   }
 }

@@ -3,7 +3,6 @@ import { ScrollSmoother } from 'gsap/ScrollSmoother';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 //* ____________________ [Регистрация - (GSAP) plugins] ________________________
 gsap.registerPlugin(ScrollSmoother, ScrollTrigger);
-
 //* ____________________ [Конфигурация - ScrollTrigger] ________________________
 
 //* ___________________________[ScrollSmoother] ________________________________

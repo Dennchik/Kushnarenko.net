@@ -81,7 +81,7 @@ new AnchorScroller({
   //* раскомментируйте, если понадобится внутри навигатора
   smoother: gsapSmoother,
   onCloseSidebar: (sidebar) => sidebar?.classList.remove('_show'),
-  onCloseButton: (sidebar) => sidebar?.classList.remove('_open'),
+  onCloseButton: (button) => button?.classList.remove('_open'),
 });
 // * Опционально: слушаем событие от навигатора (если нужно куда-то ещё)
 window.addEventListener('activeSectionChanged', (e) => {
