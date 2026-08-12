@@ -1,6 +1,8 @@
 @use '../core/variables' as *;
 @use '../core/mixins' as *;
-
+.intro__title {
+  // overflow: hidden;
+}
 .section-hero {
   position: relative;
 
@@ -96,7 +98,7 @@
       .tl-2,
       .tl-3,
       .tl-4 {
-        opacity: 0;
+        // opacity: 0;
       }
     }
   }

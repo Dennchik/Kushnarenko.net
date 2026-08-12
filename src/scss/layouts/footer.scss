@@ -11,14 +11,15 @@ $radius: 24px;
 
   @include screen-hover {
     .animate-items {
-      opacity: 0;
-      transition: opacity 1.9s ease-in-out;
+      // opacity: 0;
+      // transition: opacity 1.9s ease-in-out;
 
       &.active {
         opacity: 1;
       }
     }
   }
+
   // .footer__body
   &__body {
     padding-block: 8rem;
@@ -52,8 +53,6 @@ $radius: 24px;
 
     max-width: 500px;
   }
-
-  // .footer__row
 
   // .footer__title
   &__title {
@@ -115,14 +114,14 @@ $radius: 24px;
     flex: 1;
 
     max-width: 500px;
-    padding: 40px;
+    padding: 4rem;
     border-radius: $radius;
 
     background-color: #161616; // Чуть светлее фона
 
     @include screen-768 {
       max-width: 100%;
-      padding: 24px;
+      padding: 2rem;
     }
   }
 

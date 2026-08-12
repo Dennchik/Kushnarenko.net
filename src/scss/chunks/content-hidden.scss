@@ -31,9 +31,9 @@
 }
 
 .animated-elements {
-	&._transform-reverse {
+	&._trasform-reverse {
 		.animation-line {
-			transform: translate(0, -150%) rotate(-5deg);
+			transform: translate(0px, -150%) rotate(-5deg);
 		}
 	}
 
@@ -70,7 +70,7 @@
 	}
 
 	.animation-line {
-		transform: translate(0, 150%) rotate(5deg);
+		transform: translate(0px, 150%) rotate(5deg);
 		transition: all 0.8s cubic-bezier(0.6, -0.28, 0.74, 0.05);
 	}
 
@@ -191,7 +191,6 @@
 			width: 0;
 			height: 1px;
 			transition: width 0.9s ease-in;
-
 			@extend .gradient-border-bottom;
 		}
 
@@ -234,7 +233,7 @@
 		&__line {
 			display: block;
 			width: 100%;
-			// opacity: 0;opacity
+			// opacity: 0;
 			text-align: center;
 			font: 98px $font-family-exclude-secondary;
 			text-transform: uppercase;
@@ -255,7 +254,7 @@
 				letter-spacing: normal;
 				line-height: 1;
 				max-width: 30ch;
-
+				text-align: left;
 				@extend .text-shadow;
 			}
 

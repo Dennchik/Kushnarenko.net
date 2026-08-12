@@ -10,25 +10,24 @@ import {
 } from 'animejs';
 
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
-
 //* ----------------------------------------------------------------------------
 export function animateHeader() {
-  // function loopAnimation() {
-  //   document.querySelectorAll('.header-blink, .button-blink').forEach((el) => {
-  //     animate(el, {
-  //       left: ['-100%', '150%'],
-  //       duration: 3000,
-  //       easing: 'easeOutSine',
-  //       direction: 'alternate',
-  //       loop: false,
-  //       complete: () => {
-  //         setTimeout(loopAnimation, 6000); // Пауза между циклами
-  //       },
-  //     });
-  //   });
-  // }
+  function loopAnimation() {
+    document.querySelectorAll('.header-blink, .button-blink').forEach((el) => {
+      animate(el, {
+        left: ['-100%', '150%'],
+        duration: 3000,
+        easing: 'easeOutSine',
+        direction: 'alternate',
+        loop: false,
+        complete: () => {
+          setTimeout(loopAnimation, 6000); //* Пауза между циклами
+        },
+      });
+    });
+  }
 
-  // loopAnimation();
+  loopAnimation();
 
   //* - [Анимация главного блока] -
   const timeline = createTimeline({
@@ -38,9 +37,9 @@ export function animateHeader() {
   timeline
     .add('.tl-1', { x: { from: '15rem' }, opacity: [0, 1] })
     .add('.tl-2', { x: { from: '15rem' }, opacity: [0, 1] }, 600)
-    .add('.tl-3', { x: { from: '20rem' }, opacity: [0, 1] }, 1200)
-    .add('.tl-4', { x: { from: '15rem' }, opacity: [0, 1] }, 1900);
+    .add('.tl-3', { x: { from: '40rem' }, opacity: [0, 1] }, 1200);
 }
+
 //* ----------------------------------------------------------------------------
 export function fadeInItemRight(elements) {
   document.querySelectorAll(elements).forEach((el) => {
@@ -119,8 +118,7 @@ export function composition() {
   const squares = utils.$('.square');
   const [$blend] = squares;
 
-  // Animate each square with a different composition mode
-
+  //* Animate each square with a different composition mode
   squares.forEach(($square) => {
     // 'none', 'replace', 'blend'
     const mode = $square.classList[1];
@@ -133,12 +131,12 @@ export function composition() {
     });
   });
 
-  // Common animation parameters
+  //* Common animation parameters
 
   const enter = { scale: 1.5, duration: 350 };
   const leave = { scale: 1.0, duration: 250 };
 
-  // Composition blend animations
+  //* Composition blend animations
 
   const enterBlend = () =>
     animate($blend, {
@@ -168,7 +166,7 @@ export function animateLinks() {
     }).add((scope) => {
       const { root, methods } = scope;
 
-      // Разбиваем текст на символы
+      //* Разбиваем текст на символы
       text.split(root, {
         chars: {
           class: 'char',

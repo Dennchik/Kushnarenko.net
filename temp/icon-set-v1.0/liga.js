@@ -25,15 +25,11 @@
     var icons;
     if (!supportsProperty('fontFeatureSettings')) {
         icons = {
+            'check': '&#xe911;',
+            'check': '&#xe90f;',
             'location': '&#xe909;',
             'check-box': '&#xe900;',
             'pencil-alt': '&#xe901;',
-            'check': '&#xe910;',
-            'check': '&#xe911;',
-            'check': '&#xe912;',
-            'check': '&#xe913;',
-            'check': '&#xe914;',
-            'check': '&#xe90f;',
             'volume-control-phone': '&#xf2a0;',
             'phone-call': '&#xe915;',
             'vk-draw': '&#xe902;',

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icon-set';
-  src:  url('fonts/icon-set.eot?99rzes');
-  src:  url('fonts/icon-set.eot?99rzes#iefix') format('embedded-opentype'),
-    url('fonts/icon-set.ttf?99rzes') format('truetype'),
-    url('fonts/icon-set.woff?99rzes') format('woff'),
-    url('fonts/icon-set.svg?99rzes#icon-set') format('svg');
+  src:  url('fonts/icon-set.eot?fn05rm');
+  src:  url('fonts/icon-set.eot?fn05rm#iefix') format('embedded-opentype'),
+    url('fonts/icon-set.ttf?fn05rm') format('truetype'),
+    url('fonts/icon-set.woff?fn05rm') format('woff'),
+    url('fonts/icon-set.svg?fn05rm#icon-set') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -35,6 +35,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-zoom-in:before {
+  content: "\e912";
+}
+.icon-check4:before {
+  content: "\e911";
+}
+.icon-check:before {
+  content: "\e90f";
+}
 .icon-location:before {
   content: "\e909";
 }
@@ -43,24 +52,6 @@
 }
 .icon-pencil-alt:before {
   content: "\e901";
-}
-.icon-check5:before {
-  content: "\e910";
-}
-.icon-check4:before {
-  content: "\e911";
-}
-.icon-check3:before {
-  content: "\e912";
-}
-.icon-check2:before {
-  content: "\e913";
-}
-.icon-check1:before {
-  content: "\e914";
-}
-.icon-check:before {
-  content: "\e90f";
 }
 .icon-volume-control-phone:before {
   content: "\f2a0";
@@ -76,6 +67,9 @@
 }
 .icon-whatsapp-draw:before {
   content: "\e904";
+}
+.icon-max-draw:before {
+  content: "\e905";
 }
 .icon-contacts:before {
   content: "\e907";

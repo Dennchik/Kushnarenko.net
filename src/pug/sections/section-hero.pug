@@ -1,21 +1,20 @@
-.section-hero
-  //*- Фоновое изображение (Абсолютное позиционирование)
-    .section-hero__bg
-  .section-hero__image.parallax 
-    +picture('/img/about/kuhnarenko.png', 'Максим Кушнаренко')
-  //*- Затемнение, чтобы текст читался на фото
-  .section-hero__overlay
-  .section-hero__body._container
-    .section-hero__info
-      .section-hero__content.rellax(data-rellax-speed="3" data-rellax-percentage="0.5")
-        //*- Верхняя метка (Имя)
-        .section-hero__top-tag.tl-1
-          span.section-hero__name-label Максим Кушнаренко
-        //*- Заголовок H1
-        h1.section-hero__title.t-h1.tl-2 
-          span.section-hero__title-text Стильный ведущий
-          span.section-hero__title-text для важных событий
-        //*- Гео/Подзаголовок
-        p.section-hero__subtitle.tl-3 Москва и МО / Выезд
-        //*- Кнопка
-        button.section-hero__btn.btn.tl-4 Узнать свободна ли дата
+.section-hero.intro
+	.section-hero__image
+		img(src="/img/about/kushnarenko.webp" alt="Максим Кушнаренко").parallax.intro-img
+	.section-hero__overlay
+	.section-hero__body._container
+		.section-hero__info
+			.section-hero__content
+				//*- Верхняя метка (Имя)
+				.section-hero__top-tag.tl-1.intro-name
+					span.section-hero__name-label Максим Кушнаренко
+				//*- Заголовок H1
+				.intro__title
+					h1.section-hero__title.t-h1.tl-2.intro-line
+						span.section-hero__title-text Стильный ведущий
+						span.section-hero__title-text для важных событий
+				//*- Гео/Подзаголовок
+				.intro-txt
+					p.section-hero__subtitle.tl-3 Москва и МО / Выезд
+					//*- Кнопка
+					button.section-hero__btn.btn.tl-4 Узнать свободна ли дата

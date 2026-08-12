@@ -4,7 +4,7 @@
 $radius: 3.2rem;
 
 .section-about {
-  background-color: $color-bg-section;
+  background-color: $background;
 
   // .section-about__body
   &__body {
@@ -18,8 +18,7 @@ $radius: 3.2rem;
   // .section-about__grid
   &__grid {
     display: grid;
-    grid-auto-rows: minmax(240px, auto); // Минимальная высота ряда
-    // 12 колонок обеспечивают гибкость Bento-сетки
+    grid-auto-rows: minmax(240px, auto);
     grid-template-columns: repeat(12, 1fr);
     gap: $gap;
   }
@@ -51,6 +50,15 @@ $radius: 3.2rem;
     border-radius: $radius;
 
     background-color: $color-white;
+  }
+
+  &--hero-left,
+  &--hero-right {
+    .about-card__bg-img {
+      position: relative;
+      flex: 0 1 40%;
+      width: 40%;
+    }
   }
   //* --- МОДИФИКАТОРЫ (Сетка) ---
   // .about-card--hero-left
@@ -118,29 +126,15 @@ $radius: 3.2rem;
     }
 
     .about-card__overlay-column {
-      position: relative;
-      z-index: 3;
-
-      flex: 0 1 60%;
-
-      width: 100%;
-      height: 100%;
-
       background: linear-gradient(0deg, #e3caab, #2e1b14);
-    }
-
-    .about-card__bg-img {
-      position: relative;
-      flex: 0 1 40%;
-      width: 40%;
     }
   }
 
   @include screen-hover {
     &.animate-items {
       .animate-inner {
-        transform: translateY(70%);
-        opacity: 0.3;
+        // transform: translateY(70%);
+        // opacity: 0.3;
         transition:
           transform 0.3s,
           opacity 0.3s ease-in-out;
@@ -260,7 +254,6 @@ $radius: 3.2rem;
 
       background-color: $color-white;
 
-      transition: 0.3s;
       transition:
         color 1.8s,
         background-color 1.8s $transition-linear-ease;
@@ -311,13 +304,7 @@ $radius: 3.2rem;
       height: 100%;
     }
     .about-card__overlay-column {
-      position: relative;
-      z-index: 3;
-
-      flex: 0 1 57%;
-
-      width: 100%;
-      height: 100%;
+      background: url('../img/about/overlay-bg.webp') center left no-repeat;
     }
 
     .about-card__overlay-content {
@@ -363,6 +350,8 @@ $radius: 3.2rem;
       justify-content: space-between;
 
       padding: 24px;
+
+      background: linear-gradient(to top, rgb(0 0 0 / 70%), transparent);
     }
 
     .about-card__social-icons {
@@ -399,6 +388,10 @@ $radius: 3.2rem;
 
       .icon-telegram-draw {
         font-size: 24px;
+      }
+
+      .icon-max-draw {
+        font-size: 20px;
       }
 
       &:hover {
@@ -492,7 +485,6 @@ $radius: 3.2rem;
     justify-content: center;
 
     .about-card__body {
-      background-color: $color-card-gray;
       background-color: transparent;
     }
     .about-card__number {
@@ -577,6 +569,7 @@ $radius: 3.2rem;
     height: 100%;
 
     object-fit: cover;
+    object-position: right top;
   }
 
   // .about-card__top-text
@@ -624,9 +617,17 @@ $radius: 3.2rem;
   @include screen-690 {
     border-radius: 2rem;
   }
-}
 
-// --- АДАПТИВ (Media Queries) ---
+  &__overlay-column {
+    position: relative;
+    z-index: 3;
+
+    flex: 0 1 60%;
+
+    width: 100%;
+    height: 100%;
+  }
+}
 
 @include screen-1200 {
   .section-about__grid {

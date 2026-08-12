@@ -259,25 +259,27 @@ export function toggleModalOpen() {
 
 //* ✅ - [ Управление оповещением cookies ] -
 export function cookiesAccept(el, trigger) {
-  const cookiesAccept = document.querySelector(el);
-  const button = document.querySelector(trigger);
+  if (el) {
+    const cookiesAccept = document.querySelector(el);
+    const button = document.querySelector(trigger);
 
-  if (!cookiesAccept) return;
+    if (!cookiesAccept) return;
 
-  if (button) {
-    cookiesAccept.style.transform = 'translateY(110%)';
-    button.addEventListener('click', () => {
+    if (button) {
       cookiesAccept.style.transform = 'translateY(110%)';
-      cookiesAccept.style.transition = 'transform 0.5s ease';
-    });
-  } else {
-    console.log('кнопка не найдена');
-  }
+      button.addEventListener('click', () => {
+        cookiesAccept.style.transform = 'translateY(110%)';
+        cookiesAccept.style.transition = 'transform 0.5s ease';
+      });
+    } else {
+      console.log('кнопка не найдена');
+    }
 
-  setTimeout(() => {
-    cookiesAccept.style.transform = 'translateY(0)';
-    cookiesAccept.style.transition = 'transform 0.5s ease';
-  }, 3000);
+    setTimeout(() => {
+      cookiesAccept.style.transform = 'translateY(0)';
+      cookiesAccept.style.transition = 'transform 0.5s ease';
+    }, 3000);
+  }
 }
 
 //* ✅ - [ JS — display logic and looping ]

@@ -38,13 +38,13 @@ $gap: 2rem;
     grid-template-columns: repeat(5, 1fr);
     gap: $gap;
 
-    // --- АДАПТИВ (Мобильный скролл) ---
+    // --- АДАПТИВНЫЙ (Мобильный скролл) ---
 
     @include screen-992 {
       scroll-snap-type: x proximity; // Доводка скролла до элемента
 
       overflow-x: scroll; // Разрешаем скролл по горизонтали
-      display: flex; // Превращаем грид в флекс-строку
+      display: flex; // Превращаем grid в flex-строку
 
       padding-bottom: 2rem; // Место для скроллбара (если виден)
 
@@ -99,6 +99,8 @@ $gap: 2rem;
 
   // Оверлей (затемнение при наведении)
   &__overlay {
+    pointer-events: none;
+
     position: absolute;
     top: 0;
     left: 0;
@@ -132,9 +134,15 @@ $gap: 2rem;
     background-color: #fff;
 
     transition: transform 0.3s ease;
+
+    .icon-zoom-in {
+      font-size: 28px;
+      color: $color-accent;
+    }
   }
 
   // На мобильном фиксируем ширину карточки, чтобы скролл работал
+
   @include screen-992 {
     scroll-snap-align: center; // Карточка центрируется при скролле
     min-width: 280px;
@@ -142,6 +150,7 @@ $gap: 2rem;
   }
 
   // Ховер эффекты (только для десктопа)
+
   @media (width >= 992px) {
     &:hover {
       .review-card__img {

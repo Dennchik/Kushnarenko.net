@@ -20,7 +20,7 @@ import { convertImagesToWebp } from './vite/tasks/webp.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// ✅ Вызываем fontStyle ДО конфигурации
+//* ✅ Вызываем fontStyle ДО конфигурации
 fontStyle(paths.fonts.src, paths.fonts.dest);
 
 export default defineConfig(({ command }) => {
@@ -37,7 +37,16 @@ export default defineConfig(({ command }) => {
     plugins: [
       convertImagesToWebp(app.webp),
       viteConvertPugInHtml(getPugConfig(isProd)),
-      moveHtmlFiles(),
+
+      // 🔹 ключевой плагин для переименования HTML
+      moveHtmlFiles(), // 👈 ключевой плагин для переименования HTML
+      // 🔹 Добавляем анализатор только в продакшн-сборке
+      /*  visualizer({
+                filename: 'build/stats.html',
+                open: true,
+                gzipSize: true,
+                brotliSize: true,
+            }), */
     ],
 
     server: {
@@ -48,9 +57,18 @@ export default defineConfig(({ command }) => {
       devSourcemap: !isProd,
       postcss: {
         plugins: [
-          autoprefixer(app.autoprefixer),
-          ...(isProd ? [] : [sortMediaQueries(app.postcssSortMediaQueries)]),
-          ...(isProd ? [] : [postcssMediaMinMax(app.postcssMediaMinMax)]),
+          ...(isProd
+            ? [
+                // 1. Конвертируем modern media query синтаксис (width >= 768px)
+                postcssMediaMinMax(app.postcssMediaMinMax),
+
+                // 2. Сортируем и объединяем media queries
+                sortMediaQueries(app.postcssSortMediaQueries),
+
+                // 3. Добавляем vendors префиксы
+                autoprefixer(app.autoprefixer),
+              ]
+            : []),
         ],
       },
       preprocessorOptions: { scss: {} },
@@ -64,7 +82,8 @@ export default defineConfig(({ command }) => {
       outDir: 'build',
       emptyOutDir: true,
       sourcemap: isDev,
-      cssCodeSplit: true,
+      cssCodeSplit: true, // 👈 теперь стили делятся по Chunks
+
       chunkSizeWarningLimit: 264,
       modulePreload: {
         polyfill: true,
@@ -77,17 +96,30 @@ export default defineConfig(({ command }) => {
       rollupOptions: {
         input: {
           main: resolve(__dirname, 'src/js/main.js'),
-          index: resolve(__dirname, 'src/js/index.js'),
-          // about: resolve(__dirname, 'src/js/about.js'),
-          // catalog: resolve(__dirname, 'src/js/catalog.js'),
-          // news: resolve(__dirname, 'src/js/news.js'),
-          // card: resolve(__dirname, 'src/js/card.js'),
-          // 'card-product': resolve(__dirname, 'src/js/card.js'),
+          app: resolve(__dirname, 'src/js/app.js'),
         },
         output: {
           entryFileNames: 'assets/[name].js',
           assetFileNames: 'assets/[name].[ext]',
           chunkFileNames: 'assets/vendors/[name].js',
+
+          manualChunks(id) {
+            if (id.includes('node_modules')) {
+              if (id.includes('lodash') || id.includes('date-fns')) {
+                return 'utils';
+              }
+              if (id.includes('chart.js') || id.includes('d3')) {
+                return 'charts';
+              }
+              if (id.includes('gsap-vendors')) {
+                return 'gsap';
+              }
+              if (id.includes('animejs') || id.includes('swiper')) {
+                return 'anime-vendors';
+              }
+              return 'vendor';
+            }
+          },
         },
       },
       optimizeDeps: {

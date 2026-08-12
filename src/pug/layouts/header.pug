@@ -1,28 +1,26 @@
 .header._container 
 	.header__content
-		a(href="#home").header__logo.anchor-link
-			.header__icon-logo
-				span.header__icon-text 
-					span МК
-				.header__link  
-					span kushnarenko.net
+		include @/pug/chunks/header-logo
 		.header__top-menu(data-da="bp-1" data-da-position="0" data-da-resolution="960")   
 			nav.top-menu
-				.top-menu__list 
-					//- a(href="#home").top-menu__item.anchor-link
-						.top-menu__link О нас
-					a(href="#about").top-menu__item.anchor-link
-						.top-menu__link О нас
-					a(href="#promo").top-menu__item.anchor-link
-						.top-menu__link Видео
-					a(href="#events").top-menu__item.anchor-link
-						.top-menu__link Мероприятия
-					a(href="#service").top-menu__item.anchor-link 
-						.top-menu__link Услуги
-					a(href="#contacts").top-menu__item.anchor-link
-						.top-menu__link Контакты
-			span.effect.filter
-			span.effect.text.hidden
+				ul.top-menu__list
+					li.top-menu__item
+						a(href="#about").top-menu__link.anchor-link
+							span О нас
+					li.top-menu__item
+						a(href="#promo").top-menu__link.anchor-link
+							span Видео
+					li.top-menu__item
+						a(href="#events").top-menu__link.anchor-link
+							span Мероприятия
+					li.top-menu__item
+						a(href="#service").top-menu__link.anchor-link
+							span Услуги
+					li.top-menu__item
+						a(href="#contacts").top-menu__link.anchor-link
+							span Контакты
+			//span.effect.filter
+			//span.effect.text.hidden
 		.header__contacts 
 			a.top-menu__link(href="tel:+9106071900")
 				span +7 910 607-19-00
