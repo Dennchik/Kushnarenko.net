@@ -1812,6 +1812,7 @@ h6 {
 }
 
 .section-promo__body {
+  overflow: hidden;
   padding-block: 8rem 9rem !important;
   font-family: "Montserrat Alternates", sans-serif;
 }
@@ -1851,6 +1852,9 @@ h6 {
 .section-promo__video-box:hover .video-play-btn__icon {
   border-left-color: #fff;
 }
+.section-promo__video-box .video-play-btn__icon {
+  pointer-events: none;
+}
 .section-promo__video-box.is-playing .video-cover,
 .section-promo__video-box.is-playing .video-play-btn,
 .section-promo__video-box.is-playing .video-caption {
@@ -1858,8 +1862,9 @@ h6 {
 }
 
 .video-cover {
+  pointer-events: none;
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100%;
@@ -1884,9 +1889,10 @@ h6 {
 }
 
 .video-play-btn {
+  pointer-events: all !important;
   cursor: pointer;
-  position: absolute;
-  z-index: 2;
+  position: absolute; /* Кнопка поверх обложки */
+  z-index: 999;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -3375,36 +3381,6 @@ iframe.video-frame {
   object-position: center;
 }
 
-.section-promo__video-box {
-  position: relative;
-}
-
-video#player-id {
-  position: relative;
-  z-index: 1;
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.video-cover {
-  position: absolute;
-  z-index: 2; /* Обложка поверх видео */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.video-play-btn {
-  cursor: pointer;
-  position: absolute;
-  z-index: 3; /* Кнопка поверх обложки */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .video-caption {
   position: absolute;
   z-index: 3;
@@ -3415,7 +3391,7 @@ video#player-id {
 }
 
 /* При запуске видео скрываем обложку и кнопку */
-.video-cover.hidden,
+.video-cover__overlay.hidden,
 .video-play-btn.hidden {
   display: none !important;
 }

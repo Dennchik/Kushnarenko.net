@@ -1,6 +1,6 @@
 //* app.js
-import { partnerSlide } from './components/slide.js';
 import { buildSwiper } from './utils/build-swiper.js';
+import { partnerSlide, promoSlide } from './components/slide.js';
 import {
   smoother,
   applyParallax,
@@ -18,13 +18,13 @@ const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 function onDomReady() {
   buildSwiper();
   partnerSlide('.partners-slide');
+  promoSlide('.promo-slide');
   fancyBox();
 
   if (!isMobile) {
     tlFooterParallel();
     tlFooterParallelSecond();
     initHero();
-    // fadeInColumn();
     composition();
   }
 }

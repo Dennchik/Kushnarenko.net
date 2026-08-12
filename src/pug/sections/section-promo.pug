@@ -1,23 +1,47 @@
 .section-promo._container
-	.section-promo__body
-		.section-promo__video-box
-			//*- Видео (основной элемент)
-			video#player-id.video-js(
-				controls,
-				preload="auto", 
-				tabindex="-1", 
-				playsinline, muted, 
-				src="./img/audio/cover.mp4"
-			)
-			//*- Обложка (поверх видео)
-			.video-cover
-				.video-cover__img 
-					+picture('img/audio/cover.png', 'image')
-				.video-cover__overlay
+	.section-promo__body 
+		.section-promo__video-slide.swiper.promo-slide 
+			.section-promo__video-box
+				//*- Видео (основной элемент)  
+				video#player-id.video-js(
+					controls,
+					preload="auto", 
+					tabindex="-1", 
+					playsinline, muted, 
+					src="./img/audio/cover.mp4"
+				)
 
-			//*- Кнопка Play (поверх обложки)
-			button.video-play-btn(type="button" aria-label="Запустить видео")
-				span.video-play-btn__icon
+				//*- Обложка (поверх видео)
+				.video-cover
+					.video-cover__overlay
+						.video-cover__img 
+							+picture('img/audio/cover.png', 'image')
 
-			.video-caption Смотреть шоурил 2025
-				//- poster="./img/audio/cover.png", 
+					//*- Кнопка Play (поверх обложки)
+					button.video-play-btn(type="button" aria-label="Запустить видео")
+						span.video-play-btn__icon
+
+				.video-caption Смотреть шоурил 2025
+
+
+			.section-promo__video-box
+				//*- Видео (основной элемент)  
+				video#player-id.video-js(
+					controls,
+					preload="auto", 
+					tabindex="-1", 
+					playsinline, muted, 
+					src="./img/audio/cover.mp4"
+				)
+
+				//*- Обложка (поверх видео)
+				.video-cover
+					.video-cover__overlay
+						.video-cover__img 
+							+picture('img/audio/cover.png', 'image')
+
+					//*- Кнопка Play (поверх обложки)
+					button.video-play-btn(type="button" aria-label="Запустить видео")
+						span.video-play-btn__icon
+
+				.video-caption Смотреть шоурил 2025

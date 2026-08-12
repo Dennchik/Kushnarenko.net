@@ -34,7 +34,7 @@ export function applyParallax(element) {
 
 //* ----------------------------------------------------------------------------
 export function initHero() {
-  console.clear();
+  // console.clear();
 
   function initIntro() {
     // Ждём загрузки шрифтов перед созданием SplitText
