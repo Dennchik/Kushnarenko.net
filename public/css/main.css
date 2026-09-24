@@ -942,7 +942,7 @@
   transition: background-color 1.8s var(--linear-ease);
 }
 .footer .form__submit:hover {
-  background-color: rgb(100%, 21.7647058824%, 24.1354723708%);
+  background-color: rgb(255, 55.5, 61.5454545455);
 }
 .footer .form__agreement {
   display: flex;
