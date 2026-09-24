@@ -14,6 +14,7 @@ import { paths } from './vite/config/path.js';
 //* ✅ Tasks
 import { getPugConfig } from './vite/config/pug-config.js';
 import { compileScss } from './vite/tasks/compileScss.js';
+import { fonts } from './vite/tasks/fonts.js';
 import { fontStyle } from './vite/tasks/fontsStyle.js';
 import { moveHtmlFiles } from './vite/tasks/moveHtmlFiles.js';
 import { convertImagesToWebp } from './vite/tasks/webp.js';
@@ -21,20 +22,22 @@ import { convertImagesToWebp } from './vite/tasks/webp.js';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 //* ✅ Вызываем fontStyle ДО конфигурации
-fontStyle(paths.fonts.src, paths.fonts.dest);
+fonts(paths.fonts.src);
 
 export default defineConfig(({ command }) => {
   const isProd = command === 'build';
   const isDev = command === 'dev';
 
-  // ✅ Вызываем compileScss() только для продакшн сборки
+  //* ✅ Вызываем compileScss() только для продакшн сборки
   if (isProd) {
     compileScss();
   }
+
   return {
     base: './',
 
     plugins: [
+      fontStyle(),
       convertImagesToWebp(app.webp),
       viteConvertPugInHtml(getPugConfig(isProd)),
 
@@ -111,10 +114,7 @@ export default defineConfig(({ command }) => {
               if (id.includes('chart.js') || id.includes('d3')) {
                 return 'charts';
               }
-              if (id.includes('gsap-vendors')) {
-                return 'gsap';
-              }
-              if (id.includes('animejs') || id.includes('swiper')) {
+              if (id.includes('animejs') || id.includes('gsap')) {
                 return 'anime-vendors';
               }
               return 'vendor';

@@ -1,9 +1,9 @@
 @charset "UTF-8";
 @import 'https://fonts.googleapis.com/css?family=Dancing+Script:regular,500,600,700&display=swap&subset=cyrillic-ext&v=1';
 @import 'https://fonts.googleapis.com/css?family=Montserrat+Alternates:regular,500,600,700&display=swap&subset=cyrillic-ext&v=1';
-@import 'https://fonts.googleapis.com/css?family=Manrope:regular,500,600,700&display=swap&subset=cyrillic-ext&v=1)';
+@import 'https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap';
 :root {
-  --alarm-color: rgb(255 74 74 / 60%);
+  --alarm-color: rgb(255 90 95);
   --width: calc(0px + (260 - 0) * ((100vw - 320px) / (1024 - 320)));
   --background-transparent: rgb(14 14 19 / 85.5%);
   --thumb-color: rgb(16 71 28 / 37.7%);
@@ -213,6 +213,9 @@
   height: 16px;
   line-height: 130%;
 }
+.checkbox__text {
+  text-align: left;
+}
 .checkbox__label {
   cursor: pointer;
   display: flex;
@@ -228,20 +231,23 @@
   flex: 0 0 16px;
   width: 16px;
   height: 16px;
+  border-radius: 3px;
   background: rgb(255, 255, 255);
   transition: box-shadow 0.3s ease-in-out;
 }
 .checkbox__label .icon {
   position: absolute;
-  transform: translateX(-1px);
+  transform: translate(-1px, -5px);
   scale: 0;
   display: block;
   width: 16px;
   height: 16px;
+  color: rgb(255, 90, 95);
   transition: scale 0.2s ease;
 }
 .checkbox__label .icon::before {
-  font-size: 18px;
+  font-size: 26px;
+  font-weight: 600;
 }
 .checkbox__label a {
   font-weight: 600;
@@ -254,6 +260,10 @@
   .checkbox__label {
     font-size: 12px;
   }
+}
+
+.checkbox__input:checked + .checkbox__checked .icon {
+  scale: 1;
 }
 
 .t-h1 {
@@ -792,6 +802,7 @@
 }
 
 .footer {
+  position: relative;
   color: rgb(255, 255, 255);
   background-color: rgb(17, 17, 17);
 }
@@ -801,12 +812,15 @@
   }
 }
 .footer__body {
-  padding-block: 8rem;
+  padding-block: 8rem 0;
 }
 @media screen and (width < 490px) {
   .footer__body {
     padding-block: 4rem;
   }
+}
+.footer__content {
+  padding-block: 0 8rem;
 }
 .footer__wrapper {
   display: flex;
@@ -934,6 +948,8 @@
   background-color: rgb(255, 55.5, 61.5454545455);
 }
 .footer .form__agreement {
+  display: flex;
+  gap: 2rem;
   margin-top: 16px;
   font-size: 12px;
   line-height: 1.4;
@@ -949,6 +965,8 @@
   color: rgb(173, 173, 173);
 }
 .footer__bottom-wrapper {
+  position: relative;
+  z-index: 1;
   border-top: 1px solid rgb(51, 51, 51);
 }
 .footer__bottom {
@@ -1180,17 +1198,6 @@ select {
   font-size: inherit;
   color: inherit;
   background-color: transparent;
-}
-
-a:focus,
-a:active,
-input:focus,
-input:active,
-button:focus,
-button:active,
-textarea:focus,
-textarea:active {
-  outline: none;
 }
 
 button::-moz-focus-inner {
@@ -1610,6 +1617,59 @@ h6 {
   --offset: 58px;
 }
 
+.cookies-accept {
+  position: fixed;
+  z-index: 9;
+  bottom: 0;
+  transform: translateY(120%);
+  width: 100%;
+  opacity: 0;
+  background-color: rgb(17, 17, 17);
+  box-shadow: 2px 0 7px #000;
+}
+.cookies-accept__body {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+.cookies-accept__content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+@media screen and (width < 425px) {
+  .cookies-accept__content {
+    flex-direction: column;
+  }
+}
+.cookies-accept__text p {
+  font-size: 1.6rem;
+  line-height: 120%;
+  color: #fff;
+}
+.cookies-accept__button {
+  max-width: 100px;
+  padding: 6px 7.8rem;
+  color: rgb(255, 255, 255);
+}
+.cookies-accept__button.button {
+  transform: skew(-15deg) translateX(-1rem);
+  height: auto;
+  padding: 0.8rem 1rem !important;
+  border: 1px solid rgb(255, 90, 95);
+  border-radius: 10px;
+}
+.cookies-accept__button span {
+  transform: skew(15deg);
+  line-height: 100%;
+  color: rgb(255, 90, 95);
+  text-align: center;
+}
+
 .mobile-menu {
   position: fixed;
   z-index: 18;
@@ -1812,6 +1872,7 @@ h6 {
 }
 
 .section-promo__body {
+  position: relative;
   overflow: hidden;
   padding-block: 8rem 9rem !important;
   font-family: "Montserrat Alternates", sans-serif;
@@ -1835,7 +1896,6 @@ h6 {
   overflow: hidden;
   aspect-ratio: 16/9;
   width: 100%;
-  max-width: 1000px;
   margin: 0 auto;
   border-radius: 3.2rem;
   background-color: #000;
@@ -2933,6 +2993,7 @@ iframe.video-frame {
 }
 
 .section-reviews__body {
+  overflow: hidden;
   padding-block: 8rem 9rem !important;
 }
 @media screen and (width < 490px) {
@@ -2953,24 +3014,13 @@ iframe.video-frame {
   font-size: 2rem;
   color: rgb(136, 136, 136);
 }
-.section-reviews__wrapper {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 2rem;
+.section-reviews__slides {
+  position: relative;
 }
 @media screen and (width < 992px) {
   .section-reviews__wrapper {
     scroll-snap-type: x proximity;
-    overflow-x: scroll;
-    display: flex;
     padding-bottom: 2rem;
-    -ms-overflow-style: none; /* IE and Edge */
-  }
-  .section-reviews__wrapper::-webkit-scrollbar-thumb {
-    background-color: rgb(255, 90, 95);
-  }
-  .section-reviews__wrapper::-webkit-scrollbar {
-    height: 0.4rem;
   }
 }
 .section-reviews__actions {
@@ -2981,7 +3031,6 @@ iframe.video-frame {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  padding: 10px;
   border-radius: 2rem;
   background-color: rgb(255, 255, 255);
   box-shadow: 0 0 12px rgb(240, 240, 240);
@@ -3032,8 +3081,6 @@ iframe.video-frame {
 @media screen and (width < 992px) {
   .review-card {
     scroll-snap-align: center;
-    min-width: 280px;
-    max-width: 280px;
   }
 }
 @media (width >= 992px) {
@@ -3394,4 +3441,135 @@ iframe.video-frame {
 .video-cover__overlay.hidden,
 .video-play-btn.hidden {
   display: none !important;
+}
+
+.navigation {
+  pointer-events: none;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.navigation.show {
+  display: flex;
+}
+.navigation .btn-next,
+.navigation .btn-prev {
+  pointer-events: auto;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  transition: opacity 0.4s ease-in-out;
+}
+.navigation .btn-next svg,
+.navigation .btn-prev svg {
+  width: 30px;
+  fill: rgb(255, 90, 95);
+}
+.navigation .btn-next.swiper-button-disabled,
+.navigation .btn-prev.swiper-button-disabled {
+  opacity: 0;
+}
+
+.section-promo__pagination,
+.section-reviews__pagination {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+.promo-pagination {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.promo-pagination .swiper-pagination-bullet {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: rgb(136, 136, 136);
+  transition: background-color 0.4s, scale 0.4s ease-in-out;
+}
+.promo-pagination .swiper-pagination-bullet-active {
+  scale: 1.5;
+  background-color: rgb(255, 90, 95);
+}
+
+.section-reviews__navigation {
+  pointer-events: none;
+  position: absolute;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+.section-reviews__navigation.show {
+  display: flex;
+}
+.section-reviews__navigation .reviews-btn-next,
+.section-reviews__navigation .reviews-btn-prev {
+  pointer-events: auto;
+  cursor: pointer;
+  margin: 0 0.5rem;
+  transition: opacity 0.4s ease-in-out;
+}
+.section-reviews__navigation .reviews-btn-next svg,
+.section-reviews__navigation .reviews-btn-prev svg {
+  width: 30px;
+  fill: rgb(255, 90, 95);
+}
+.section-reviews__navigation .reviews-btn-next.swiper-button-disabled,
+.section-reviews__navigation .reviews-btn-prev.swiper-button-disabled {
+  opacity: 0;
+}
+
+.reviews-pagination {
+  display: inline-flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+.reviews-pagination .swiper-pagination-bullet {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background-color: rgb(136, 136, 136);
+  transition: background-color 0.4s, scale 0.4s ease-in-out;
+}
+.reviews-pagination .swiper-pagination-bullet-active {
+  scale: 1.5;
+  background-color: rgb(255, 90, 95);
+}
+
+.form__row {
+  display: block;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.button-container button:disabled {
+  pointer-events: none;
+  cursor: not-allowed;
+  background-color: hsla(0, 0%, 0%, 0.521);
+  box-shadow: none;
 }

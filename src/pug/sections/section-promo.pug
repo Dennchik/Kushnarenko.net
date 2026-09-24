@@ -1,28 +1,6 @@
 .section-promo._container
 	.section-promo__body 
-		.section-promo__video-slide.swiper.promo-slide 
-			.section-promo__video-box
-				//*- Видео (основной элемент)  
-				video#player-id.video-js(
-					controls,
-					preload="auto", 
-					tabindex="-1", 
-					playsinline, muted, 
-					src="./img/audio/cover.mp4"
-				)
-
-				//*- Обложка (поверх видео)
-				.video-cover
-					.video-cover__overlay
-						.video-cover__img 
-							+picture('img/audio/cover.png', 'image')
-
-					//*- Кнопка Play (поверх обложки)
-					button.video-play-btn(type="button" aria-label="Запустить видео")
-						span.video-play-btn__icon
-
-				.video-caption Смотреть шоурил 2025
-
+		.section-promo__video-slide.promo-slide 
 
 			.section-promo__video-box
 				//*- Видео (основной элемент)  
@@ -45,3 +23,43 @@
 						span.video-play-btn__icon
 
 				.video-caption Смотреть шоурил 2025
+
+
+			.section-promo__video-box
+				//*- Видео (основной элемент)  
+				video#player-id.video-js(
+					controls,
+					preload="auto", 
+					tabindex="-1", 
+					playsinline, muted, 
+					src="./img/audio/cover.mp4"
+				)
+
+				//*- Обложка (поверх видео)
+				.video-cover
+					.video-cover__overlay
+						.video-cover__img 
+							+picture('img/audio/cover.png', 'image')
+
+					//*- Кнопка Play (поверх обложки)
+					button.video-play-btn(type="button" aria-label="Запустить видео")
+						span.video-play-btn__icon
+
+				.video-caption Смотреть шоурил 2025
+		.section-promo__pagination
+			.promo-pagination
+
+		.navigation
+			.btn-prev
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="285" height="512" viewBox="0 0 285 512">
+				<g id="icomoon-ignore">
+				</g>
+				<path d="M0 265.384l237.268-271.625-105.727 271.625 139.893 237.269-271.435-237.269z"></path>
+				</svg> 
+			.btn-next
+				<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="266" height="512" viewBox="0 0 266 512">
+				<g id="icomoon-ignore">
+				</g>
+				<path d="M254.542 227.421l-237.268 271.435 105.727-271.435-139.893-237.458 271.435 237.458z"></path>
+				</svg>
+			.video-caption Смотреть шоурил 2025

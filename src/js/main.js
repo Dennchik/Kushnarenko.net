@@ -1,11 +1,12 @@
 import '../scss/main.scss';
 import BurgerMenu from './assets/burgerMenu.js';
 import videoInView from './assets/videoInView.js';
-
-import { shadowScrollHeader } from './layouts/layouts.js';
+import { maskPhone } from './utils/mask-phone.js';
+import { shadowScrollHeader, cookiesAccept } from './layouts/layouts.js';
 import DynamicAdaptive from './modules/DynamicAdaptive.js';
 import loaded from './utils/preloader.js';
-
+import { initFormValidation } from './assets/validate-form.js';
+import { returnToSavedPosition } from './assets/returnToSavedPosition.js';
 const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
 shadowScrollHeader();
@@ -14,10 +15,11 @@ shadowScrollHeader();
 function onDomReady() {
   DynamicAdaptive();
   videoInView();
+  returnToSavedPosition();
+  maskPhone('.phone');
+  initFormValidation();
+  cookiesAccept('.cookies-accept', '.cookies-accept__button');
 }
-
-//* ----------------------------------------------------------------------------
-
 document.addEventListener('DOMContentLoaded', onDomReady);
 //* ----------------------------------------------------------------------------
 
@@ -48,10 +50,6 @@ document.querySelectorAll('a[href]').forEach((link) => {
 //* - [ Animation ] -
 // addCartAnimation();
 
-//* layouts
-// cookiesAccept('.cookies-accept', '.cookies-accept__button');
-// dropDownMenu('.main-menu__link');
-
 //* ----------------- [ Блок часто задаваемые вопросы ] ------------------------
 document.addEventListener('DOMContentLoaded', () => {
   const faqItems = document.querySelectorAll('.faq-item');
@@ -75,6 +73,48 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+//* ----------------------------------------------------------------------------
+function initPromoSlider() {
+  const slide = document.querySelector('.section-promo__video-slide');
+
+  if (!slide) return;
+
+  const videoBoxes = slide.querySelectorAll('.section-promo__video-box');
+  const videoCount = videoBoxes.length;
+
+  console.log(`Найдено видео-боксов: ${videoCount}`);
+
+  // Если блоков 2 и более
+  if (videoCount >= 2) {
+    // Добавляем класс swiper к .section-promo__video-slide
+    slide.classList.add('swiper');
+
+    // Ищем .navigation внутри slide и добавляем класс show
+    const navigation = document.querySelector('.navigation');
+    if (navigation) {
+      navigation.classList.add('show');
+    }
+  }
+}
+
+initPromoSlider();
+//* ----------------------------------------------------------------------------
+// function inirReviewsSlide(params) {
+//   const slide = document.querySelector('.section-reviews__wrapper');
+
+//   // Если блоков 2 и более
+//   if (videoCount >= 5) {
+//     // Добавляем класс swiper к .section-promo__video-slide
+//     slide.classList.add('swiper');
+
+//     // Ищем .navigation внутри slide и добавляем класс show
+//     const navigation = document.querySelector('.reviews-navigation');
+//     if (navigation) {
+//       navigation.classList.add('show');
+//     }
+//   }
+// }
+// inirReviewsSlide();
 //* ----------------------------------------------------------------------------
 console.log(
   '%c РОССИЯ ',

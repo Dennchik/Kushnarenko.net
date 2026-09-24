@@ -34,5 +34,9 @@ html(lang="ru").scroll-smooth
                   block main-content
                   footer.page__footer#contacts
                     block footer
-                      include footer
+                      include footer 
+          block cookies
+            include @/pug/modules/cookies-accept 
+          block aside-button 
+            include @/pug/assets/scroll-button
 

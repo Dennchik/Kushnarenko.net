@@ -4,22 +4,21 @@
 //* - [ Cookies - accept] -
 .cookies-accept {
   position: fixed;
-  z-index: 15;
+  z-index: 9;
   bottom: 0;
-  transform: translateY(100%);
+  transform: translateY(120%);
 
   width: 100%;
 
-  background-color: hsl(0deg 0% 0% / 100%);
-  background-image:
-    radial-gradient(at 52% 40%, hsl(28deg 0% 0% / 100%) 0, transparent 50%),
-    radial-gradient(at 14% 1%, hsl(220deg 86% 63% / 39%) 0, transparent 50%),
-    radial-gradient(at 100% 100%, hsl(220deg 86% 63% / 29%) 0, transparent 50%);
+  opacity: 0;
+
+  // opacity: 0;
+  background-color: $color-bg-dark;
   box-shadow: 2px 0 7px #000;
 
   &__body {
     max-width: 1440px;
-    margin: auto;
+    margin: 0 auto;
     padding: 0 2rem;
   }
 
@@ -42,31 +41,31 @@
   // .cookies-accept__text
   &__text {
     p {
-      font-size: 12px;
+      font-size: 1.6rem;
       line-height: 120%;
-      color: #a6c9ff;
+      color: #fff;
     }
   }
 
   // .cookies-accept__button
   &__button {
-    max-width: 180px;
+    max-width: 100px;
     padding: 6px 7.8rem;
-    color: $font-color-title;
+    color: $font-color-secondary;
 
     &.button {
       transform: skew(-15deg) translateX(-1rem);
 
       height: auto;
-      padding: 0.8rem 3rem !important;
-      border: 1px solid #83a9e0;
+      padding: 0.8rem 1rem !important;
+      border: 1px solid $color-accent;
       border-radius: 10px;
     }
 
     span {
       transform: skew(15deg);
       line-height: 100%;
-      color: #83a9e0;
+      color: $color-accent;
       text-align: center;
     }
   }

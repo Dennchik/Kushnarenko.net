@@ -9,6 +9,7 @@ $gap: 2rem;
 .section-reviews {
   // .section-reviews__body
   &__body {
+    overflow: hidden;
     padding-block: 8rem 9rem !important;
 
     @include screen-490 {
@@ -32,32 +33,16 @@ $gap: 2rem;
     color: $color-text-gray;
   }
 
+  // .section-reviews__slides
+  &__slides {
+    position: relative;
+  }
+
+  // .section-reviews__wrapper
   &__wrapper {
-    display: grid;
-    // 3 колонки на десктопе
-    grid-template-columns: repeat(5, 1fr);
-    gap: $gap;
-
-    // --- АДАПТИВНЫЙ (Мобильный скролл) ---
-
     @include screen-992 {
       scroll-snap-type: x proximity; // Доводка скролла до элемента
-
-      overflow-x: scroll; // Разрешаем скролл по горизонтали
-      display: flex; // Превращаем grid в flex-строку
-
       padding-bottom: 2rem; // Место для скроллбара (если виден)
-
-      -ms-overflow-style: none; /* IE and Edge */
-
-      &::-webkit-scrollbar-thumb {
-        background-color: $color-accent;
-      }
-
-      // Скрываем полосу прокрутки (для красоты)
-      &::-webkit-scrollbar {
-        height: 0.4rem;
-      }
     }
   }
 
@@ -74,7 +59,6 @@ $gap: 2rem;
 
   overflow: hidden;
 
-  padding: 10px;
   border-radius: $radius;
 
   background-color: $color-white;
@@ -145,8 +129,6 @@ $gap: 2rem;
 
   @include screen-992 {
     scroll-snap-align: center; // Карточка центрируется при скролле
-    min-width: 280px;
-    max-width: 280px;
   }
 
   // Ховер эффекты (только для десктопа)

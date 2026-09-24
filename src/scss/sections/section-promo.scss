@@ -6,6 +6,7 @@ $radius: 3.2rem; // Большое скругление
 
 .section-promo {
   &__body {
+    position: relative;
     overflow: hidden;
     padding-block: 8rem 9rem !important;
     font-family: $font-family-title;
@@ -37,7 +38,7 @@ $radius: 3.2rem; // Большое скругление
 
     aspect-ratio: 16 / 9; // Пропорция видео (важно!)
     width: 100%;
-    max-width: 1000px; // Ограничиваем ширину, чтобы не было гигантским
+    // max-width: 1000px; // Ограничиваем ширину, чтобы не было гигантским
     margin: 0 auto;
     border-radius: $radius;
 

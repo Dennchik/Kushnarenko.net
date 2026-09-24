@@ -4,7 +4,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 
 const swiperModules = [Navigation, Pagination];
 
-//* ✅ Слайдер новостей на Главной странице
+//* ✅ Слайдер раздел-партнеры на Главной странице
 export function partnerSlide(slide) {
   if (slide) {
     new Swiper(slide, {
@@ -12,15 +12,13 @@ export function partnerSlide(slide) {
       effect: 'slide',
       lazy: true,
       spaceBetween: 20,
-      navigation: {
-        nextEl: '.btn-next',
-        prevEl: '.btn-prev',
-      },
+
       slidesPerView: 5,
       speed: 800,
       pagination: {
         el: '.swiper-pagination',
         dynamicBullets: true,
+        clickable: true,
       },
       // loop: true,
       grabCursor: true,
@@ -37,106 +35,90 @@ export function partnerSlide(slide) {
 
 //* ✅ Слайдер Ролики на Главной странице
 export function promoSlide(slide) {
-  if (slide) {
-    new Swiper(slide, {
-      modules: swiperModules,
-      effect: 'slide',
-      lazy: true,
-      spaceBetween: 20,
-      slidesPerView: 2,
-      speed: 800,
+  if (!slide) return;
 
-      noSwiping: true,
-      noSwipingClass: 'video-no-swiping',
+  // Функция для управления видимостью пагинации
+  const updatePaginationVisibility = (swiper) => {
+    const paginationEl = swiper.pagination?.el;
+    if (!paginationEl) return;
 
-      // on: {
-      //   click(swiper, event) {
-      //     const playBtn = event.target.closest('.video-play-btn');
+    paginationEl.style.display =
+      swiper.params.slidesPerView === 2 ? 'none' : '';
+  };
 
-      //     if (!playBtn) return;
+  let promoSlides = new Swiper(slide, {
+    modules: swiperModules,
+    effect: 'slide',
+    // lazy: true,
+    spaceBetween: 20,
+    speed: 800,
+    noSwipingClass: 'video-no-swiping',
 
-      //     const slide = playBtn.closest('.swiper-slide');
-      //     const video = slide?.querySelector('.video-js');
+    pagination: {
+      el: '.promo-pagination',
+      clickable: true,
+    },
 
-      //     if (!video) return;
+    navigation: {
+      nextEl: '.btn-next',
+      prevEl: '.btn-prev',
+    },
 
-      //     video
-      //       .play()
-      //       .then(() => {
-      //         const cover = slide.querySelector('.video-cover');
-
-      //         playBtn.classList.add('hidden');
-      //         cover?.classList.add('hidden');
-      //       })
-      //       .catch((error) => {
-      //         console.error('Ошибка воспроизведения:', error);
-      //       });
-      //   },
-
-      //   touchEnd(swiper, event) {
-      //     const target = event.target;
-
-      //     if (!target.closest('.video-js')) return;
-
-      //     const video = target.closest('.video-js');
-
-      //     if (!video) return;
-
-      //     if (!video.paused) {
-      //       video.pause();
-      //     }
-      //   },
-      // },
-
-      // navigation: {
-      //   nextEl: '.btn-next',
-      //   prevEl: '.btn-prev',
-      // },
-      // pagination: {
-      //   el: '.swiper-pagination',
-      //   dynamicBullets: true,
-      // },
-      // loop: true,
-      // grabCursor: true,
-      breakpoints: {
-        0: { slidesPerView: 1, spaceBetween: 10 },
-
-        960: { slidesPerView: 2 },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
       },
-    });
-  }
+      960: {
+        slidesPerView: 2,
+      },
+    },
+
+    on: {
+      breakpoint: function () {
+        updatePaginationVisibility(this);
+      },
+      init: function () {
+        updatePaginationVisibility(this);
+      },
+    },
+  });
 }
 
-// export function promoSlide(slide) {
-//   if (slide) {
-//     new Swiper(slide, {
-//       modules: swiperModules,
-//       effect: 'slide',
-//       lazy: true,
-//       spaceBetween: 20,
-//       slidesPerView: 2,
-//       speed: 800,
+//* ✅ Слайдер с Отзывами на Главной странице
+export function reviewsSlide(slide) {
+  if (!slide) return;
 
-//       // Отключаем свайп при клике
-//       preventClicks: false,
-//       preventClicksPropagation: false,
+  let promoSlides = new Swiper(slide, {
+    modules: swiperModules,
+    effect: 'slide',
+    // lazy: true,
+    spaceBetween: 5,
+    speed: 800,
+    noSwipingClass: 'video-no-swiping',
 
-//       // Если используете тач-устройства, это не даст слайдеру блокировать touch-события кнопки
-//       touchStartPreventDefault: false,
+    pagination: {
+      el: '.reviews-pagination',
+      clickable: true,
+    },
 
-//       on: {
-//         slideChange: function (swiper) {
-//           // Ваш код остановки видео при перелистывании
-//           swiper.slides.forEach((slide) => {
-//             const video = slide.querySelector('video');
-//             if (video) video.pause();
-//           });
-//         },
-//       },
-//       breakpoints: {
-//         0: { slidesPerView: 1, spaceBetween: 10 },
-//         960: { slidesPerView: 2 },
-//       },
-//     });
-//   }
-// }
+    navigation: {
+      nextEl: '.reviews-btn-next',
+      prevEl: '.reviews-btn-prev',
+    },
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      375: {
+        slidesPerView: 2,
+      },
+      690: {
+        slidesPerView: 3,
+      },
+      960: {
+        slidesPerView: 4,
+      },
+    },
+  });
+}

@@ -129,6 +129,11 @@
     line-height: 130%;
   }
 
+  // .checkbox__text
+  &__text {
+    text-align: left;
+  }
+
   // .checkbox__label
   &__label {
     cursor: pointer;
@@ -151,6 +156,7 @@
 
       width: 16px;
       height: 16px;
+      border-radius: 3px;
 
       background: $background;
 
@@ -159,7 +165,7 @@
 
     .icon {
       position: absolute;
-      transform: translateX(-1px);
+      transform: translate(-1px, -5px);
       scale: 0;
 
       display: block;
@@ -167,10 +173,12 @@
       width: 16px;
       height: 16px;
 
-      transition: scale 0.2s ease;
+      color: $color-accent;
 
+      transition: scale 0.2s ease;
       &::before {
-        font-size: 18px;
+        font-size: 26px;
+        font-weight: 600;
       }
     }
 
@@ -187,7 +195,9 @@
     }
   }
 }
-
+.checkbox__input:checked + .checkbox__checked .icon {
+  scale: 1;
+}
 //* ------------------------- [Class _ibg] -------------------------------------
 
 .t-h1 {

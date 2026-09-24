@@ -4,44 +4,60 @@
 			h2.section-reviews__title.t-h2.el-item Эмоции после праздника
 			p.section-reviews__subtitle Лучше любой рекламы — слова моих пар и&nbsp;клиентов в&nbsp;Telegram
 		//*- Обертка для скролла/сетки
-		.section-reviews__wrapper
-			//*- Скриншот 1
-			.review-card
-				.review-card__image-box
-					a(href='img/reviews/reviews-1.png' data-fancybox="gallery").review-card__img
-						+picture('img/reviews/reviews-1.png', 'image')
-				.review-card__overlay
-					span.review-card__icon
-						i.icon-zoom-in
-			//*- Скриншот 2
-			.review-card
-				.review-card__image-box
-					a(href='img/reviews/reviews-2.png' data-fancybox="gallery").review-card__img
-						+picture('img/reviews/reviews-2.png', 'image')
-				.review-card__overlay
-					span.review-card__icon
-						i.icon-zoom-in
-			//*- Скриншот 3
-			.review-card
-				.review-card__image-box
-					a(href='img/reviews/reviews-3.png' data-fancybox="gallery").review-card__img
-						+picture('img/reviews/reviews-3.png', 'image')
-				.review-card__overlay
-					span.review-card__icon
-						i.icon-zoom-in
-			//*- Скриншот 4
-			.review-card
-				.review-card__image-box
-					a(href='img/reviews/reviews-4.png' data-fancybox="gallery").review-card__img
-						+picture('img/reviews/reviews-4.png', 'image')
-				.review-card__overlay
-					span.review-card__icon
-						i.icon-zoom-in
-			//*- Скриншот 5
-			.review-card
-				.review-card__image-box
-					a(href='img/reviews/reviews-5.png' data-fancybox="gallery").review-card__img
-						+picture('img/reviews/reviews-5.png', 'image')
-				.review-card__overlay
-					span.review-card__icon
-						i.icon-zoom-in
+		.section-reviews__slides
+			.section-reviews__wrapper.swiper.reviews-slide
+				//*- Скриншот 1
+				.review-card
+					.review-card__image-box
+						a(href='img/reviews/reviews-1.png' data-fancybox="gallery").review-card__img
+							+picture('img/reviews/reviews-1.png', 'image')
+					.review-card__overlay
+						span.review-card__icon
+							i.icon-zoom-in
+				//*- Скриншот 2
+				.review-card
+					.review-card__image-box
+						a(href='img/reviews/reviews-2.png' data-fancybox="gallery").review-card__img
+							+picture('img/reviews/reviews-2.png', 'image')
+					.review-card__overlay
+						span.review-card__icon
+							i.icon-zoom-in
+				//*- Скриншот 3
+				.review-card
+					.review-card__image-box
+						a(href='img/reviews/reviews-3.png' data-fancybox="gallery").review-card__img
+							+picture('img/reviews/reviews-3.png', 'image')
+					.review-card__overlay
+						span.review-card__icon
+							i.icon-zoom-in
+				//*- Скриншот 4
+				.review-card
+					.review-card__image-box
+						a(href='img/reviews/reviews-4.png' data-fancybox="gallery").review-card__img
+							+picture('img/reviews/reviews-4.png', 'image')
+					.review-card__overlay
+						span.review-card__icon
+							i.icon-zoom-in
+				//*- Скриншот 5
+				.review-card
+					.review-card__image-box
+						a(href='img/reviews/reviews-5.png' data-fancybox="gallery").review-card__img
+							+picture('img/reviews/reviews-5.png', 'image')
+					.review-card__overlay
+						span.review-card__icon
+							i.icon-zoom-in
+			.section-reviews__pagination
+				.reviews-pagination
+			.section-reviews__navigation
+				.reviews-btn-prev
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="285" height="512" viewBox="0 0 285 512">
+					<g id="icomoon-ignore">
+					</g>
+					<path d="M0 265.384l237.268-271.625-105.727 271.625 139.893 237.269-271.435-237.269z"></path>
+					</svg> 
+				.reviews-btn-next
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="266" height="512" viewBox="0 0 266 512">
+					<g id="icomoon-ignore">
+					</g>
+					<path d="M254.542 227.421l-237.268 271.435 105.727-271.435-139.893-237.458 271.435 237.458z"></path>
+					</svg>

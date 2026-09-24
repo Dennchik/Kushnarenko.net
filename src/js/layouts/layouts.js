@@ -259,27 +259,55 @@ export function toggleModalOpen() {
 
 //* ✅ - [ Управление оповещением cookies ] -
 export function cookiesAccept(el, trigger) {
-  if (el) {
-    const cookiesAccept = document.querySelector(el);
-    const button = document.querySelector(trigger);
+  const cookiesAccept = document.querySelector(el);
+  const button = document.querySelector(trigger);
 
-    if (!cookiesAccept) return;
+  if (!cookiesAccept) return;
 
-    if (button) {
+  // ⬇️⬇️⬇️ ДОБАВЛЕНИЯ сохранение в localStorage ⬇️⬇️⬇️
+
+  // 1. Проверяем, было ли уже согласие
+  const hasAccepted = localStorage.getItem('cookiesAccepted');
+
+  // 2. Если пользователь уже соглашался - скрываем баннер сразу
+  // if (hasAccepted === 'true') {
+  //   // Сразу убираем, без анимации
+  //   cookiesAccept.style.display = 'none';
+  //   // или если хотите с анимацией:
+  //   // cookiesAccept.style.transform = 'translateY(110%)';
+  //   // cookiesAccept.style.transition = 'transform 0.5s ease';
+  //   return; // Завершаем функцию, баннер больше не нужен
+  // }
+  // ! Временно
+
+  // ⬆️⬆️⬆️  ДОБАВЛЕНИЯ ЗАКОНЧИЛИСЬ ⬆️⬆️⬆️
+
+  if (button) {
+    cookiesAccept.style.transform = 'translateY(110%)';
+    button.addEventListener('click', () => {
       cookiesAccept.style.transform = 'translateY(110%)';
-      button.addEventListener('click', () => {
-        cookiesAccept.style.transform = 'translateY(110%)';
-        cookiesAccept.style.transition = 'transform 0.5s ease';
-      });
-    } else {
-      console.log('кнопка не найдена');
-    }
-
-    setTimeout(() => {
-      cookiesAccept.style.transform = 'translateY(0)';
       cookiesAccept.style.transition = 'transform 0.5s ease';
-    }, 3000);
+
+      // ⬇️⬇️⬇️ ЕЩЕ МОИ ДОБАВЛЕНИЯ ⬇️⬇️⬇️
+      // 3. При клике сохраняем согласие в localStorage
+      localStorage.setItem('cookiesAccepted', 'true');
+
+      // 4. Опционально: скрываем полностью после анимации
+      setTimeout(() => {
+        cookiesAccept.style.display = 'none';
+      }, 500); // Ждем завершения анимации (0.5s)
+
+      // ⬆️⬆️⬆️ КОНЕЦ ДОБАВЛЕНИЙ ⬆️⬆️⬆️
+    });
+  } else {
+    console.log('кнопка не найдена');
   }
+
+  setTimeout(() => {
+    cookiesAccept.style.transform = 'translateY(0)';
+    cookiesAccept.style.transition = 'transform 0.5s ease';
+    cookiesAccept.style.opacity = '1';
+  }, 3000);
 }
 
 //* ✅ - [ JS — display logic and looping ]

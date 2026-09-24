@@ -6,6 +6,7 @@
 $radius: 24px;
 
 .footer {
+  position: relative;
   color: $color-white;
   background-color: $color-bg-dark;
 
@@ -22,11 +23,16 @@ $radius: 24px;
 
   // .footer__body
   &__body {
-    padding-block: 8rem;
+    padding-block: 8rem 0;
 
     @include screen-490 {
       padding-block: 4rem;
     }
+  }
+
+  // .footer__content
+  &__content {
+    padding-block: 0 8rem;
   }
 
   // .footer__wrapper
@@ -182,6 +188,9 @@ $radius: 24px;
 
     // .form__agreement
     &__agreement {
+      display: flex;
+      gap: 2rem;
+
       margin-top: 16px;
 
       font-size: 12px;
@@ -203,6 +212,8 @@ $radius: 24px;
 
   // .footer__bottom-wrapper
   &__bottom-wrapper {
+    position: relative;
+    z-index: 1;
     border-top: 1px solid $border-color;
   }
 

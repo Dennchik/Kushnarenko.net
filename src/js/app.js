@@ -1,6 +1,6 @@
 //* app.js
 import { buildSwiper } from './utils/build-swiper.js';
-import { partnerSlide, promoSlide } from './components/slide.js';
+import { partnerSlide, promoSlide, reviewsSlide } from './components/slide.js';
 import {
   smoother,
   applyParallax,
@@ -19,6 +19,7 @@ function onDomReady() {
   buildSwiper();
   partnerSlide('.partners-slide');
   promoSlide('.promo-slide');
+  reviewsSlide('.reviews-slide');
   fancyBox();
 
   if (!isMobile) {
@@ -32,7 +33,7 @@ document.addEventListener('DOMContentLoaded', onDomReady);
 
 let gsapSmoother = null;
 //* ----------------------------------------------------------------------------
-if (!isMobile || window.innerWidth >= 960) {
+if (!isMobile) {
   smoother();
   //* Параллакс (если есть элементы с data-speed или класс .parallax)
   applyParallax('.parallax');

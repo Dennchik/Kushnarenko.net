@@ -1,6 +1,6 @@
 export function validateForm() {
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('._order-form').forEach((form, index) => {
+    document.querySelectorAll('.order-form').forEach((form, index) => {
       // Находим элементы, но не прерываем выполнение если какие-то отсутствуют
       const name = form.querySelector('input.name');
       const phone = form.querySelector('input.phone');
