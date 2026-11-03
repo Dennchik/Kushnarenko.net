@@ -928,6 +928,13 @@
 .footer .form__input:focus {
   border-color: rgb(255, 90, 95);
 }
+.footer .form__textarea {
+  resize: vertical;
+  height: auto;
+  min-height: 100px;
+  padding: 18px 20px;
+  font-family: inherit;
+}
 .footer .form__submit {
   cursor: pointer;
   width: 100%;

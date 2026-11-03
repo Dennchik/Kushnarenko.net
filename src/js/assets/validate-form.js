@@ -49,6 +49,8 @@ class FormValidator {
       name: form.querySelector('input.name'),
       email: form.querySelector('input.email'),
       phone: form.querySelector('input.phone'),
+      date: form.querySelector('input.date, input[name="date"], #event-date'),
+      message: form.querySelector('textarea.message'),
       checkbox: form.querySelector('input.checked'),
       sendButton: form.querySelector('.send-button'),
       buttonContainer: null,
@@ -224,8 +226,16 @@ class FormValidator {
    * Обработка отправки формы
    */
   async handleSubmit() {
-    const { sendButton, buttonContainer, name, email, phone, checkbox } =
-      this.elements;
+    const {
+      sendButton,
+      buttonContainer,
+      name,
+      email,
+      phone,
+      date,
+      message,
+      checkbox,
+    } = this.elements;
 
     // Проверка перед отправкой
     if (
@@ -245,15 +255,16 @@ class FormValidator {
       const goalName = sendButton.getAttribute('goal-name') || '';
       const formData = new FormData();
 
-      formData.append('action', 'send_telegram_message');
+      formData.append('action', 'send_cost_form');
       formData.append('goalName', goalName);
       if (phone?.value) formData.append('phone', phone.value.trim());
       if (email?.value) formData.append('email', email.value.trim());
       if (name?.value) formData.append('name', name.value.trim());
+      if (date?.value) formData.append('date', date.value.trim());
+      if (message?.value) formData.append('message', message.value.trim());
 
-      const response = await fetch(localizedVars.ajax_url, {
+      const response = await fetch('/wp-admin/admin-ajax.php', {
         method: 'POST',
-        headers: { 'X-WP-Nonce': localizedVars.ajax_nonce },
         body: formData,
       });
 
@@ -284,8 +295,10 @@ class FormValidator {
    * Сброс формы
    */
   resetForm() {
-    const { name, email, phone, checkbox } = this.elements;
+    const { name, email, phone, date, message, checkbox } = this.elements;
 
+    if (date) date.value = '';
+    if (message) message.value = '';
     if (name) name.value = '';
     if (phone) phone.value = '';
     if (email) email.value = '';

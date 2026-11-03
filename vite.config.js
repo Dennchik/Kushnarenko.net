@@ -1,4 +1,6 @@
 //! ✅ vite.config.js
+// noinspection JSValidateTypes
+
 import { viteConvertPugInHtml } from '@mish.dev/vite-convert-pug-in-html';
 //* ✅ Plugins
 import autoprefixer from 'autoprefixer';
@@ -33,6 +35,7 @@ export default defineConfig(({ command }) => {
     compileScss();
   }
 
+  // noinspection JSUnusedGlobalSymbols
   return {
     base: './',
 
@@ -45,11 +48,11 @@ export default defineConfig(({ command }) => {
       moveHtmlFiles(), // 👈 ключевой плагин для переименования HTML
       // 🔹 Добавляем анализатор только в продакшн-сборке
       /*  visualizer({
-                filename: 'build/stats.html',
-                open: true,
-                gzipSize: true,
-                brotliSize: true,
-            }), */
+       filename: 'build/stats.html',
+       open: true,
+       gzipSize: true,
+       brotliSize: true,
+       }), */
     ],
 
     server: {
@@ -116,6 +119,9 @@ export default defineConfig(({ command }) => {
               }
               if (id.includes('animejs') || id.includes('gsap')) {
                 return 'anime-vendors';
+              }
+              if (id.includes('swiper')) {
+                return 'swiper-vendors';
               }
               return 'vendor';
             }

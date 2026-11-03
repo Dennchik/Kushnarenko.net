@@ -1,13 +1,12 @@
 import '../scss/main.scss';
 import BurgerMenu from './assets/burgerMenu.js';
-import videoInView from './assets/videoInView.js';
-import { maskPhone } from './utils/mask-phone.js';
-import { shadowScrollHeader, cookiesAccept } from './layouts/layouts.js';
-import DynamicAdaptive from './modules/DynamicAdaptive.js';
-import loaded from './utils/preloader.js';
-import { initFormValidation } from './assets/validate-form.js';
 import { returnToSavedPosition } from './assets/returnToSavedPosition.js';
-const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+import { initFormValidation } from './assets/validate-form.js';
+import videoInView from './assets/videoInView.js';
+import { cookiesAccept, shadowScrollHeader } from './layouts/layouts.js';
+import DynamicAdaptive from './modules/DynamicAdaptive.js';
+import { maskPhone } from './utils/mask-phone.js';
+import loaded from './utils/preloader.js';
 
 shadowScrollHeader();
 

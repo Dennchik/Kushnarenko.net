@@ -34,7 +34,10 @@
 						.form__row
 							label(for="user-email") 
 								input.form__input.email(type="email" id="user-email" placeholder="Ваш email *" required)
-						.button-container 
+						.form__row
+							label(for="user-message")
+								textarea.form__input.form__textarea.message(id="user-message" name="message" rows="3" placeholder="Комментарий (необязательно)")
+						.button-container
 							button.form__submit.btn.send-button(type="submit" form="form-order" disabled ) Забронировать дату
 						.form__agreement 
 							.checkbox

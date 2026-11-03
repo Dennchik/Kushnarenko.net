@@ -163,6 +163,17 @@ $radius: 24px;
       }
     }
 
+    // .form__textarea
+    &__textarea {
+      resize: vertical;
+
+      height: auto;
+      min-height: 100px;
+      padding: 18px 20px;
+
+      font-family: inherit;
+    }
+
     //.form__submit
     &__submit {
       cursor: pointer;

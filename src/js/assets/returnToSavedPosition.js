@@ -21,6 +21,7 @@ export function returnToSavedPosition() {
 
   // Добавляем обработчик события для кнопки
   const scrollButton = document.getElementById('scrollButton');
+  if (!scrollButton) return;
   scrollButton.addEventListener('click', function () {
     // Проверяем, находится ли страница не в самом верху
     if ((window.scrollY || document.documentElement.scrollTop) !== 0) {
