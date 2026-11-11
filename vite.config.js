@@ -11,11 +11,9 @@ import sortMediaQueries from 'postcss-sort-media-queries';
 import { defineConfig } from 'vite';
 //* ✅ config
 import { app } from './vite/config/app.js';
-//* ✅ Path
 import { paths } from './vite/config/path.js';
-//* ✅ Tasks
 import { getPugConfig } from './vite/config/pug-config.js';
-import { compileScss } from './vite/tasks/compileScss.js';
+//* ✅ Tasks
 import { fonts } from './vite/tasks/fonts.js';
 import { fontStyle } from './vite/tasks/fontsStyle.js';
 import { moveHtmlFiles } from './vite/tasks/moveHtmlFiles.js';
@@ -30,11 +28,6 @@ export default defineConfig(({ command }) => {
   const isProd = command === 'build';
   const isDev = command === 'dev';
 
-  //* ✅ Вызываем compileScss() только для продакшн сборки
-  if (isProd) {
-    compileScss();
-  }
-
   // noinspection JSUnusedGlobalSymbols
   return {
     base: './',
@@ -46,13 +39,6 @@ export default defineConfig(({ command }) => {
 
       // 🔹 ключевой плагин для переименования HTML
       moveHtmlFiles(), // 👈 ключевой плагин для переименования HTML
-      // 🔹 Добавляем анализатор только в продакшн-сборке
-      /*  visualizer({
-       filename: 'build/stats.html',
-       open: true,
-       gzipSize: true,
-       brotliSize: true,
-       }), */
     ],
 
     server: {
@@ -111,12 +97,6 @@ export default defineConfig(({ command }) => {
 
           manualChunks(id) {
             if (id.includes('node_modules')) {
-              if (id.includes('lodash') || id.includes('date-fns')) {
-                return 'utils';
-              }
-              if (id.includes('chart.js') || id.includes('d3')) {
-                return 'charts';
-              }
               if (id.includes('animejs') || id.includes('gsap')) {
                 return 'anime-vendors';
               }
@@ -127,10 +107,6 @@ export default defineConfig(({ command }) => {
             }
           },
         },
-      },
-      optimizeDeps: {
-        include: ['lodash', 'axios'],
-        exclude: [],
       },
     },
 

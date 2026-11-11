@@ -2,7 +2,7 @@
 
 @use 'sass:string'; // Импортируем модуль string
 $icomoon-font-family: 'icon-set' !default;
-$icomoon-font-path: '/fonts' !default;
+$icomoon-font-path: '../fonts' !default;
 
 $icon-zoom-in: string.unquote('"\\e912"');
 $icon-check4: string.unquote('"\\e911"');

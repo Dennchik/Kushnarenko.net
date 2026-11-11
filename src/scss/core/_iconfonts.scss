@@ -5,14 +5,13 @@
   font-weight: normal;
   font-style: normal;
   font-display: block;
-  src: url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?1q423w');
   src:
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.eot?1q423w#iefix')
-      format('embedded-opentype'),
-    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?1q423w')
-      format('truetype'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff2?1q423w')
+      format('woff2'),
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.woff?1q423w')
       format('woff'),
+    url('#{$icomoon-font-path}/#{$icomoon-font-family}.ttf?1q423w')
+      format('truetype'),
     url('#{$icomoon-font-path}/#{$icomoon-font-family}.svg?1q423w##{$icomoon-font-family}')
       format('svg');
 }
